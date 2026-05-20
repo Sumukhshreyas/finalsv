@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PRD Validation: SV Enterprises — Product Showcase Website</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --muted: #78716c;
+
+    --verdict-strong: #16a34a;
+    --verdict-adequate: #65a30d;
+    --verdict-thin: #d97706;
+    --verdict-broken: #dc2626;
+
+    --sev-low: #64748b;
+    --sev-medium: #ca8a04;
+    --sev-high: #ea580c;
+    --sev-critical: #dc2626;
+
+    --grade-exc: #16a34a;
+    --grade-good: #65a30d;
+    --grade-fair: #d97706;
+    --grade-poor: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  header.report-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .title h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .title .subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  .grade {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .grade-excellent { background: var(--grade-exc); }
+  .grade-good { background: var(--grade-good); }
+  .grade-fair { background: var(--grade-fair); }
+  .grade-poor { background: var(--grade-poor); }
+
+  .synthesis {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--muted);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 15.5px;
+  }
+  .synthesis p { margin: 0 0 10px; }
+  .synthesis p:last-child { margin-bottom: 0; }
+
+  .dimension-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .dim-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .dim-card .dim-name { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .dim-card .dim-verdict { font-size: 14px; font-weight: 600; }
+
+  section.dimension, section.reviewer-section { margin-bottom: 14px; }
+  section.dimension details, section.reviewer-section details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  section summary {
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section summary::-webkit-details-marker { display: none; }
+  section summary::before {
+    content: "▸";
+    display: inline-block;
+    color: var(--muted);
+    transition: transform 0.15s ease;
+  }
+  section details[open] summary::before { transform: rotate(90deg); }
+  section summary h2 {
+    display: inline;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    flex: 1;
+  }
+  .verdict-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: white;
+  }
+  .verdict-strong { background: var(--verdict-strong); }
+  .verdict-adequate { background: var(--verdict-adequate); }
+  .verdict-thin { background: var(--verdict-thin); }
+  .verdict-broken { background: var(--verdict-broken); }
+
+  .dim-body { padding: 4px 20px 18px; }
+  .dim-judgment { color: var(--text); font-size: 14.5px; }
+  .dim-judgment p { margin: 0 0 10px; }
+
+  .findings-list { padding: 0 20px 4px; }
+  article.finding {
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  article.finding:first-child { border-top: none; }
+  article.finding header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .badge {
+    font-size: 10.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .badge-sev-low { background: rgba(100, 116, 139, 0.12); color: var(--sev-low); }
+  .badge-sev-medium { background: rgba(202, 138, 4, 0.14); color: var(--sev-medium); }
+  .badge-sev-high { background: rgba(234, 88, 12, 0.14); color: var(--sev-high); }
+  .badge-sev-critical { background: rgba(220, 38, 38, 0.14); color: var(--sev-critical); }
+  .finding-title { margin: 0; font-size: 15px; font-weight: 500; flex: 1; min-width: 200px; }
+  .finding-location { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; color: var(--muted); }
+  .finding-note, .finding-fix { margin-top: 6px; font-size: 14px; }
+  .finding-fix strong { color: var(--muted); font-weight: 500; }
+
+  .reviewer-source {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  .mechanical {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 24px;
+    font-size: 14px;
+  }
+  .mechanical h3 { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .mechanical ul { margin: 0; padding-left: 20px; }
+  .mechanical li { margin-bottom: 4px; color: var(--text); }
+
+  footer.report-footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  footer .meta { display: flex; gap: 24px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="report-header">
+      <div class="title">
+        <h1>SV Enterprises — Product Showcase Website — Validation Report</h1>
+        <div class="subtitle">_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/prd.md</div>
+      </div>
+      <div class="grade grade-good">Good</div>
+    </header>
+
+    <div class="synthesis">
+      <p>The PRD is a well-crafted, focused document for a clearly scoped product — a product showcase and enquiry-generation website for a Bangalore wholesale dealer. The strategic thesis ("rank on Google, generate enquiries") is coherent and every feature serves it. The no-e-commerce guardrail is stated with admirable force.</p>
+      <p>The main risk areas are: (1) two mega-FRs (FR-2 and FR-7) that bundle too many testable behaviours — these will cause friction during story decomposition; (2) the Assumptions Index doesn't round-trip with inline tags; and (3) several open questions should be resolved before the PRD can truly claim "final" status. None of these are structural defects — they're polish items that a 30-minute pass would fix.</p>
+    </div>
+
+    <div class="dimension-summary">
+      <div class="dim-card">
+        <div class="dim-name">Decision-readiness</div>
+        <div class="dim-verdict" style="color: var(--verdict-adequate)">Adequate</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Substance over theater</div>
+        <div class="dim-verdict" style="color: var(--verdict-strong)">Strong</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Strategic coherence</div>
+        <div class="dim-verdict" style="color: var(--verdict-strong)">Strong</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Done-ness clarity</div>
+        <div class="dim-verdict" style="color: var(--verdict-adequate)">Adequate</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Scope honesty</div>
+        <div class="dim-verdict" style="color: var(--verdict-strong)">Strong</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Downstream usability</div>
+        <div class="dim-verdict" style="color: var(--verdict-adequate)">Adequate</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">Shape fit</div>
+        <div class="dim-verdict" style="color: var(--verdict-strong)">Strong</div>
+      </div>
+    </div>
+
+    <!-- Decision-readiness -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Decision-readiness</h2>
+          <span class="verdict-pill verdict-adequate">Adequate</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>The PRD makes its biggest decision — "no e-commerce, enquiry only" — loudly and clearly, repeating it in the Vision (§1), Non-Goals (§5), and a dedicated guardrail (§8.4). The "reference HTML is sacred" constraint is also stated decisively. However, several decisions that matter for downstream are deferred to Open Questions rather than resolved: hosting platform, data management strategy, WhatsApp pre-fill behaviour, and domain name.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-medium">Medium</span>
+              <h3 class="finding-title">7 open questions with "final" status</h3>
+              <span class="finding-location">§11</span>
+            </header>
+            <div class="finding-note">Several open questions (hosting, data management, WhatsApp pre-fill, domain name) are architectural decisions that should be resolved before the PRD can claim final status.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Resolve questions 1–3 and 6 with the product owner. Move the rest to a post-v1 backlog.</div>
+          </article>
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-low">Low</span>
+              <h3 class="finding-title">Mode persistence mechanism unspecified</h3>
+              <span class="finding-location">FR-1</span>
+            </header>
+            <div class="finding-note">FR-1 says mode "persists during the session" but doesn't specify how (sessionStorage, URL state, default value).</div>
+            <div class="finding-fix"><strong>Fix:</strong> Specify: default is "automobile"; persists via URL path prefix or sessionStorage; resets on new session.</div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <!-- Substance over theater -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Substance over theater</h2>
+          <span class="verdict-pill verdict-strong">Strong</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>The PRD is lean and every section carries weight. No persona theater — the three personas are distinct and map to real buyer types. No innovation theater — no novelty claims. No NFR theater — NFRs are baked into specific guardrails with concrete thresholds (LCP &lt; 2.5s, touch targets ≥ 44px). The Glossary is tight and genuinely useful.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <!-- No findings -->
+        </div>
+      </details>
+    </section>
+
+    <!-- Strategic coherence -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Strategic coherence</h2>
+          <span class="verdict-pill verdict-strong">Strong</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>The PRD has a clear thesis: "generate enquiries and rank on Google for spare parts searches in Bangalore." Every feature serves this thesis. Success Metrics validate the thesis. The counter-metric (SM-C1, bounce rate) is genuinely insightful.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-low">Low</span>
+              <h3 class="finding-title">SM-2 enquiry target may be miscalibrated</h3>
+              <span class="finding-location">§7</span>
+            </header>
+            <div class="finding-note">20 WhatsApp/call enquiries per month may be too low or too high — current baseline is unstated.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Validate the target with the product owner against current offline enquiry volume.</div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <!-- Done-ness clarity -->
+    <section class="dimension">
+      <details open>
+        <summary>
+          <h2>Done-ness clarity</h2>
+          <span class="verdict-pill verdict-adequate">Adequate</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>Most FRs have testable consequences. The best examples are FR-1 (mode toggle), FR-19 (URL structure), and FR-7 (product detail). However, FR-2 and FR-7 bundle too many behaviours into single requirements, which will cause friction during story creation.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-high">High</span>
+              <h3 class="finding-title">FR-2 bundles 6 distinct homepage sections into one requirement</h3>
+              <span class="finding-location">§4.1</span>
+            </header>
+            <div class="finding-note">Each homepage section (hero, categories, brands, featured, advantages, contact band) is independently testable and could fail independently.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Split FR-2 into FR-2a through FR-2f, or add an explicit decomposition note for story creators.</div>
+          </article>
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-high">High</span>
+              <h3 class="finding-title">FR-7 bundles 9+ display elements into one requirement</h3>
+              <span class="finding-location">§4.4</span>
+            </header>
+            <div class="finding-note">The product detail page is the most complex page. Image, OEM chip, brand chip, compatibility grid, specs grid, description, gallery dots, favourite button, and back navigation are all packed into one FR.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Split into sub-requirements (FR-7a through FR-7d at minimum) or add a decomposition note.</div>
+          </article>
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-medium">Medium</span>
+              <h3 class="finding-title">FR-6 list view is underspecified</h3>
+              <span class="finding-location">§4.3</span>
+            </header>
+            <div class="finding-note">The reference HTML only shows grid view fully implemented. List view layout is not specified.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Clarify whether list view is MVP scope or decorative. If in scope, specify the row layout.</div>
+          </article>
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-low">Low</span>
+              <h3 class="finding-title">Search result prices are unexplained</h3>
+              <span class="finding-location">FR-13 vs §5</span>
+            </header>
+            <div class="finding-note">FR-13 mentions "price indication" but §5 says "No pricing display (except indicative prices on search results)." The source/format of these prices is unspecified.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Add a note: prices in search results are hardcoded indicative values from the product data, not dynamic.</div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <!-- Scope honesty -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Scope honesty</h2>
+          <span class="verdict-pill verdict-strong">Strong</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>The Non-Goals section does genuine work — it names specific things a reader might expect and explicitly closes them. The Out of Scope for MVP tags each item with a version target and includes reasoning. The assumptions are honest.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-medium">Medium</span>
+              <h3 class="finding-title">Assumptions not tagged inline</h3>
+              <span class="finding-location">§12</span>
+            </header>
+            <div class="finding-note">7 assumptions are indexed in §12 but none appear as inline [ASSUMPTION: ...] tags at the point of inference in the feature descriptions.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Add inline tags in the relevant FR descriptions and verify the roundtrip.</div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <!-- Downstream usability -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Downstream usability</h2>
+          <span class="verdict-pill verdict-adequate">Adequate</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>The PRD is well-structured for downstream extraction. Glossary terms are used consistently. IDs are contiguous. Cross-references work. The IA table and data requirements table are directly usable. However, UJ persona labels don't exactly match §2.1 definitions.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-low">Low</span>
+              <h3 class="finding-title">UJ persona labels don't match §2.1</h3>
+              <span class="finding-location">§2.4</span>
+            </header>
+            <div class="finding-note">UJ-1 says "workshop mechanic" but §2.1 defines "Workshop Owner / Mechanic (Automobile)." Similar in UJ-2 and UJ-3.</div>
+            <div class="finding-fix"><strong>Fix:</strong> Use exact persona labels from §2.1 in each UJ.</div>
+          </article>
+          <article class="finding">
+            <header>
+              <span class="badge badge-sev-low">Low</span>
+              <h3 class="finding-title">Glossary term "OEM Number" used inconsistently</h3>
+              <span class="finding-location">§3 vs §4</span>
+            </header>
+            <div class="finding-note">§3 defines "OEM Number" but features alternate between "OEM number", "OEM/spec number", and "OEM."</div>
+            <div class="finding-fix"><strong>Fix:</strong> Standardize to "OEM Number" throughout, or add "OEM/Spec Number" as a combined glossary entry.</div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <!-- Shape fit -->
+    <section class="dimension">
+      <details>
+        <summary>
+          <h2>Shape fit</h2>
+          <span class="verdict-pill verdict-strong">Strong</span>
+        </summary>
+        <div class="dim-body">
+          <div class="dim-judgment">
+            <p>This is a product showcase / lead-gen website for a specific local business. The PRD correctly avoids over-formalizing: three personas, three user journeys, lean success metrics. The §8 Constraints section is an excellent shape choice for a design-constrained build. No over-engineering, no under-specification.</p>
+          </div>
+        </div>
+        <div class="findings-list">
+          <!-- No findings -->
+        </div>
+      </details>
+    </section>
+
+    <div class="mechanical">
+      <h3>Mechanical notes</h3>
+      <ul>
+        <li><strong>ID continuity:</strong> FR-1→FR-19, UJ-1→UJ-3, SM-1→SM-4, SM-C1 — all contiguous, no gaps or duplicates. Clean.</li>
+        <li><strong>Glossary drift:</strong> "OEM Number" alternates with "OEM/spec number" and "OEM" across FRs.</li>
+        <li><strong>Assumptions roundtrip:</strong> 7 entries in §12, 0 inline [ASSUMPTION] tags. Roundtrip broken.</li>
+        <li><strong>UJ persona linkage:</strong> Persona names in UJs are approximate matches, not exact labels from §2.1.</li>
+        <li><strong>Frontmatter note:</strong> §0 references product owner name that was edited; ensure consistency.</li>
+        <li><strong>Cross-references:</strong> All FR→UJ and SM→FR references resolve correctly.</li>
+      </ul>
+    </div>
+
+    <footer class="report-footer">
+      <div class="meta">
+        <span>Rubric: .agents/skills/bmad-prd/assets/prd-validation-checklist.md</span>
+        <span>Generated: 2026-05-20T11:52:00+05:30</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
