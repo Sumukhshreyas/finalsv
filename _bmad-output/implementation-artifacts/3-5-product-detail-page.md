@@ -20,13 +20,14 @@ As a site visitor, I want to view complete details of a specific product on a de
 11. A `Product Description` section shows detailed description text.
 12. A favourite/save heart button is visible but visual only, with no persistence in v1.
 13. Back navigation returns to the parent category page.
-14. Breadcrumb displays `Home > Categories > {Category Name} > {Product Name}`.
-15. `generateStaticParams` pre-generates every valid mode/category/product combination from the JSON catalog.
-16. Invalid mode, category, or product slugs call `notFound()` and render the Next.js 404 behavior.
-17. Page-specific SEO metadata is generated for each valid product.
-18. Product content is server-rendered/static-generated; critical detail content is not client-only.
-19. No Firebase, Firestore, external database, API persistence, cart, checkout, login, or payment behavior is introduced.
-20. The implementation passes the project lint and production build commands.
+14. A `Download PDF` action is visible on the product detail page and opens a print-friendly product sheet for the current product.
+15. Breadcrumb displays `Home > Categories > {Category Name} > {Product Name}`.
+16. `generateStaticParams` pre-generates every valid mode/category/product combination from the JSON catalog.
+17. Invalid mode, category, or product slugs call `notFound()` and render the Next.js 404 behavior.
+18. Page-specific SEO metadata is generated for each valid product.
+19. Product content is server-rendered/static-generated; critical detail content is not client-only.
+20. No Firebase, Firestore, external database, API persistence, cart, checkout, login, or payment behavior is introduced.
+21. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
 - [x] Create the dynamic product detail route.

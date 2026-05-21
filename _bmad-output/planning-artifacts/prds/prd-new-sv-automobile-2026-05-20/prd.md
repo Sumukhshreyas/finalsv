@@ -1,15 +1,15 @@
 ---
-title: SV Enterprises — Automobile & Industrial Products Showcase Website
+title: SV Enterprises â€” Automobile & Industrial Products Showcase Website
 status: final
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-21
 ---
 
-# PRD: SV Enterprises — Product Showcase Website
+# PRD: SV Enterprises â€” Product Showcase Website
 
 ## 0. Document Purpose
 
-This PRD is for the product owner (sai), the development team, and any downstream architecture, UX, and sprint-planning workflows. It specifies the requirements for a **product showcase and enquiry-generation website** for SV Enterprises, a wholesale dealer of automobile spare parts and industrial products in Bangalore. The UI/UX design already exists as a fully designed HTML reference file (`reference/index.html`) and **must not be changed** — this PRD treats that design as the fixed visual specification. All functional requirements described here are derived from and constrained by that reference.
+This PRD is for the product owner (sai), the development team, and any downstream architecture, UX, and sprint-planning workflows. It specifies the requirements for a **product showcase and enquiry-generation website** for SV Enterprises, a wholesale dealer of automobile spare parts and industrial products in Bangalore. The UI/UX design already exists as a fully designed HTML reference file (`reference/index.html`) and **must not be changed** â€” this PRD treats that design as the fixed visual specification. All functional requirements described here are derived from and constrained by that reference.
 
 ---
 
@@ -60,14 +60,14 @@ This website will be a **mobile-first, SEO-optimised product showcase** that hel
 
 ## 3. Glossary
 
-- **Automobile Products** — Spare parts for cars, SUVs, MUVs, commercial vehicles, tractors, construction equipment, forklifts, two-wheelers, three-wheelers, and bus/trailers.
-- **Industrial Products** — Bearings, hydraulic parts, motors, gearboxes, pneumatic parts, seals, and couplings for factory and industrial machinery.
-- **Category** — A grouping of related products (e.g., "Brake Parts", "Bearings").
-- **Product** — A single spare part or industrial item with a name, OEM/spec number, brand, description, compatibility, and specs.
-- **Mode** — The top-level toggle on the homepage: Automobile or Industrial. Changes the entire homepage content, categories, brands, and navigation context.
-- **Enquiry** — A contact action (WhatsApp, call, or email) initiated by the user from a product page. This is NOT an order.
-- **OEM Number** — Original Equipment Manufacturer part number used to identify and cross-reference spare parts.
-- **Product Number / Spec** — The size, specification, or model identifier for industrial products (e.g., "6205 ZZ", "SC 63 x 100").
+- **Automobile Products** â€” Spare parts for cars, SUVs, MUVs, commercial vehicles, tractors, construction equipment, forklifts, two-wheelers, three-wheelers, and bus/trailers.
+- **Industrial Products** â€” Bearings, hydraulic parts, motors, gearboxes, pneumatic parts, seals, and couplings for factory and industrial machinery.
+- **Category** â€” A grouping of related products (e.g., "Brake Parts", "Bearings").
+- **Product** â€” A single spare part or industrial item with a name, OEM/spec number, brand, description, compatibility, and specs.
+- **Mode** â€” The top-level toggle on the homepage: Automobile or Industrial. Changes the entire homepage content, categories, brands, and navigation context.
+- **Enquiry** â€” A contact action (WhatsApp, call, or email) initiated by the user from a product page. This is NOT an order.
+- **OEM Number** â€” Original Equipment Manufacturer part number used to identify and cross-reference spare parts.
+- **Product Number / Spec** â€” The size, specification, or model identifier for industrial products (e.g., "6205 ZZ", "SC 63 x 100").
 
 ---
 
@@ -75,7 +75,7 @@ This website will be a **mobile-first, SEO-optimised product showcase** that hel
 
 ### 4.1 Homepage with Automobile/Industrial Mode Switch
 
-**Description:** The homepage is the primary landing page. It features a prominent toggle switch allowing users to switch between **Automobile Products** and **Industrial Products** modes. Switching modes dynamically updates the hero section, categories, featured products, brands, advantages, and contact information — all without a page reload. Realizes UJ-3.
+**Description:** The homepage is the primary landing page. It features a prominent toggle switch allowing users to switch between **Automobile Products** and **Industrial Products** modes. Switching modes dynamically updates the hero section, categories, featured products, brands, advantages, and contact information â€” all without a page reload. Realizes UJ-3.
 
 **Functional Requirements:**
 
@@ -177,6 +177,7 @@ User can view complete product details on a dedicated page.
 - **Compatible With** section listing compatible vehicles (automobile) or suitable applications (industrial).
 - **Technical Specs** section listing specifications.
 - **Product Description** section with detailed description text.
+- Download PDF action opens a print-friendly, single-page product sheet containing the product image, product details, company information, and contact number.
 - Favourite/save button (visual only in v1).
 - Back navigation button returning to the parent category page.
 
@@ -185,12 +186,11 @@ User can view complete product details on a dedicated page.
 User can initiate contact directly from the product detail page.
 
 **Consequences (testable):**
-- Primary CTA: "WhatsApp Enquiry" (or "WhatsApp for Pricing" in industrial mode) — opens WhatsApp with pre-filled product details.
-- Secondary CTA: "Call Now" (or "Call Supply Desk") — initiates a phone call.
+- Primary CTA: "WhatsApp Enquiry" (or "WhatsApp for Pricing" in industrial mode) opens WhatsApp with pre-filled product details.
+- Secondary CTA: "Call Now" (or "Call Supply Desk") initiates a phone call.
+- Tertiary action: "Download PDF" opens a single-page printable product summary for sharing or offline reference.
 - Note label: "Bulk Orders Welcome" (or "Bulk Supply Available").
 - Trust row with 3 trust indicators (e.g., "Genuine Parts / OEM grade", "Fast Dispatch / Across Bangalore", "GST Billing / Tax invoice").
-
----
 
 ### 4.5 Search by Vehicle / Search by Application Page
 
@@ -307,7 +307,7 @@ User can navigate to all main sections from any page.
 
 **Consequences (testable):**
 - Desktop: pill-style nav bar with Home, Products, Search by Vehicle, Brands, Contact + "Search Parts" and "Get Quote" buttons.
-- Mobile (≤1100px): hamburger menu opens a slide-out drawer with all nav links and a CTA button.
+- Mobile (â‰¤1100px): hamburger menu opens a slide-out drawer with all nav links and a CTA button.
 - Active page is visually highlighted in navigation.
 - Navigation labels adapt per mode (e.g., "Search by Vehicle" becomes "Search by Application" in industrial mode).
 
@@ -385,14 +385,14 @@ All pages use clean, readable, SEO-friendly URLs.
 
 ### 6.2 Out of Scope for MVP
 
-- **CMS or admin panel** — product data will be managed as static data/JSON files. [Deferred to v2.]
-- **Google Analytics / Tag Manager integration** — can be added post-launch. [Deferred to v1.1.]
-- **Google Ads conversion tracking** — can be added post-launch. [Deferred to v1.1.]
-- **Image gallery with swipe on product detail** — gallery dots are shown but only a single image per product in v1. [Deferred to v2.]
-- **Full-text search with fuzzy matching** — search in v1 will be client-side basic matching. [Deferred to v2.]
-- **Favourite/save product functionality** — the heart button is visual only in v1. [Deferred to v2.]
+- **CMS or admin panel** â€” product data will be managed as static data/JSON files. [Deferred to v2.]
+- **Google Analytics / Tag Manager integration** â€” can be added post-launch. [Deferred to v1.1.]
+- **Google Ads conversion tracking** â€” can be added post-launch. [Deferred to v1.1.]
+- **Image gallery with swipe on product detail** â€” gallery dots are shown but only a single image per product in v1. [Deferred to v2.]
+- **Full-text search with fuzzy matching** â€” search in v1 will be client-side basic matching. [Deferred to v2.]
+- **Favourite/save product functionality** â€” the heart button is visual only in v1. [Deferred to v2.]
 - **Blog / content pages for SEO.** [Deferred to v2.]
-- **Sitemap.xml and robots.txt** — should be added before production launch. [Deferred to v1.1.]
+- **Sitemap.xml and robots.txt** â€” should be added before production launch. [Deferred to v1.1.]
 
 ---
 
@@ -400,22 +400,22 @@ All pages use clean, readable, SEO-friendly URLs.
 
 **Primary**
 - **SM-1**: Organic search impressions for target keywords (e.g., "automobile spare parts Bangalore", "brake disc Bangalore") reach 1,000/month within 3 months of launch. Validates FR-17, FR-18, FR-19.
-- **SM-2**: Website generates ≥20 WhatsApp/call enquiries per month from product detail pages within 2 months of launch. Validates FR-8.
+- **SM-2**: Website generates â‰¥20 WhatsApp/call enquiries per month from product detail pages within 2 months of launch. Validates FR-8.
 
 **Secondary**
-- **SM-3**: Google Ads click-through to product/category landing pages achieves ≥3% CTR. Validates FR-19, FR-17.
+- **SM-3**: Google Ads click-through to product/category landing pages achieves â‰¥3% CTR. Validates FR-19, FR-17.
 - **SM-4**: Mobile page load time (Largest Contentful Paint) under 2.5 seconds on 4G. Validates mobile-first design.
 
 **Counter-metrics (do not optimize)**
-- **SM-C1**: Bounce rate — do not optimize for artificially low bounce. A user who lands on a product page, reads the details, and calls via WhatsApp has completed a successful journey even if it's a single-page session.
+- **SM-C1**: Bounce rate â€” do not optimize for artificially low bounce. A user who lands on a product page, reads the details, and calls via WhatsApp has completed a successful journey even if it's a single-page session.
 
 ---
 
 ## 8. Constraints and Guardrails
 
-### 8.1 Design Constraint — Reference HTML is Sacred
+### 8.1 Design Constraint â€” Reference HTML is Sacred
 
-> **⚠️ CRITICAL: The HTML design in `reference/index.html` is the fixed, approved UI/UX specification. It must NOT be changed, redesigned, or deviated from during development.**
+> **âš ï¸ CRITICAL: The HTML design in `reference/index.html` is the fixed, approved UI/UX specification. It must NOT be changed, redesigned, or deviated from during development.**
 
 - All CSS variables, class names, layout structures, typography, colours, spacing, animations, and responsive breakpoints defined in the reference HTML are the source of truth.
 - The component hierarchy (`.site-header`, `.hero`, `.section`, `.card-grid`, `.product-tile`, `.catalog-card`, `.detail-sheet`, etc.) must be preserved exactly.
@@ -425,8 +425,8 @@ All pages use clean, readable, SEO-friendly URLs.
 ### 8.2 Mobile-First Guardrail
 
 - All development must follow a mobile-first approach.
-- The primary target device is a smartphone with a viewport width of 360–430px.
-- Touch targets must be ≥44px as already defined in the reference HTML.
+- The primary target device is a smartphone with a viewport width of 360â€“430px.
+- Touch targets must be â‰¥44px as already defined in the reference HTML.
 - The website must be fully usable and visually complete on mobile without horizontal scrolling.
 
 ### 8.3 SEO-First Guardrail
@@ -440,7 +440,7 @@ All pages use clean, readable, SEO-friendly URLs.
 
 - There must be no cart, checkout, payment, or order tracking functionality anywhere in the codebase.
 - Product cards and detail pages must NOT display "Add to Cart", "Buy Now", or any purchase-related CTAs.
-- The only CTAs are: "Enquire", "WhatsApp Enquiry", "Call Now", and "Get Quote" — all of which lead to external communication channels (WhatsApp, phone, email).
+- The only CTAs are: "Enquire", "WhatsApp Enquiry", "Call Now", and "Get Quote" â€” all of which lead to external communication channels (WhatsApp, phone, email).
 
 ---
 
@@ -452,10 +452,10 @@ All pages use clean, readable, SEO-friendly URLs.
 |---|---|---|
 | Homepage | `/` | Yes |
 | Categories Overview | `/categories` | Yes |
-| Category Detail (Auto) | `/automobile/{category-slug}/` | Yes — target category keywords |
-| Category Detail (Industrial) | `/industrial/{category-slug}/` | Yes — target category keywords |
-| Product Detail (Auto) | `/automobile/{category-slug}/{product-slug}/` | Yes — target long-tail keywords |
-| Product Detail (Industrial) | `/industrial/{category-slug}/{product-slug}/` | Yes — target long-tail keywords |
+| Category Detail (Auto) | `/automobile/{category-slug}/` | Yes â€” target category keywords |
+| Category Detail (Industrial) | `/industrial/{category-slug}/` | Yes â€” target category keywords |
+| Product Detail (Auto) | `/automobile/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
+| Product Detail (Industrial) | `/industrial/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
 | Search by Vehicle | `/vehicle` | No |
 | Vehicle Detail | `/vehicle/{type}` | No |
 | Brands | `/brands` | Yes |
@@ -483,7 +483,7 @@ All pages use clean, readable, SEO-friendly URLs.
 ### 9.3 Slug Rules
 
 - Slugs are generated by lowercasing the name, replacing `&` with "and", replacing non-alphanumeric characters with hyphens, and trimming leading/trailing hyphens.
-- Custom slug overrides are supported for SEO optimization (e.g., "Hydraulic Parts" → `hydraulic-hoses`).
+- Custom slug overrides are supported for SEO optimization (e.g., "Hydraulic Parts" â†’ `hydraulic-hoses`).
 - Maximum URL depth: 3 segments after domain (e.g., `/industrial/bearings/skf-6205/`).
 - URLs must not exceed ~80 characters total for readability and SEO.
 
@@ -495,19 +495,19 @@ Every product displayed on the website must include the following data fields:
 
 | Field | Required | Display Location |
 |---|---|---|
-| Product Name | ✅ | Card title, detail `<h1>`, SEO title |
-| Product Image | ✅ (fallback: initials) | Card visual, detail hero |
-| Category | ✅ | Breadcrumb, meta |
-| OEM Number / Product Number | ✅ | Card subtitle, detail chip |
-| Short Description | ✅ | Card body |
+| Product Name | âœ… | Card title, detail `<h1>`, SEO title |
+| Product Image | âœ… (fallback: initials) | Card visual, detail hero |
+| Category | âœ… | Breadcrumb, meta |
+| OEM Number / Product Number | âœ… | Card subtitle, detail chip |
+| Short Description | âœ… | Card body |
 | Full Description | Optional | Detail page section |
-| Brand / Manufacturer | ✅ | Card pill, detail chip |
+| Brand / Manufacturer | âœ… | Card pill, detail chip |
 | Compatible Vehicles (Auto) | Optional | Detail "Compatible With" section |
 | Compatible Applications (Industrial) | Optional | Detail "Suitable For" section |
 | Technical Specs | Optional | Detail "Technical Specs" section |
 | Available Sizes | Optional | Detail specs or meta |
 | Stock Status | Optional | Detail pill ("In Stock", "Ready stock") |
-| Popularity Rank | ✅ | Sort order |
+| Popularity Rank | âœ… | Sort order |
 
 ---
 
@@ -530,5 +530,5 @@ Every product displayed on the website must include the following data fields:
 - [ASSUMPTION] Product data for v1 will be static (hardcoded JSON objects as shown in the reference HTML's JavaScript).
 - [ASSUMPTION] The automobile and industrial product catalogs shown in the reference HTML's `siteModes` and `categoryCatalog` objects represent the complete v1 product dataset.
 - [ASSUMPTION] Real product images are not available yet. The fallback initial system from the reference HTML will be used until images are provided.
-- [ASSUMPTION] The "favourite" heart button on product detail pages is decorative only in v1 — no persistence or functionality.
+- [ASSUMPTION] The "favourite" heart button on product detail pages is decorative only in v1 â€” no persistence or functionality.
 - [ASSUMPTION] WhatsApp enquiry opens a WhatsApp chat with a pre-filled message containing the product name and OEM/spec number.

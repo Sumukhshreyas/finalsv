@@ -1,5 +1,7 @@
 interface EnquiryActionsProps {
   callHref: string;
+  pdfHref: string;
+  pdfLabel: string;
   noteLabel: string;
   primaryHref: string;
   primaryLabel: string;
@@ -29,6 +31,8 @@ function formatNoteLabel(noteLabel: string) {
 
 export function EnquiryActions({
   callHref,
+  pdfHref,
+  pdfLabel,
   noteLabel,
   primaryHref,
   primaryLabel,
@@ -56,6 +60,15 @@ export function EnquiryActions({
           {formatNoteLabel(noteLabel)}
         </div>
       </div>
+
+      <a
+        className="detail-pdf-btn"
+        href={pdfHref}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span>{pdfLabel}</span>
+      </a>
     </div>
   );
 }

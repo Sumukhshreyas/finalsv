@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Category, DetailContent, Mode, Product, TrustItem } from "@/data/types";
-import { getCatalogue, getCategoryUrl } from "@/lib/dataUtils";
+import { getCatalogue, getCategoryUrl, getProductUrl } from "@/lib/dataUtils";
 import { BUSINESS_PHONE } from "@/lib/seoHelpers";
 import { buildProductWhatsAppUrl, normalizeWhatsAppPhone } from "@/lib/whatsappUtils";
 import { EnquiryActions } from "@/components/product/EnquiryActions";
@@ -104,6 +104,7 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
   const whatsappPhone = getWhatsAppPhone(mode);
   const enquiryHref = buildProductWhatsAppUrl(whatsappPhone, product, mode);
   const callHref = `tel:${normalizeWhatsAppPhone(callPhone)}`;
+  const pdfHref = `${getProductUrl(product, mode)}pdf/`;
   const trustItems = getTrustItems(mode, content);
 
   const specRows =
@@ -149,6 +150,8 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
 
           <EnquiryActions
             callHref={callHref}
+            pdfHref={pdfHref}
+            pdfLabel="Download PDF"
             noteLabel={content.noteLabel}
             primaryHref={enquiryHref}
             primaryLabel={content.primaryLabel}

@@ -19,9 +19,10 @@ As a site visitor, I want to send a WhatsApp enquiry or call directly from the p
 7. On industrial product detail pages, the secondary CTA reads `Call Supply Desk`.
 8. On industrial product detail pages, the note label reads `Bulk Supply Available`.
 9. Industrial trust indicators adapt to industrial context while preserving three trust items.
-10. All enquiry and call actions are outbound links only; no enquiry data is stored.
-11. No Firebase, Firestore, external database, API persistence, forms backend, cart, checkout, login, or payment behavior is introduced.
-12. The implementation passes the project lint and production build commands.
+10. A `Download PDF` action is available on the product detail page and opens a print-friendly single-page product summary with image, product details, company info, and contact number.
+11. All enquiry, call, and PDF actions are outbound or client-side only; no enquiry data is stored.
+12. No Firebase, Firestore, external database, API persistence, forms backend, cart, checkout, login, or payment behavior is introduced.
+13. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
 - [x] Add enquiry action components to product detail.

@@ -18,73 +18,73 @@ This document provides the complete epic and story breakdown for New SV automobi
 
 ### Functional Requirements
 
-FR-1: Mode Toggle Switch — User can switch between Automobile and Industrial modes via a two-button toggle on the homepage hero section. Visual styling adapts per mode (orange accent for automobile, blue-grey for industrial). Mode selection persists during the session.
+FR-1: Mode Toggle Switch â€” User can switch between Automobile and Industrial modes via a two-button toggle on the homepage hero section. Visual styling adapts per mode (orange accent for automobile, blue-grey for industrial). Mode selection persists during the session.
 
-FR-2: Homepage Sections — Homepage displays Hero Section (title, subtitle, highlights, CTAs, slideshow, brand marquee), Categories Section (scrollable cards), Top Brands Section, Featured Products Section (3 tiles), Advantages Section (4 cards), and Contact Band — all driven by the active mode.
+FR-2: Homepage Sections â€” Homepage displays Hero Section (title, subtitle, highlights, CTAs, slideshow, brand marquee), Categories Section (scrollable cards), Top Brands Section, Featured Products Section (3 tiles), Advantages Section (4 cards), and Contact Band â€” all driven by the active mode.
 
-FR-3: Category Overview Grid — User can view all available categories for the active mode on a dedicated page. Automobile shows 8 categories, Industrial shows 6. Each card links to category detail. Breadcrumb: Home > Categories.
+FR-3: Category Overview Grid â€” User can view all available categories for the active mode on a dedicated page. Automobile shows 8 categories, Industrial shows 6. Each card links to category detail. Breadcrumb: Home > Categories.
 
-FR-4: Category Product Grid — User can view all products listed under a specific category. Each product card shows image/fallback, name, OEM/spec, description, brand pill, and Enquire CTA. Category chip row for quick switching.
+FR-4: Category Product Grid â€” User can view all products listed under a specific category. Each product card shows image/fallback, name, OEM/spec, description, brand pill, and Enquire CTA. Category chip row for quick switching.
 
-FR-5: Filter and Sort — User can filter products by category, brand, vehicle/application and sort by Popular, Name, or OEM Number. Filter panel opens as modal overlay. Selected filters shown as removable chips.
+FR-5: Filter and Sort â€” User can filter products by category, brand, vehicle/application and sort by Popular, Name, or OEM Number. Filter panel opens as modal overlay. Selected filters shown as removable chips.
 
-FR-6: View Mode Toggle — User can switch between grid view and list view for the product listing. Active view mode is visually indicated.
+FR-6: View Mode Toggle â€” User can switch between grid view and list view for the product listing. Active view mode is visually indicated.
 
-FR-7: Product Information Display — User can view complete product details: image with gallery dots, product name as h1, stock status pill, OEM chip, brand chip, meta points, Compatible With section, Technical Specs, Product Description, favourite button (visual only), back navigation.
+FR-7: Product Information Display â€” User can view complete product details: image with gallery dots, product name as h1, stock status pill, OEM chip, brand chip, meta points, Compatible With section, Technical Specs, Product Description, Download PDF action, favourite button (visual only), back navigation.
 
-FR-8: Enquiry Actions — Primary CTA: WhatsApp Enquiry with pre-filled product details. Secondary CTA: Call Now. Note label: Bulk Orders Welcome. Trust row with 3 trust indicators.
+FR-8: Enquiry Actions â€” Primary CTA: WhatsApp Enquiry with pre-filled product details. Secondary CTA: Call Now. Tertiary action: Download PDF printable product sheet. Note label: Bulk Orders Welcome. Trust row with 3 trust indicators.
 
-FR-9: Vehicle/Application Type Listing — User can browse vehicle segments (6 types) or industrial applications (6 types). Each card shows icon, title, and description.
+FR-9: Vehicle/Application Type Listing â€” User can browse vehicle segments (6 types) or industrial applications (6 types). Each card shows icon, title, and description.
 
-FR-10: Vehicle/Application Detail View — Detail view shows back button, kicker label, title, description, numbered parts list, and hero image. Each part is tappable and navigates to category page.
+FR-10: Vehicle/Application Detail View â€” Detail view shows back button, kicker label, title, description, numbered parts list, and hero image. Each part is tappable and navigates to category page.
 
-FR-11: Brand Grid — User can browse all available brands for the active mode. Automobile lists 12+ brands, Industrial lists 12+ brands. Responsive grid of brand cards.
+FR-11: Brand Grid â€” User can browse all available brands for the active mode. Automobile lists 12+ brands, Industrial lists 12+ brands. Responsive grid of brand cards.
 
-FR-12: Search Input and Suggestions — User can search using free-text input with mode-specific placeholder. Popular search suggestion chips displayed. Tapping chip populates search input.
+FR-12: Search Input and Suggestions â€” User can search using free-text input with mode-specific placeholder. Popular search suggestion chips displayed. Tapping chip populates search input.
 
-FR-13: Search Results — Results displayed as horizontal product cards with image, name, meta, brand, category, price indication, and availability. Filter chips for quick refinement. "See all" link with count.
+FR-13: Search Results â€” Results displayed as horizontal product cards with image, name, meta, brand, category, price indication, and availability. Filter chips for quick refinement. "See all" link with count.
 
-FR-14: Contact Information — Business card section with name, phone, WhatsApp, email, address. Working hours card. Map card with Google Maps link. Content adapts per mode.
+FR-14: Contact Information â€” Business card section with name, phone, WhatsApp, email, address. Working hours card. Map card with Google Maps link. Content adapts per mode.
 
-FR-15: Floating WhatsApp CTA — Green circular button fixed at bottom-right on every page. Opens WhatsApp or contact page fallback. Does not obstruct content on mobile.
+FR-15: Floating WhatsApp CTA â€” Green circular button fixed at bottom-right on every page. Opens WhatsApp or contact page fallback. Does not obstruct content on mobile.
 
-FR-16: Responsive Navigation — Desktop: pill-style nav with all links + CTA buttons. Mobile (≤1100px): hamburger with slide-out drawer. Active page highlighted. Labels adapt per mode.
+FR-16: Responsive Navigation â€” Desktop: pill-style nav with all links + CTA buttons. Mobile (â‰¤1100px): hamburger with slide-out drawer. Active page highlighted. Labels adapt per mode.
 
-FR-17: Dynamic SEO Metadata — Page-specific title, meta description, meta keywords, canonical URL, and Open Graph tags on every page.
+FR-17: Dynamic SEO Metadata â€” Page-specific title, meta description, meta keywords, canonical URL, and Open Graph tags on every page.
 
-FR-18: Structured Data (JSON-LD) — LocalBusiness schema on every page. BreadcrumbList on category/product pages. Product schema on product detail. ItemList on category pages.
+FR-18: Structured Data (JSON-LD) â€” LocalBusiness schema on every page. BreadcrumbList on category/product pages. Product schema on product detail. ItemList on category pages.
 
-FR-19: SEO-Friendly URL Structure — Category pages: /{mode}/{category-slug}/. Product pages: /{mode}/{category-slug}/{product-slug}/. Clean, lowercase, hyphenated URLs. Custom slug overrides supported.
+FR-19: SEO-Friendly URL Structure â€” Category pages: /{mode}/{category-slug}/. Product pages: /{mode}/{category-slug}/{product-slug}/. Clean, lowercase, hyphenated URLs. Custom slug overrides supported.
 
 ### NonFunctional Requirements
 
-NFR-1: Mobile-First Design — Primary target viewport 360–430px. Touch targets ≥44px. No horizontal scrolling. All development must follow mobile-first approach.
+NFR-1: Mobile-First Design â€” Primary target viewport 360â€“430px. Touch targets â‰¥44px. No horizontal scrolling. All development must follow mobile-first approach.
 
-NFR-2: Performance — Mobile page load time (LCP) under 2.5s on 4G networks.
+NFR-2: Performance â€” Mobile page load time (LCP) under 2.5s on 4G networks.
 
-NFR-3: SEO-First Rendering — Every page must be SSR or SSG. No critical content dependent on client-side JavaScript. Unique metadata per page.
+NFR-3: SEO-First Rendering â€” Every page must be SSR or SSG. No critical content dependent on client-side JavaScript. Unique metadata per page.
 
-NFR-4: Design Fidelity — Reference HTML is sacred. All CSS variables, class names, layouts, typography, colours, spacing, animations, and responsive breakpoints (1100px, 760px, 430px) must be preserved exactly.
+NFR-4: Design Fidelity â€” Reference HTML is sacred. All CSS variables, class names, layouts, typography, colours, spacing, animations, and responsive breakpoints (1100px, 760px, 430px) must be preserved exactly.
 
-NFR-5: No E-commerce — No cart, checkout, payment, or order tracking. No "Add to Cart" or "Buy Now" CTAs. Only enquiry CTAs.
+NFR-5: No E-commerce â€” No cart, checkout, payment, or order tracking. No "Add to Cart" or "Buy Now" CTAs. Only enquiry CTAs.
 
-NFR-6: Typography — Barlow and Barlow Condensed font families used exactly as specified in the reference HTML.
+NFR-6: Typography â€” Barlow and Barlow Condensed font families used exactly as specified in the reference HTML.
 
-NFR-7: URL Constraints — Max URL depth of 3 segments. URLs must not exceed ~80 characters. No hash routing, no query-param-only routing.
+NFR-7: URL Constraints â€” Max URL depth of 3 segments. URLs must not exceed ~80 characters. No hash routing, no query-param-only routing.
 
 ### Additional Requirements
 
-- AR-1: Starter Template — Initialize project with: `npx create-next-app@latest ./ --typescript --eslint --app --no-tailwind --src-dir --turbopack`
+- AR-1: Starter Template â€” Initialize project with: `npx create-next-app@latest ./ --typescript --eslint --app --no-tailwind --src-dir --turbopack`
 - AR-2: JSON Data Layer - Product, category, brand, vehicle, application, and mode data stored in `src/data/catalog.json`. No external database is used.
-- AR-3: Mode State Management — Hybrid approach: React Context for homepage mode toggle, URL path segment for routed pages.
-- AR-4: CSS Extraction — Extract 3,200+ lines of CSS from reference HTML into `src/app/globals.css` as a single global stylesheet. Preserve `:root` variables exactly.
-- AR-5: Component Boundaries — Server Components (default) for pages/layouts. Client Components (`'use client'`) only for interactive elements (ModeToggle, HeroSlideshow, FilterPanel, SearchInput, MobileDrawer, FloatingWhatsApp).
+- AR-3: Mode State Management â€” Hybrid approach: React Context for homepage mode toggle, URL path segment for routed pages.
+- AR-4: CSS Extraction â€” Extract 3,200+ lines of CSS from reference HTML into `src/app/globals.css` as a single global stylesheet. Preserve `:root` variables exactly.
+- AR-5: Component Boundaries â€” Server Components (default) for pages/layouts. Client Components (`'use client'`) only for interactive elements (ModeToggle, HeroSlideshow, FilterPanel, SearchInput, MobileDrawer, FloatingWhatsApp).
 - AR-6: Data Flow - One-directional: `src/data/catalog.json` -> `src/lib/dataUtils.ts` -> `page.tsx` -> components via props. No component writes to data.
-- AR-7: Font Loading — Use `next/font/google` for Barlow/Barlow Condensed. No external font requests.
-- AR-8: Sitemap — Use `next-sitemap` to generate `sitemap.xml` and `robots.txt` from day one.
-- AR-9: Security Headers — HTTP security headers via `next.config.js`.
-- AR-10: Vercel Deployment — Git integration with auto-deploy on `main` push, preview deployments for PRs.
-- AR-11: Monitoring — Vercel Analytics for Web Vitals, Google Search Console post-launch.
+- AR-7: Font Loading â€” Use `next/font/google` for Barlow/Barlow Condensed. No external font requests.
+- AR-8: Sitemap â€” Use `next-sitemap` to generate `sitemap.xml` and `robots.txt` from day one.
+- AR-9: Security Headers â€” HTTP security headers via `next.config.js`.
+- AR-10: Vercel Deployment â€” Git integration with auto-deploy on `main` push, preview deployments for PRs.
+- AR-11: Monitoring â€” Vercel Analytics for Web Vitals, Google Search Console post-launch.
 
 ### UX Design Requirements
 
@@ -120,16 +120,16 @@ Users can view the base website shell with navigation, fonts, and styling that e
 **ARs covered:** AR-1, AR-2, AR-3, AR-4, AR-5, AR-6, AR-7, AR-8, AR-9, AR-10, AR-11
 
 ### Epic 2: Homepage with Mode Switch
-Users can land on the homepage, toggle between Automobile and Industrial modes, and see the full homepage experience — hero slideshow, categories strip, featured products, brand marquee, advantages, and contact band — all content dynamically switching per mode.
+Users can land on the homepage, toggle between Automobile and Industrial modes, and see the full homepage experience â€” hero slideshow, categories strip, featured products, brand marquee, advantages, and contact band â€” all content dynamically switching per mode.
 **FRs covered:** FR-1, FR-2
 **ARs covered:** AR-3
 
 ### Epic 3: Product Catalogue (Categories, Listings, Product Detail)
-Users can browse categories, view product listings with filter/sort/view toggle, and drill down to full product detail pages with WhatsApp enquiry and call CTAs — the core business conversion flow.
+Users can browse categories, view product listings with filter/sort/view toggle, and drill down to full product detail pages with WhatsApp enquiry and call CTAs â€” the core business conversion flow.
 **FRs covered:** FR-3, FR-4, FR-5, FR-6, FR-7, FR-8
 
 ### Epic 4: Discovery & Exploration (Vehicle/Application, Brands, Search)
-Users can explore products through alternative discovery paths — browsing by vehicle type or industrial application, viewing all brands, or searching by OEM number, product name, or brand.
+Users can explore products through alternative discovery paths â€” browsing by vehicle type or industrial application, viewing all brands, or searching by OEM number, product name, or brand.
 **FRs covered:** FR-9, FR-10, FR-11, FR-12, FR-13
 
 ### Epic 5: SEO & Launch Readiness
@@ -208,7 +208,7 @@ So that page components and components have consistent, reusable helper function
 
 **Given** the architecture defines 5 utility modules
 **When** `src/lib/slugUtils.ts` is created
-**Then** it exports functions for slug generation, lookup, and custom override support matching PRD §9.3 rules
+**Then** it exports functions for slug generation, lookup, and custom override support matching PRD Â§9.3 rules
 **And** `src/lib/modeUtils.ts` exports functions for mode validation, default mode, and URL extraction
 **And** `src/lib/whatsappUtils.ts` exports a function to build WhatsApp deep links with pre-filled product name and OEM number
 **And** `src/lib/dataUtils.ts` imports `src/data/catalog.json` and exports query helpers (getProductBySlug, getCategoryProducts, getProductsByMode, filterProducts, sortProducts)
@@ -226,9 +226,9 @@ So that I can navigate the site and contact the business from anywhere.
 **Given** the user opens any page on the website
 **When** the page loads
 **Then** a sticky header is displayed with the SV Enterprises logo, desktop navigation pills (Home, Products, Search by Vehicle, Brands, Contact), and "Search Parts" / "Get Quote" CTA buttons (FR-16)
-**And** on mobile (≤1100px), the header shows a hamburger icon that opens a slide-out drawer with all nav links (FR-16)
+**And** on mobile (â‰¤1100px), the header shows a hamburger icon that opens a slide-out drawer with all nav links (FR-16)
 **And** the active page is visually highlighted in navigation
-**And** navigation labels adapt per mode (e.g., "Search by Vehicle" ↔ "Search by Application")
+**And** navigation labels adapt per mode (e.g., "Search by Vehicle" â†” "Search by Application")
 **And** a footer is displayed at the bottom of every page
 **And** a green circular WhatsApp button is fixed at bottom-right that opens WhatsApp on tap (FR-15)
 **And** the WhatsApp button does not obstruct content on mobile
@@ -253,7 +253,7 @@ So that every commit is automatically built and deployed.
 
 ## Epic 2: Homepage with Mode Switch
 
-Users can land on the homepage, toggle between Automobile and Industrial modes, and see the full homepage experience — hero slideshow, categories strip, featured products, brand marquee, advantages, and contact band.
+Users can land on the homepage, toggle between Automobile and Industrial modes, and see the full homepage experience â€” hero slideshow, categories strip, featured products, brand marquee, advantages, and contact band.
 
 ### Story 2.1: Mode Toggle & Hero Section
 
@@ -308,16 +308,16 @@ So that I can see top-selling items, understand why to choose SV Enterprises, an
 
 **Given** the homepage is loaded with a mode active
 **When** the user scrolls to the lower homepage sections
-**Then** a Featured Products section shows 3 product tiles with name, OEM number, brand, and "Enquire" button — content matches the active mode
+**Then** a Featured Products section shows 3 product tiles with name, OEM number, brand, and "Enquire" button â€” content matches the active mode
 **And** the "Enquire" button on each tile triggers a WhatsApp deep link with the product name and OEM pre-filled
 
 **Given** the user continues scrolling
 **When** the Advantages section is visible
-**Then** 4 advantage cards are displayed (e.g., "OEM Matching", "Wholesale Supply", "Fast Dispatch", "GST Billing") — content adapts per mode
+**Then** 4 advantage cards are displayed (e.g., "OEM Matching", "Wholesale Supply", "Fast Dispatch", "GST Billing") â€” content adapts per mode
 
 **Given** the user reaches the bottom of the homepage
 **When** the Contact Band is visible
-**Then** a dark banner displays with a heading, descriptive copy, and contact rows for WhatsApp, Call, and Email — content adapts per mode
+**Then** a dark banner displays with a heading, descriptive copy, and contact rows for WhatsApp, Call, and Email â€” content adapts per mode
 **And** each contact action is tappable and opens the appropriate external action (WhatsApp link, `tel:`, `mailto:`)
 
 ### Story 2.4: Brand Marquee Animation
@@ -337,7 +337,7 @@ So that I can quickly see the trusted brands SV Enterprises carries.
 
 ## Epic 3: Product Catalogue (Categories, Listings, Product Detail)
 
-Users can browse categories, view product listings with filter/sort/view toggle, and drill down to full product detail pages with WhatsApp enquiry and call CTAs — the core business conversion flow.
+Users can browse categories, view product listings with filter/sort/view toggle, and drill down to full product detail pages with WhatsApp enquiry and call CTAs â€” the core business conversion flow.
 
 ### Story 3.1: Category Overview Page
 
@@ -396,13 +396,13 @@ So that I can quickly narrow down to the exact part I need.
 **Given** the user is on a category detail page (e.g., `/automobile/brake-parts/`)
 **When** the user taps the "Filter" button
 **Then** a modal overlay opens with dropdown filter fields: Brand, Vehicle Type (automobile) or Application (industrial)
-**And** the filter panel is touch-friendly on mobile with touch targets ≥44px
+**And** the filter panel is touch-friendly on mobile with touch targets â‰¥44px
 
 **Given** the user selects a filter (e.g., Brand = "Gabriel")
 **When** the filter is applied
 **Then** the product grid updates to show only matching products
 **And** selected filters are displayed as removable chips above the product grid
-**And** tapping the "×" on a chip removes that filter and updates the grid
+**And** tapping the "Ã—" on a chip removes that filter and updates the grid
 
 **Given** the user taps the "Sort" dropdown
 **When** a sort option is selected (Popular, Name A-Z, OEM Number)
@@ -480,7 +480,7 @@ So that I can quickly ask about price and availability without leaving the produ
 
 ## Epic 4: Discovery & Exploration (Vehicle/Application, Brands, Search)
 
-Users can explore products through alternative discovery paths — browsing by vehicle type or industrial application, viewing all brands, or searching by OEM number, product name, or brand.
+Users can explore products through alternative discovery paths â€” browsing by vehicle type or industrial application, viewing all brands, or searching by OEM number, product name, or brand.
 
 ### Story 4.1: Vehicle/Application Type Listing Page
 
@@ -677,9 +677,9 @@ So that all pages are discoverable and crawl budget is used efficiently.
 **And** the HTTP response code is 404
 **And** the 404 page uses the same layout (header, footer, WhatsApp button)
 
-**Given** all SEO-critical URLs from PRD §9.1 are checked
+**Given** all SEO-critical URLs from PRD Â§9.1 are checked
 **When** the URL patterns are verified
 **Then** all URLs are clean, lowercase, hyphenated, and human-readable
 **And** no URLs use query parameters for canonical content
 **And** maximum URL depth is 3 segments after domain
-**And** all custom slug overrides work correctly (e.g., "Hydraulic Parts" → `/industrial/hydraulic-hoses/`)
+**And** all custom slug overrides work correctly (e.g., "Hydraulic Parts" â†’ `/industrial/hydraulic-hoses/`)
