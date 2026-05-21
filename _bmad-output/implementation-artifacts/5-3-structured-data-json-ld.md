@@ -1,7 +1,7 @@
 # Story 5.3: Structured Data JSON-LD
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a search engine crawler, I want structured data on every page for rich results, so that SV Enterprises product pages can appear with enhanced listings in Google Search.
@@ -20,29 +20,29 @@ As a search engine crawler, I want structured data on every page for rich result
 11. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create or reuse JSON-LD component.
-  - [ ] Add `src/components/shared/SeoJsonLd.tsx` if not already present.
-  - [ ] Render safe JSON-LD using `JSON.stringify`.
-  - [ ] Avoid user-controlled raw HTML.
-- [ ] Implement JSON-LD builders.
-  - [ ] Extend `src/lib/seoHelpers.ts` if needed.
-  - [ ] Build `LocalBusiness`.
-  - [ ] Build `BreadcrumbList`.
-  - [ ] Build `Product`.
-  - [ ] Build `ItemList`.
-- [ ] Add schema to pages.
-  - [ ] Add `LocalBusiness` to global layout or every page through a shared component.
-  - [ ] Add `BreadcrumbList` and `ItemList` to category pages.
-  - [ ] Add `Product` and full `BreadcrumbList` to product detail pages.
-  - [ ] Add relevant breadcrumb schema to other crawlable pages where available.
-- [ ] Use canonical URLs.
-  - [ ] Build absolute URLs from `NEXT_PUBLIC_SITE_URL` or site URL helper.
-  - [ ] Preserve lowercase hyphenated paths.
-  - [ ] Preserve Hydraulic Parts canonical slug override.
-- [ ] Validate.
-  - [ ] Inspect page source for JSON-LD scripts.
-  - [ ] Validate representative JSON-LD payloads.
-  - [ ] Run lint and production build.
+- [x] Create or reuse JSON-LD component.
+  - [x] Add `src/components/shared/SeoJsonLd.tsx` if not already present.
+  - [x] Render safe JSON-LD using `JSON.stringify`.
+  - [x] Avoid user-controlled raw HTML.
+- [x] Implement JSON-LD builders.
+  - [x] Extend `src/lib/seoHelpers.ts` if needed.
+  - [x] Build `LocalBusiness`.
+  - [x] Build `BreadcrumbList`.
+  - [x] Build `Product`.
+  - [x] Build `ItemList`.
+- [x] Add schema to pages.
+  - [x] Add `LocalBusiness` to global layout or every page through a shared component.
+  - [x] Add `BreadcrumbList` and `ItemList` to category pages.
+  - [x] Add `Product` and full `BreadcrumbList` to product detail pages.
+  - [x] Add relevant breadcrumb schema to other crawlable pages where available.
+- [x] Use canonical URLs.
+  - [x] Build absolute URLs from `NEXT_PUBLIC_SITE_URL` or site URL helper.
+  - [x] Preserve lowercase hyphenated paths.
+  - [x] Preserve Hydraulic Parts canonical slug override.
+- [x] Validate.
+  - [x] Inspect page source for JSON-LD scripts.
+  - [x] Validate representative JSON-LD payloads.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -82,3 +82,25 @@ As a search engine crawler, I want structured data on every page for rich result
 ## Review Notes
 - Reviewed against Epic 5.3 acceptance criteria, architecture structured-data requirements, and JSON-only storage constraints.
 - Ready for development after SEO helpers and product/category route helpers exist.
+
+## Dev Agent Record
+### Completion Notes
+- Added a shared `SeoJsonLd` component and rendered `LocalBusiness` JSON-LD from the root layout so every page receives business schema.
+- Added breadcrumb, item list, and product schema to the appropriate category, product, and supporting crawlable pages using the existing catalog-backed SEO helpers.
+- Strengthened the local business schema with an address derived from the JSON catalog and verified the implementation with `npm run lint` and `npm run build`.
+
+### File List
+- `src/components/shared/SeoJsonLd.tsx`
+- `src/app/layout.tsx`
+- `src/app/categories/page.tsx`
+- `src/app/brands/page.tsx`
+- `src/app/search/page.tsx`
+- `src/app/contact/page.tsx`
+- `src/app/vehicle/page.tsx`
+- `src/app/vehicle/[type]/page.tsx`
+- `src/app/[mode]/[categorySlug]/page.tsx`
+- `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
+- `src/lib/seoHelpers.ts`
+
+### Change Log
+- Implemented Story 5.3 structured data coverage across the catalog with shared JSON-LD rendering and catalog-backed schema builders.

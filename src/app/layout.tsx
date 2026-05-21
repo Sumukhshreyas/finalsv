@@ -4,8 +4,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { SeoJsonLd } from "@/components/shared/SeoJsonLd";
 import { ModeProvider } from "@/context/ModeContext";
 import { getCatalogue } from "@/lib/dataUtils";
+import { buildLocalBusinessJsonLd } from "@/lib/seoHelpers";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -41,6 +43,7 @@ export default function RootLayout({
         <ModeProvider>
           <div className="app">
             <Header modes={catalogue.modes} />
+            <SeoJsonLd data={buildLocalBusinessJsonLd()} />
             {children}
             <Footer modeContent={catalogue.modes.automobile} />
             <FloatingWhatsApp />

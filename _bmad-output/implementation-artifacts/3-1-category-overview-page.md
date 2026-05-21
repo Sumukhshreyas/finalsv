@@ -1,7 +1,7 @@
 # Story 3.1: Category Overview Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to see all product categories for the active business mode on a dedicated page, so that I can choose the category I want to browse.
@@ -21,31 +21,31 @@ As a site visitor, I want to see all product categories for the active business 
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the category overview route.
-  - [ ] Add `src/app/categories/page.tsx`.
-  - [ ] Keep the route server-rendered by default so Automobile category content is present in HTML source.
-  - [ ] Add page metadata for the category overview page.
-- [ ] Build or reuse category presentation components.
-  - [ ] Add or reuse `src/components/catalog/CategoryCard.tsx`.
-  - [ ] Add or reuse a breadcrumb component if Story 1.5 has already created one.
-  - [ ] Use image fallback behavior that matches the reference site when category imagery is unavailable.
-- [ ] Wire JSON catalog data.
-  - [ ] Read category data through Story 1.4 data utilities such as `getCategories(mode)`.
-  - [ ] Use canonical slug utilities instead of duplicating slug logic in the page.
-  - [ ] Preserve the Hydraulic Parts slug override as `hydraulic-hoses`.
-- [ ] Support active mode switching.
-  - [ ] Default SSR output to Automobile categories.
-  - [ ] If a client mode context exists from Story 2.1, use it to switch the visible category set between Automobile and Industrial.
-  - [ ] Do not duplicate mode state or hard-code category arrays in the page.
-- [ ] Match reference behavior and styling.
-  - [ ] Preserve reference classes for breadcrumb and category card sections where they already exist in `globals.css`.
-  - [ ] Ensure cards are responsive across mobile and desktop.
-  - [ ] Ensure card links are keyboard-accessible and have clear focus states.
-- [ ] Validate.
-  - [ ] Confirm `/categories` shows 8 Automobile categories by default.
-  - [ ] Confirm switching to Industrial shows 6 Industrial categories.
-  - [ ] Confirm each category link resolves to the expected canonical route.
-  - [ ] Run lint and production build.
+- [x] Create the category overview route.
+  - [x] Add `src/app/categories/page.tsx`.
+  - [x] Keep the route server-rendered by default so Automobile category content is present in HTML source.
+  - [x] Add page metadata for the category overview page.
+- [x] Build or reuse category presentation components.
+  - [x] Add or reuse `src/components/catalog/CategoryCard.tsx`.
+  - [x] Add or reuse a breadcrumb component if Story 1.5 has already created one.
+  - [x] Use image fallback behavior that matches the reference site when category imagery is unavailable.
+- [x] Wire JSON catalog data.
+  - [x] Read category data through Story 1.4 data utilities such as `getCategories(mode)`.
+  - [x] Use canonical slug utilities instead of duplicating slug logic in the page.
+  - [x] Preserve the Hydraulic Parts slug override as `hydraulic-hoses`.
+- [x] Support active mode switching.
+  - [x] Default SSR output to Automobile categories.
+  - [x] If a client mode context exists from Story 2.1, use it to switch the visible category set between Automobile and Industrial.
+  - [x] Do not duplicate mode state or hard-code category arrays in the page.
+- [x] Match reference behavior and styling.
+  - [x] Preserve reference classes for breadcrumb and category card sections where they already exist in `globals.css`.
+  - [x] Ensure cards are responsive across mobile and desktop.
+  - [x] Ensure card links are keyboard-accessible and have clear focus states.
+- [x] Validate.
+  - [x] Confirm `/categories` shows 8 Automobile categories by default.
+  - [x] Confirm switching to Industrial shows 6 Industrial categories.
+  - [x] Confirm each category link resolves to the expected canonical route.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -102,6 +102,37 @@ Industrial:
   - `npm run lint`
   - `npm run build`
 
-## Review Notes
-- Reviewed against Epic 3.1 acceptance criteria, architecture route guidance, PRD URL rules, and the JSON-only storage decision.
-- Ready for development after Story 1.3 catalog data and Story 1.4 utility functions are available.
+## Dev Agent Record
+
+### Agent Model Used
+
+GPT-5 Codex
+
+### Debug Log References
+
+- `npm run lint`
+- `npm run build`
+- `curl.exe -I http://localhost:3000/categories`
+- Rendered `/categories` HTML confirmed breadcrumb, mode toggle, and default automobile categories in server output.
+
+### Completion Notes List
+
+- Implemented a server-rendered `/categories` route with page metadata and a mode-aware overview component.
+- Reused a shared category card component between the homepage strip and the overview page so the card markup and fallback handling stay aligned.
+- Preserved canonical slugs, including the Hydraulic Parts override to `hydraulic-hoses`.
+- Confirmed the page renders visible automobile category data in the HTML response and switches categories through the shared mode context.
+
+### File List
+
+- `_bmad-output/implementation-artifacts/3-1-category-overview-page.md`
+- `src/app/categories/page.tsx`
+- `src/app/globals.css`
+- `src/components/catalog/CategoriesOverview.tsx`
+- `src/components/catalog/CategoryCard.tsx`
+- `src/components/home/CategoryStrip.tsx`
+
+## Change Log
+
+- Added the `/categories` overview route and metadata.
+- Shared category card rendering between the homepage strip and the dedicated categories page.
+- Added breadcrumb link styling and retained the reference class structure.

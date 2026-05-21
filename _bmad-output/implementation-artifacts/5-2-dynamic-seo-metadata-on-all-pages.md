@@ -1,7 +1,7 @@
 # Story 5.2: Dynamic SEO Metadata on All Pages
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a search engine crawler, I want every page to have unique, keyword-rich metadata, so that SV Enterprises pages rank well for target search terms.
@@ -20,34 +20,34 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
 11. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Audit all crawlable routes.
-  - [ ] Homepage `/`
-  - [ ] `/categories`
-  - [ ] `/[mode]/[categorySlug]`
-  - [ ] `/[mode]/[categorySlug]/[productSlug]`
-  - [ ] `/vehicle`
-  - [ ] `/vehicle/[type]`
-  - [ ] `/brands`
-  - [ ] `/search`
-  - [ ] `/contact`
-- [ ] Implement metadata helpers.
-  - [ ] Extend `src/lib/seoHelpers.ts` if needed.
-  - [ ] Generate title, description, keywords, canonical, and Open Graph metadata from JSON data.
-  - [ ] Use `NEXT_PUBLIC_SITE_URL` or configured site URL for canonical absolute URLs.
-- [ ] Add route-level metadata.
-  - [ ] Add `generateMetadata` to dynamic category pages.
-  - [ ] Add `generateMetadata` to dynamic product pages.
-  - [ ] Add `generateMetadata` to vehicle/application detail pages.
-  - [ ] Add static or generated metadata to all static routes.
-- [ ] Preserve canonical URL rules.
-  - [ ] Use lowercase hyphenated URLs.
-  - [ ] Preserve custom slug override: Hydraulic Parts -> `/industrial/hydraulic-hoses/`.
-  - [ ] Do not use query parameters for canonical content.
-- [ ] Validate uniqueness.
-  - [ ] Check titles and descriptions for duplicate values across key generated pages.
-  - [ ] Confirm product metadata includes product name and OEM/spec number.
-  - [ ] Confirm category metadata includes category and mode context.
-  - [ ] Run lint and production build.
+- [x] Audit all crawlable routes.
+  - [x] Homepage `/`
+  - [x] `/categories`
+  - [x] `/[mode]/[categorySlug]`
+  - [x] `/[mode]/[categorySlug]/[productSlug]`
+  - [x] `/vehicle`
+  - [x] `/vehicle/[type]`
+  - [x] `/brands`
+  - [x] `/search`
+  - [x] `/contact`
+- [x] Implement metadata helpers.
+  - [x] Extend `src/lib/seoHelpers.ts` if needed.
+  - [x] Generate title, description, keywords, canonical, and Open Graph metadata from JSON data.
+  - [x] Use `NEXT_PUBLIC_SITE_URL` or configured site URL for canonical absolute URLs.
+- [x] Add route-level metadata.
+  - [x] Add `generateMetadata` to dynamic category pages.
+  - [x] Add `generateMetadata` to dynamic product pages.
+  - [x] Add `generateMetadata` to vehicle/application detail pages.
+  - [x] Add static or generated metadata to all static routes.
+- [x] Preserve canonical URL rules.
+  - [x] Use lowercase hyphenated URLs.
+  - [x] Preserve custom slug override: Hydraulic Parts -> `/industrial/hydraulic-hoses/`.
+  - [x] Do not use query parameters for canonical content.
+- [x] Validate uniqueness.
+  - [x] Check titles and descriptions for duplicate values across key generated pages.
+  - [x] Confirm product metadata includes product name and OEM/spec number.
+  - [x] Confirm category metadata includes category and mode context.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -96,3 +96,23 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
 ## Review Notes
 - Reviewed against Epic 5.2 acceptance criteria, architecture SEO requirements, and JSON-only storage constraints.
 - Ready for development after route helpers from earlier epics exist.
+
+## Dev Agent Record
+### Completion Notes
+- Added page-specific metadata to the homepage, categories page, contact page, brands page, search page, vehicle listing pages, and the dynamic category/product routes.
+- Standardized metadata generation through the existing SEO helper path so titles, descriptions, keywords, canonicals, and Open Graph fields are produced consistently from catalog data.
+- Verified the implementation with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/page.tsx`
+- `src/app/categories/page.tsx`
+- `src/app/contact/page.tsx`
+- `src/app/brands/page.tsx`
+- `src/app/search/page.tsx`
+- `src/app/vehicle/page.tsx`
+- `src/app/vehicle/[type]/page.tsx`
+- `src/app/[mode]/[categorySlug]/page.tsx`
+- `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
+
+### Change Log
+- Implemented Story 5.2 metadata coverage across all crawlable routes with JSON-backed canonical SEO output.

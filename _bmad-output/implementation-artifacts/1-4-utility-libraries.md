@@ -1,6 +1,6 @@
 # Story 1.4: Utility Libraries
 
-Status: review
+Status: done
 
 ## Story
 
@@ -48,6 +48,11 @@ so that page components and components have consistent, reusable helper function
   - [x] Confirm no Firebase/database/auth/e-commerce utilities are introduced.
   - [x] Run `npm run lint`.
   - [x] Run `npm run build`.
+
+### Review Findings
+
+- [x] [Review][Patch] Hardcoded default site URL in `seoHelpers.ts` [src/lib/seoHelpers.ts:9]
+- [x] [Review][Patch] Potential crash if `slugify` is called with non-string values [src/lib/slugUtils.ts:8]
 
 ## Dev Notes
 

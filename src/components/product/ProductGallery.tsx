@@ -1,0 +1,37 @@
+import Image from "next/image";
+import type { Product } from "@/data/types";
+import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
+
+interface ProductGalleryProps {
+  product: Product;
+}
+
+export function ProductGallery({ product }: ProductGalleryProps) {
+  const imagePath = getAssetPath(product.imageUrl);
+
+  return (
+    <div className="detail-gallery">
+      <div className="detail-visual">
+        {imagePath ? (
+          <Image
+            className="detail-image"
+            src={imagePath}
+            alt={product.name}
+            width={360}
+            height={270}
+            priority
+          />
+        ) : (
+          <span className="detail-fallback">
+            {product.imageFallbackInitials || getFallbackInitials(product.name)}
+          </span>
+        )}
+      </div>
+      <div className="detail-dots" aria-hidden="true">
+        <span className="active" />
+        <span />
+        <span />
+      </div>
+    </div>
+  );
+}

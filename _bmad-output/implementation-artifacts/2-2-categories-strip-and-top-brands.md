@@ -1,6 +1,6 @@
 # Story 2.2: Categories Strip & Top Brands
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -25,40 +25,40 @@ so that I can quickly browse product categories or identify trusted brands.
 
 ## Tasks / Subtasks
 
-- [ ] Add homepage categories section. (AC: 1, 2, 3, 4, 5, 7, 8, 10)
-  - [ ] Create `src/components/home/CategoryStrip.tsx`.
-  - [ ] Render the reference section structure after the hero section in `src/app/page.tsx` or the existing homepage composition from Story 2.1.
-  - [ ] Use reference classes including `.section-head`, `.section-kicker`, `.section-title`, `.text-link`, `.category-strip`, `.category-card`, and related nested classes present in `globals.css`.
-  - [ ] Render every category for the active mode from the JSON catalogue; do not limit automobile to the older 6-item reference `homeModes` list.
-  - [ ] Link category cards to `/${mode}/${categorySlug}/`.
-  - [ ] Link "View all" to `/categories`.
-- [ ] Add top brands section. (AC: 6, 9, 10, 11)
-  - [ ] Create `src/components/home/TopBrands.tsx`.
-  - [ ] Render the reference brands section after the categories strip.
-  - [ ] Use reference classes including `.brands-grid` and `.brand-card`.
-  - [ ] Use mode-specific brand section labels from `catalog.json.modes` when available: Automobile `Top Brands`, Industrial `Preferred Makes`.
-  - [ ] Render brand cards from `catalog.json.brands` or mode content through `dataUtils.ts`.
-  - [ ] Link "View all" to `/brands`.
-- [ ] Reuse active mode from the existing homepage state. (AC: 7, 11)
-  - [ ] Use the `ModeContext`/mode state established by Story 2.1 or Story 1.5.
-  - [ ] Do not create a second independent mode state for categories/brands.
-  - [ ] Ensure toggling mode in the hero updates categories and brands in the same render cycle.
-- [ ] Read category and brand data from the JSON utility layer. (AC: 2, 3, 4, 7, 8, 9)
-  - [ ] Use `src/lib/dataUtils.ts` from Story 1.4.
-  - [ ] Use category and brand records from `src/data/catalog.json` created by Story 1.3.
-  - [ ] Use slug helpers from `src/lib/slugUtils.ts` for generated slugs and `slugOverride` support.
-  - [ ] Do not duplicate category or brand arrays inside components or `page.tsx`.
-- [ ] Preserve story boundaries. (AC: 1-12)
-  - [ ] Do not implement Featured Products, Advantages, Contact Band, or Brand Marquee in this story.
-  - [ ] Do not add category overview page implementation; `/categories` can remain a planned route until Epic 3.
-  - [ ] Do not add product listing pages, filters, search, or product detail pages.
-  - [ ] Do not add Firebase, database, CMS, auth, cart, checkout, payment, or order behavior.
-- [ ] Validate homepage sections. (AC: 1-12)
-  - [ ] Run `npm run lint`.
-  - [ ] Run `npm run build`.
-  - [ ] Manually inspect `/` at mobile width around 360-430px and desktop width.
-  - [ ] Confirm the category strip scrolls horizontally on mobile without causing page-level horizontal scroll.
-  - [ ] Confirm active mode updates category cards, brand cards, labels, and category links.
+- [x] Add homepage categories section. (AC: 1, 2, 3, 4, 5, 7, 8, 10)
+  - [x] Create `src/components/home/CategoryStrip.tsx`.
+  - [x] Render the reference section structure after the hero section in `src/app/page.tsx` or the existing homepage composition from Story 2.1.
+  - [x] Use reference classes including `.section-head`, `.section-kicker`, `.section-title`, `.text-link`, `.category-strip`, `.category-card`, and related nested classes present in `globals.css`.
+  - [x] Render every category for the active mode from the JSON catalogue; do not limit automobile to the older 6-item reference `homeModes` list.
+  - [x] Link category cards to `/${mode}/${categorySlug}/`.
+  - [x] Link "View all" to `/categories`.
+- [x] Add top brands section. (AC: 6, 9, 10, 11)
+  - [x] Create `src/components/home/TopBrands.tsx`.
+  - [x] Render the reference brands section after the categories strip.
+  - [x] Use reference classes including `.brands-grid` and `.brand-card`.
+  - [x] Use mode-specific brand section labels from `catalog.json.modes` when available: Automobile `Top Brands`, Industrial `Preferred Makes`.
+  - [x] Render brand cards from `catalog.json.brands` or mode content through `dataUtils.ts`.
+  - [x] Link "View all" to `/brands`.
+- [x] Reuse active mode from the existing homepage state. (AC: 7, 11)
+  - [x] Use the `ModeContext`/mode state established by Story 2.1 or Story 1.5.
+  - [x] Do not create a second independent mode state for categories/brands.
+  - [x] Ensure toggling mode in the hero updates categories and brands in the same render cycle.
+- [x] Read category and brand data from the JSON utility layer. (AC: 2, 3, 4, 7, 8, 9)
+  - [x] Use `src/lib/dataUtils.ts` from Story 1.4.
+  - [x] Use category and brand records from `src/data/catalog.json` created by Story 1.3.
+  - [x] Use slug helpers from `src/lib/slugUtils.ts` for generated slugs and `slugOverride` support.
+  - [x] Do not duplicate category or brand arrays inside components or `page.tsx`.
+- [x] Preserve story boundaries. (AC: 1-12)
+  - [x] Do not implement Featured Products, Advantages, Contact Band, or Brand Marquee in this story.
+  - [x] Do not add category overview page implementation; `/categories` can remain a planned route until Epic 3.
+  - [x] Do not add product listing pages, filters, search, or product detail pages.
+  - [x] Do not add Firebase, database, CMS, auth, cart, checkout, payment, or order behavior.
+- [x] Validate homepage sections. (AC: 1-12)
+  - [x] Run `npm run lint`.
+  - [x] Run `npm run build`.
+  - [x] Manually inspect `/` at mobile width around 360-430px and desktop width.
+  - [x] Confirm the category strip scrolls horizontally on mobile without causing page-level horizontal scroll.
+  - [x] Confirm active mode updates category cards, brand cards, labels, and category links.
 
 ## Dev Notes
 
@@ -199,15 +199,35 @@ src/components/home/homeData.ts
 
 ### Agent Model Used
 
-TBD by dev agent
+GPT-5 Codex
 
 ### Debug Log References
+
+- Read local Next.js 16 docs for App Router pages, Link navigation, and Server/Client Component boundaries before code changes.
+- `npm run lint` passed.
+- `npm run build` passed.
+- Started local dev server at `http://localhost:3000` and inspected mobile and desktop screenshots with headless Edge.
 
 ### Completion Notes List
 
 - Story context created from Epic 2 requirements, PRD FR-2, architecture data-flow rules, reference homepage categories/brands implementation, and Story 2.1 dependency.
 - Story reviewed for common implementation traps: duplicate category/brand arrays, older 6-item automobile reference data, missing Hydraulic Parts slug override, separate mode state, and scope creep into later Epic 2 stories.
+- Added mode-aware category and top-brand homepage sections backed by `dataUtils.ts` and `catalog.json`.
+- Reused the existing `ModeContext`, so the hero toggle updates the category cards, brand cards, labels, and links without a full reload.
+- Added the referenced category SVG asset and a fallback initials layer for category visuals.
+- Added small responsive CSS guards for mobile category headers and existing hero controls so the Story 2.2 sections remain visible and usable on narrow screens.
 
 ### File List
 
 - `_bmad-output/implementation-artifacts/2-2-categories-strip-and-top-brands.md`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+- `public/assets/brake-disc-card.svg`
+- `src/app/globals.css`
+- `src/app/page.tsx`
+- `src/components/home/CategoryStrip.tsx`
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/TopBrands.tsx`
+
+### Change Log
+
+- 2026-05-21: Implemented Story 2.2 homepage categories strip and top brands sections; validated with lint, build, and responsive screenshot checks.

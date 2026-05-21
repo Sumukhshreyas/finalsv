@@ -62,6 +62,7 @@ export interface Application {
 }
 
 export type ApplicationType = Application;
+export type VehicleEntity = VehicleType | ApplicationType;
 
 export interface NavContent {
   explore: string;

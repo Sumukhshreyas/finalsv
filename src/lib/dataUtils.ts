@@ -1,5 +1,13 @@
 import catalogJson from "@/data/catalog.json";
-import type { Catalogue, Category, Mode, Product } from "@/data/types";
+import type {
+  ApplicationType,
+  Catalogue,
+  Category,
+  Mode,
+  Product,
+  VehicleEntity,
+  VehicleType,
+} from "@/data/types";
 import { DEFAULT_MODE, getValidMode } from "@/lib/modeUtils";
 import { findBySlug, getProductSlug, slugsMatch, slugify } from "@/lib/slugUtils";
 
@@ -7,7 +15,8 @@ export type ProductSort =
   | "popularity"
   | "name-ascending"
   | "name-descending"
-  | "brand-ascending";
+  | "brand-ascending"
+  | "oem-ascending";
 
 export interface ProductFilters {
   categorySlug?: string;
@@ -147,6 +156,13 @@ export function sortProducts(
       return sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
     case "brand-ascending":
       return sortedProducts.sort((a, b) => a.brand.localeCompare(b.brand));
+    case "oem-ascending":
+      return sortedProducts.sort((a, b) =>
+        a.oemNumber.localeCompare(b.oemNumber, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        }),
+      );
     case "popularity":
     default:
       return sortedProducts.sort(
@@ -198,6 +214,33 @@ export function getVehicles() {
 
 export function getApplications() {
   return [...catalogue.applications];
+}
+
+export function getVehiclesForMode(mode: Mode): VehicleEntity[] {
+  return mode === "industrial" ? getApplications() : getVehicles();
+}
+
+export function getVehicleBySlug(slug: string): VehicleType | null {
+  return findBySlug(getVehicles(), slug);
+}
+
+export function getApplicationBySlug(slug: string): ApplicationType | null {
+  return findBySlug(getApplications(), slug);
+}
+
+export function getVehicleEntityBySlug(slug: string): VehicleEntity | null {
+  return getVehicleBySlug(slug) || getApplicationBySlug(slug);
+}
+
+export function getStaticVehicleParams(): Array<{ type: string }> {
+  return [
+    ...getVehicles().map((entity) => ({ type: entity.slug })),
+    ...getApplications().map((entity) => ({ type: entity.slug })),
+  ];
+}
+
+export function getVehicleEntityUrl(entity: VehicleEntity): string {
+  return `/vehicle/${entity.slug}/`;
 }
 
 export function normalizeSearchQuery(query: string): string {

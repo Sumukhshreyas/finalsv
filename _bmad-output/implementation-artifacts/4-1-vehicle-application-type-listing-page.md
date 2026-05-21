@@ -1,7 +1,7 @@
 # Story 4.1: Vehicle/Application Type Listing Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to browse vehicle segments or industrial applications on a dedicated page, so that I can find parts relevant to my specific vehicle or machinery type.
@@ -21,30 +21,30 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the vehicle/application listing route.
-  - [ ] Add `src/app/vehicle/page.tsx`.
-  - [ ] Render Automobile vehicles by default for server output.
-  - [ ] Add page-specific metadata.
-- [ ] Create or reuse vehicle listing components.
-  - [ ] Add `src/components/vehicle/VehicleCard.tsx`.
-  - [ ] Use icon, badge, or existing reference SVG treatment for the card visual.
-  - [ ] Keep cards as links to `/vehicle/{typeSlug}`.
-- [ ] Wire JSON catalog data.
-  - [ ] Read vehicle data from `src/data/catalog.json` through `src/lib/dataUtils.ts`.
-  - [ ] Read industrial application data from `src/data/catalog.json` through the same utility layer.
-  - [ ] Do not duplicate vehicle/application arrays in component files.
-- [ ] Support mode-aware content.
-  - [ ] Default no-JS/SSR output to Automobile.
-  - [ ] If the existing mode context is available, allow client-side switching between Automobile vehicles and Industrial applications.
-  - [ ] Keep `/vehicle` as a shared route for both modes, matching the PRD.
-- [ ] Match reference styling and behavior.
-  - [ ] Use reference classes such as `.vehicle-type-list`, `.vehicle-type-card`, and `.vehicle-type-icon` where applicable.
-  - [ ] Ensure cards are keyboard-accessible and responsive.
-- [ ] Validate.
-  - [ ] Confirm Automobile mode shows all 6 vehicle types.
-  - [ ] Confirm Industrial mode shows all 6 application types and title `Search by Application`.
-  - [ ] Confirm each card links to a `/vehicle/{typeSlug}` route.
-  - [ ] Run lint and production build.
+- [x] Create the vehicle/application listing route.
+  - [x] Add `src/app/vehicle/page.tsx`.
+  - [x] Render Automobile vehicles by default for server output.
+  - [x] Add page-specific metadata.
+- [x] Create or reuse vehicle listing components.
+  - [x] Add `src/components/vehicle/VehicleCard.tsx`.
+  - [x] Use icon, badge, or existing reference SVG treatment for the card visual.
+  - [x] Keep cards as links to `/vehicle/{typeSlug}`.
+- [x] Wire JSON catalog data.
+  - [x] Read vehicle data from `src/data/catalog.json` through `src/lib/dataUtils.ts`.
+  - [x] Read industrial application data from `src/data/catalog.json` through the same utility layer.
+  - [x] Do not duplicate vehicle/application arrays in component files.
+- [x] Support mode-aware content.
+  - [x] Default no-JS/SSR output to Automobile.
+  - [x] If the existing mode context is available, allow client-side switching between Automobile vehicles and Industrial applications.
+  - [x] Keep `/vehicle` as a shared route for both modes, matching the PRD.
+- [x] Match reference styling and behavior.
+  - [x] Use reference classes such as `.vehicle-type-list`, `.vehicle-type-card`, and `.vehicle-type-icon` where applicable.
+  - [x] Ensure cards are keyboard-accessible and responsive.
+- [x] Validate.
+  - [x] Confirm Automobile mode shows all 6 vehicle types.
+  - [x] Confirm Industrial mode shows all 6 application types and title `Search by Application`.
+  - [x] Confirm each card links to a `/vehicle/{typeSlug}` route.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -97,3 +97,21 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 ## Review Notes
 - Reviewed against Epic 4.1 acceptance criteria, architecture component mapping, and JSON-only storage constraints.
 - Ready for development after Story 1.3 catalog data and Story 1.4 utility functions are available.
+
+## Dev Agent Record
+### Completion Notes
+- Added a server-rendered `/vehicle` entrypoint with page metadata and a client-side mode toggle that swaps between Automobile vehicle cards and Industrial application cards from the JSON catalog.
+- Implemented reusable vehicle/application cards backed by `src/lib/dataUtils.ts` and preserved the reference `vehicle-type-*` class structure.
+- Verified the route with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/vehicle/page.tsx`
+- `src/components/vehicle/VehicleCard.tsx`
+- `src/components/vehicle/VehicleListing.tsx`
+- `src/lib/dataUtils.ts`
+- `src/lib/vehicleUtils.ts`
+- `src/data/types.ts`
+- `src/app/globals.css`
+
+### Change Log
+- Implemented Story 4.1 vehicle/application listing page, mode-aware rendering, and JSON-backed vehicle/application lookups.

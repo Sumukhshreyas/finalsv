@@ -1,7 +1,7 @@
 # Story 3.5: Product Detail Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to view complete details of a specific product on a dedicated page, so that I can verify it is the right part before making an enquiry.
@@ -29,38 +29,38 @@ As a site visitor, I want to view complete details of a specific product on a de
 20. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the dynamic product detail route.
-  - [ ] Add `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`.
-  - [ ] Implement `generateStaticParams()` from JSON-backed route helpers.
-  - [ ] Implement product-specific `generateMetadata()`.
-  - [ ] Call `notFound()` for invalid mode/category/product combinations.
-- [ ] Load product data from utilities.
-  - [ ] Use `getProductBySlug(mode, categorySlug, productSlug)`.
-  - [ ] Use `getCategoryBySlug(mode, categorySlug)` for breadcrumb and back URL.
-  - [ ] Use `getStaticProductParams()` for static generation.
-  - [ ] Avoid duplicated product/category data in page or components.
-- [ ] Build product detail components.
-  - [ ] Add `src/components/product/ProductDetail.tsx`.
-  - [ ] Add `src/components/product/ProductGallery.tsx`.
-  - [ ] Add `src/components/product/CompatibilityList.tsx`.
-  - [ ] Add `src/components/product/TechSpecs.tsx`.
-  - [ ] Reuse shared breadcrumb component if available.
-- [ ] Implement detail layout.
-  - [ ] Render prominent product image or approved fallback.
-  - [ ] Render visual gallery dots.
-  - [ ] Render product title, stock pill, OEM/spec chip, brand chip, and meta points.
-  - [ ] Render description, compatibility/application list, and technical specs.
-  - [ ] Render visual-only favourite button without local storage or database persistence.
-- [ ] Implement navigation.
-  - [ ] Back button links to `/${mode}/${categorySlug}/`.
-  - [ ] Breadcrumb links Home and Categories, then parent category and current product.
-  - [ ] Preserve canonical slug behavior including `/industrial/hydraulic-hoses/...`.
-- [ ] Validate.
-  - [ ] Confirm `/automobile/brake-parts/brake-disc-rotor/` loads.
-  - [ ] Confirm an industrial product detail route renders `Suitable For`.
-  - [ ] Confirm invalid product slug returns 404.
-  - [ ] Confirm all static params are generated from JSON catalog data.
-  - [ ] Run lint and production build.
+- [x] Create the dynamic product detail route.
+  - [x] Add `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`.
+  - [x] Implement `generateStaticParams()` from JSON-backed route helpers.
+  - [x] Implement product-specific `generateMetadata()`.
+  - [x] Call `notFound()` for invalid mode/category/product combinations.
+- [x] Load product data from utilities.
+  - [x] Use `getProductBySlug(mode, categorySlug, productSlug)`.
+  - [x] Use `getCategoryBySlug(mode, categorySlug)` for breadcrumb and back URL.
+  - [x] Use `getStaticProductParams()` for static generation.
+  - [x] Avoid duplicated product/category data in page or components.
+- [x] Build product detail components.
+  - [x] Add `src/components/product/ProductDetail.tsx`.
+  - [x] Add `src/components/product/ProductGallery.tsx`.
+  - [x] Add `src/components/product/CompatibilityList.tsx`.
+  - [x] Add `src/components/product/TechSpecs.tsx`.
+  - [x] Reuse shared breadcrumb component if available.
+- [x] Implement detail layout.
+  - [x] Render prominent product image or approved fallback.
+  - [x] Render visual gallery dots.
+  - [x] Render product title, stock pill, OEM/spec chip, brand chip, and meta points.
+  - [x] Render description, compatibility/application list, and technical specs.
+  - [x] Render visual-only favourite button without local storage or database persistence.
+- [x] Implement navigation.
+  - [x] Back button links to `/${mode}/${categorySlug}/`.
+  - [x] Breadcrumb links Home and Categories, then parent category and current product.
+  - [x] Preserve canonical slug behavior including `/industrial/hydraulic-hoses/...`.
+- [x] Validate.
+  - [x] Confirm `/automobile/brake-parts/brake-disc-rotor/` loads.
+  - [x] Confirm an industrial product detail route renders `Suitable For`.
+  - [x] Confirm invalid product slug returns 404.
+  - [x] Confirm all static params are generated from JSON catalog data.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -107,3 +107,36 @@ As a site visitor, I want to view complete details of a specific product on a de
 ## Review Notes
 - Reviewed against Epic 3.5 acceptance criteria, architecture dynamic route requirements, PRD URL depth rules, and JSON-only storage constraints.
 - Ready for development after Stories 1.3, 1.4, and 3.2 provide catalog data, slug helpers, and product URLs.
+
+## Dev Agent Record
+
+### Debug Log
+- Read the Story 3.5 brief and confirmed the route did not exist yet.
+- Inspected the JSON catalog and existing detail CSS before coding so the page could use the established classes and data fields.
+- Added a server-rendered dynamic product route with JSON-backed static params and per-product metadata.
+- Built reusable product detail components for the gallery, compatibility list, and technical specs.
+- Verified the automobile and industrial detail routes in the browser and confirmed invalid product slugs render the Next 404.
+- Restored build-generated sitemap files back to the repository baseline after validation.
+
+### Completion Notes
+- Story 3.5 is implemented and ready for review.
+- The product detail page is server-rendered and statically generated from the JSON catalog.
+- Automobile and industrial product pages both render the required detail sections.
+- The favourite heart button is present but has no persistence.
+- Invalid mode/category/product combinations still call `notFound()`.
+
+### File List
+- `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
+- `src/components/product/ProductDetail.tsx`
+- `src/components/product/ProductGallery.tsx`
+- `src/components/product/CompatibilityList.tsx`
+- `src/components/product/TechSpecs.tsx`
+- `src/app/globals.css`
+- `_bmad-output/implementation-artifacts/3-5-product-detail-page.md`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+
+### Change Log
+- Added the dynamic product detail route and static generation helpers.
+- Added reusable detail components for the gallery, compatibility list, and technical specs.
+- Added fallback styling for image-less detail rendering.
+- Updated the story and sprint status to `review`.

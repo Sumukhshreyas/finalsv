@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import type { Category, Mode, Product } from "@/data/types";
 import {
+  getCatalogue,
   getCategoryProducts,
   getCategoryUrl,
   getProductUrl,
 } from "@/lib/dataUtils";
 
-export const DEFAULT_SITE_URL = "https://new-sv-auto-test.web.app";
+export const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://new-sv-auto-test.web.app";
 export const BUSINESS_NAME = "SV Enterprises";
 export const BUSINESS_PHONE = "+91 80 2345 6789";
 
@@ -122,6 +123,11 @@ export function buildProductMetadata(
 export function buildLocalBusinessJsonLd(
   siteUrl = DEFAULT_SITE_URL,
 ): JsonLdObject {
+  const catalogue = getCatalogue();
+  const address = catalogue.modes.automobile.contactPage.address;
+  const streetAddress = address.replace(/,\s*Bangalore\s*-\s*\d{6}$/, "");
+  const postalCode = address.match(/(\d{6})$/)?.[1] || "560001";
+
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -131,8 +137,10 @@ export function buildLocalBusinessJsonLd(
     telephone: BUSINESS_PHONE,
     address: {
       "@type": "PostalAddress",
+      streetAddress,
       addressLocality: "Bangalore",
       addressRegion: "Karnataka",
+      postalCode,
       addressCountry: "IN",
     },
   };

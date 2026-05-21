@@ -1,7 +1,7 @@
 # Story 5.1: Contact Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to view all business contact details on a dedicated page, so that I can call, WhatsApp, email, or visit SV Enterprises directly.
@@ -21,32 +21,32 @@ As a site visitor, I want to view all business contact details on a dedicated pa
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the contact route.
-  - [ ] Add `src/app/contact/page.tsx`.
-  - [ ] Render Automobile contact content by default for SSR/static HTML.
-  - [ ] Add contact-specific metadata.
-- [ ] Build or reuse contact components.
-  - [ ] Add `src/components/contact/ContactCard.tsx` or a local page component if no contact folder exists.
-  - [ ] Reuse shared action/link helpers where available.
-  - [ ] Preserve layout shell from Story 1.5.
-- [ ] Wire JSON-backed contact data.
-  - [ ] Read mode-specific contact data from `src/data/catalog.json`.
-  - [ ] Use `whatsappUtils.ts` for WhatsApp link construction.
-  - [ ] Do not duplicate address/phone/email/hours in component files.
-- [ ] Implement contact actions.
-  - [ ] Render `tel:` phone link.
-  - [ ] Render WhatsApp outbound link with safe encoded message if utility supports it.
-  - [ ] Render `mailto:` email link.
-  - [ ] Render Google Maps outbound link.
-- [ ] Support mode-aware content.
-  - [ ] Default SSR output to Automobile.
-  - [ ] If mode context exists, switch visible contact copy between Automobile and Industrial.
-  - [ ] Keep default crawlable contact details visible without client JavaScript.
-- [ ] Validate.
-  - [ ] Confirm `/contact` renders business card, working hours, and map card.
-  - [ ] Confirm links use `tel:`, WhatsApp URL, `mailto:`, and Google Maps URL.
-  - [ ] Confirm Industrial mode copy changes if mode switching is available.
-  - [ ] Run lint and production build.
+- [x] Create the contact route.
+  - [x] Add `src/app/contact/page.tsx`.
+  - [x] Render Automobile contact content by default for SSR/static HTML.
+  - [x] Add contact-specific metadata.
+- [x] Build or reuse contact components.
+  - [x] Add `src/components/contact/ContactPageShell.tsx`.
+  - [x] Reuse shared action/link helpers where available.
+  - [x] Preserve layout shell from Story 1.5.
+- [x] Wire JSON-backed contact data.
+  - [x] Read mode-specific contact data from `src/data/catalog.json`.
+  - [x] Use `whatsappUtils.ts` for WhatsApp link construction.
+  - [x] Do not duplicate address/phone/email/hours in component files.
+- [x] Implement contact actions.
+  - [x] Render `tel:` phone link.
+  - [x] Render WhatsApp outbound link with safe encoded message if utility supports it.
+  - [x] Render `mailto:` email link.
+  - [x] Render Google Maps outbound link.
+- [x] Support mode-aware content.
+  - [x] Default SSR output to Automobile.
+  - [x] If mode context exists, switch visible contact copy between Automobile and Industrial.
+  - [x] Keep default crawlable contact details visible without client JavaScript.
+- [x] Validate.
+  - [x] Confirm `/contact` renders business card, working hours, and map card.
+  - [x] Confirm links use `tel:`, WhatsApp URL, `mailto:`, and Google Maps URL.
+  - [x] Confirm Industrial mode copy changes if mode switching is available.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -80,3 +80,16 @@ As a site visitor, I want to view all business contact details on a dedicated pa
 ## Review Notes
 - Reviewed against Epic 5.1 acceptance criteria, architecture contact mapping, and JSON-only/no-backend constraints.
 - Ready for development after Story 1.3 mode contact data and Story 1.4 WhatsApp helpers are available.
+
+## Dev Agent Record
+### Completion Notes
+- Added a dedicated `/contact` route that defaults to automobile content on SSR and switches to industrial contact details through the existing mode context.
+- Built a JSON-backed contact page shell with call, WhatsApp, email, address, hours, and Google Maps actions using the shared WhatsApp helper utilities.
+- Added contact-specific metadata and verified the route with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/contact/page.tsx`
+- `src/components/contact/ContactPageShell.tsx`
+
+### Change Log
+- Implemented Story 5.1 contact page with mode-aware content, outbound contact links, and crawlable metadata.

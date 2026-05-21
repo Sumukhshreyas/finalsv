@@ -1,7 +1,7 @@
 # Story 3.6: Enquiry Actions and Trust Row
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to send a WhatsApp enquiry or call directly from the product detail page, so that I can quickly ask about price and availability without leaving the product page.
@@ -24,34 +24,34 @@ As a site visitor, I want to send a WhatsApp enquiry or call directly from the p
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Add enquiry action components to product detail.
-  - [ ] Add `src/components/product/EnquiryActions.tsx`.
-  - [ ] Add `src/components/product/TrustRow.tsx`.
-  - [ ] Integrate them into the product detail layout from Story 3.5.
-- [ ] Implement WhatsApp deep links.
-  - [ ] Use `src/lib/whatsappUtils.ts` from Story 1.4.
-  - [ ] Include product name and OEM/spec number in the pre-filled message.
-  - [ ] Include mode/category context where utility support exists.
-  - [ ] URL-encode the message correctly.
-- [ ] Implement call links.
-  - [ ] Use the configured business phone number from catalog/config data if available.
-  - [ ] Render `tel:` links for both automobile and industrial variants.
-  - [ ] Do not create API routes, forms, or database writes.
-- [ ] Implement mode-specific labels.
-  - [ ] Automobile: `WhatsApp Enquiry`, `Call Now`, `Bulk Orders Welcome`.
-  - [ ] Industrial: `WhatsApp for Pricing`, `Call Supply Desk`, `Bulk Supply Available`.
-  - [ ] Derive mode from the product detail URL segment.
-- [ ] Implement trust row.
-  - [ ] Render exactly three trust indicators.
-  - [ ] Use automobile trust copy required by the acceptance criteria.
-  - [ ] Use industrial trust copy from JSON data or mode-specific config if available.
-  - [ ] Preserve reference visual style and responsive behavior.
-- [ ] Validate.
-  - [ ] Confirm automobile product detail CTAs and trust text.
-  - [ ] Confirm industrial product detail CTAs and trust text.
-  - [ ] Confirm WhatsApp message includes product name and OEM/spec number.
-  - [ ] Confirm phone links use `tel:`.
-  - [ ] Run lint and production build.
+- [x] Add enquiry action components to product detail.
+  - [x] Add `src/components/product/EnquiryActions.tsx`.
+  - [x] Add `src/components/product/TrustRow.tsx`.
+  - [x] Integrate them into the product detail layout from Story 3.5.
+- [x] Implement WhatsApp deep links.
+  - [x] Use `src/lib/whatsappUtils.ts` from Story 1.4.
+  - [x] Include product name and OEM/spec number in the pre-filled message.
+  - [x] Include mode/category context where utility support exists.
+  - [x] URL-encode the message correctly.
+- [x] Implement call links.
+  - [x] Use the configured business phone number from catalog/config data if available.
+  - [x] Render `tel:` links for both automobile and industrial variants.
+  - [x] Do not create API routes, forms, or database writes.
+- [x] Implement mode-specific labels.
+  - [x] Automobile: `WhatsApp Enquiry`, `Call Now`, `Bulk Orders Welcome`.
+  - [x] Industrial: `WhatsApp for Pricing`, `Call Supply Desk`, `Bulk Supply Available`.
+  - [x] Derive mode from the product detail URL segment.
+- [x] Implement trust row.
+  - [x] Render exactly three trust indicators.
+  - [x] Use automobile trust copy required by the acceptance criteria.
+  - [x] Use industrial trust copy from JSON data or mode-specific config if available.
+  - [x] Preserve reference visual style and responsive behavior.
+- [x] Validate.
+  - [x] Confirm automobile product detail CTAs and trust text.
+  - [x] Confirm industrial product detail CTAs and trust text.
+  - [x] Confirm WhatsApp message includes product name and OEM/spec number.
+  - [x] Confirm phone links use `tel:`.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -94,3 +94,30 @@ As a site visitor, I want to send a WhatsApp enquiry or call directly from the p
 ## Review Notes
 - Reviewed against Epic 3.6 acceptance criteria, architecture outbound-link security rules, and JSON-only storage constraints.
 - Ready for development after Story 3.5 product detail page exists.
+
+## Dev Agent Record
+
+### Debug Log
+- Added `EnquiryActions` and `TrustRow` product detail components.
+- Reused `buildProductWhatsAppUrl` and the catalog contact number for outbound enquiry links.
+- Kept all actions link-only with no persisted enquiry state.
+- Verified the new markup on automobile and industrial product detail pages.
+
+### Completion Notes
+- Automobile detail pages now render `WhatsApp Enquiry`, `Call Now`, and `Bulk Orders Welcome`.
+- Industrial detail pages now render `WhatsApp for Pricing`, `Call Supply Desk`, and `Bulk Supply Available`.
+- WhatsApp links include the product name, OEM/spec number, category, and mode in the encoded message.
+- Trust rows render exactly three items per mode.
+- Validation passed with `npm run lint` and `npm run build`.
+
+## File List
+- `src/components/product/EnquiryActions.tsx`
+- `src/components/product/TrustRow.tsx`
+- `src/components/product/ProductDetail.tsx`
+- `src/app/globals.css`
+- `public/robots.txt`
+- `public/sitemap.xml`
+- `public/sitemap-0.xml`
+
+## Change Log
+- 2026-05-21: Implemented outbound enquiry CTAs and mode-aware trust rows for product detail pages, then validated with lint, build, and live route checks.

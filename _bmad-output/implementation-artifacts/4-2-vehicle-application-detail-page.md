@@ -1,7 +1,7 @@
 # Story 4.2: Vehicle/Application Detail Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to see common parts for a specific vehicle type or application, so that I can discover which spare parts are relevant to my equipment.
@@ -22,29 +22,29 @@ As a site visitor, I want to see common parts for a specific vehicle type or app
 13. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the dynamic detail route.
-  - [ ] Add `src/app/vehicle/[type]/page.tsx`.
-  - [ ] Implement `generateStaticParams()` from JSON-backed vehicle/application helpers.
-  - [ ] Implement detail-specific `generateMetadata()`.
-  - [ ] Call `notFound()` for invalid type slugs.
-- [ ] Create or reuse vehicle detail components.
-  - [ ] Add `src/components/vehicle/VehicleDetail.tsx`.
-  - [ ] Reuse shared breadcrumb/back-link patterns if available.
-  - [ ] Use `range-item` style for numbered parts rows where compatible with extracted CSS.
-- [ ] Wire JSON catalog data.
-  - [ ] Load vehicle detail data from `catalog.json.vehicles`.
-  - [ ] Load industrial application detail data from `catalog.json.applications`.
-  - [ ] Use data utilities for lookup and static params.
-  - [ ] Do not duplicate detail maps in the route or component.
-- [ ] Implement category navigation from parts list.
-  - [ ] Map parts to relevant category URLs where data provides a mapping.
-  - [ ] Use canonical category URLs such as `/automobile/brake-parts/` or `/industrial/hydraulic-hoses/`.
-  - [ ] If a part has no explicit mapping, keep the row accessible but avoid linking to an incorrect category.
-- [ ] Validate.
-  - [ ] Confirm `/vehicle/tractors` renders title, copy, numbered parts, back button, and image.
-  - [ ] Confirm an industrial application route such as `/vehicle/conveyors` renders application content.
-  - [ ] Confirm invalid type slugs return 404.
-  - [ ] Run lint and production build.
+- [x] Create the dynamic detail route.
+  - [x] Add `src/app/vehicle/[type]/page.tsx`.
+  - [x] Implement `generateStaticParams()` from JSON-backed vehicle/application helpers.
+  - [x] Implement detail-specific `generateMetadata()`.
+  - [x] Call `notFound()` for invalid type slugs.
+- [x] Create or reuse vehicle detail components.
+  - [x] Add `src/components/vehicle/VehicleDetail.tsx`.
+  - [x] Reuse shared breadcrumb/back-link patterns if available.
+  - [x] Use `range-item` style for numbered parts rows where compatible with extracted CSS.
+- [x] Wire JSON catalog data.
+  - [x] Load vehicle detail data from `catalog.json.vehicles`.
+  - [x] Load industrial application detail data from `catalog.json.applications`.
+  - [x] Use data utilities for lookup and static params.
+  - [x] Do not duplicate detail maps in the route or component.
+- [x] Implement category navigation from parts list.
+  - [x] Map parts to relevant category URLs where data provides a mapping.
+  - [x] Use canonical category URLs such as `/automobile/brake-parts/` or `/industrial/hydraulic-hoses/`.
+  - [x] If a part has no explicit mapping, keep the row accessible but avoid linking to an incorrect category.
+- [x] Validate.
+  - [x] Confirm `/vehicle/tractors` renders title, copy, numbered parts, back button, and image.
+  - [x] Confirm an industrial application route such as `/vehicle/conveyors` renders application content.
+  - [x] Confirm invalid type slugs return 404.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -81,3 +81,20 @@ As a site visitor, I want to see common parts for a specific vehicle type or app
 ## Review Notes
 - Reviewed against Epic 4.2 acceptance criteria, architecture static route requirements, and JSON-only storage constraints.
 - Ready for development after Story 4.1 listing and shared vehicle/application data are available.
+
+## Dev Agent Record
+### Completion Notes
+- Added a static `/vehicle/[type]` route with `generateStaticParams()`, per-entity metadata, and `notFound()` handling for invalid slugs.
+- Implemented `VehicleDetail` with a back link, kicker, descriptive copy, numbered parts list, hero image, and safe category links only where a mapping exists.
+- Verified the route with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/vehicle/[type]/page.tsx`
+- `src/components/vehicle/VehicleDetail.tsx`
+- `src/lib/dataUtils.ts`
+- `src/lib/vehicleUtils.ts`
+- `src/data/types.ts`
+- `src/app/globals.css`
+
+### Change Log
+- Implemented Story 4.2 dynamic vehicle/application detail pages with JSON-backed static params, metadata, and conservative category navigation.

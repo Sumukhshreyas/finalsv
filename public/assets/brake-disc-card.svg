@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Spare parts category</title>
+  <desc id="desc">Illustration of a brake disc and mechanical parts</desc>
+  <defs>
+    <linearGradient id="metal" x1="28" y1="16" x2="126" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7fbff"/>
+      <stop offset=".55" stop-color="#cfd9e3"/>
+      <stop offset="1" stop-color="#8ea0af"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="20" y1="18" x2="134" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff9a42"/>
+      <stop offset="1" stop-color="#ff6a00"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="160" height="120" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#071827" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="68" cy="60" r="39" fill="url(#metal)"/>
+    <circle cx="68" cy="60" r="24" fill="#eef3f8"/>
+    <circle cx="68" cy="60" r="9" fill="#ffffff"/>
+    <g fill="#9aabb8">
+      <circle cx="68" cy="34" r="4"/>
+      <circle cx="93" cy="60" r="4"/>
+      <circle cx="68" cy="86" r="4"/>
+      <circle cx="43" cy="60" r="4"/>
+    </g>
+    <path d="M98 42h24c6 0 11 5 11 11v14c0 6-5 11-11 11H98c5-10 5-26 0-36Z" fill="url(#accent)"/>
+    <rect x="113" y="51" width="22" height="18" rx="6" fill="#07365a"/>
+  </g>
+</svg>

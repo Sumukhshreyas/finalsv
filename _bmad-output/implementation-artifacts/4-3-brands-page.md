@@ -1,7 +1,7 @@
 # Story 4.3: Brands Page
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to browse all brands/manufacturers that SV Enterprises stocks, so that I can verify they carry my preferred brand.
@@ -18,27 +18,27 @@ As a site visitor, I want to browse all brands/manufacturers that SV Enterprises
 9. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the brands route.
-  - [ ] Add `src/app/brands/page.tsx`.
-  - [ ] Render Automobile brands by default for SSR/static HTML.
-  - [ ] Add page-specific metadata.
-- [ ] Create or reuse brand card UI.
-  - [ ] Add `src/components/shared/BrandCard.tsx` or `src/components/brands/BrandCard.tsx`, depending on existing component organization.
-  - [ ] Use brand name as fallback when no logo asset exists.
-  - [ ] Keep cards responsive and keyboard-safe if interactive.
-- [ ] Wire JSON catalog data.
-  - [ ] Load mode-specific brand lists from `src/data/catalog.json`.
-  - [ ] Use `dataUtils` or mode utilities rather than hard-coded arrays.
-  - [ ] Keep Wurth available in both mode lists if present in catalog data.
-- [ ] Support active mode switching.
-  - [ ] Default to Automobile in server-rendered output.
-  - [ ] If mode context exists, switch the visible brand list between Automobile and Industrial.
-  - [ ] Preserve SEO-friendly default content without requiring client JavaScript.
-- [ ] Validate.
-  - [ ] Confirm `/brands` shows Automobile brands by default.
-  - [ ] Confirm Industrial mode shows industrial brands.
-  - [ ] Confirm metadata exists for `/brands`.
-  - [ ] Run lint and production build.
+- [x] Create the brands route.
+  - [x] Add `src/app/brands/page.tsx`.
+  - [x] Render Automobile brands by default for SSR/static HTML.
+  - [x] Add page-specific metadata.
+- [x] Create or reuse brand card UI.
+  - [x] Add `src/components/shared/BrandCard.tsx` or `src/components/brands/BrandCard.tsx`, depending on existing component organization.
+  - [x] Use brand name as fallback when no logo asset exists.
+  - [x] Keep cards responsive and keyboard-safe if interactive.
+- [x] Wire JSON catalog data.
+  - [x] Load mode-specific brand lists from `src/data/catalog.json`.
+  - [x] Use `dataUtils` or mode utilities rather than hard-coded arrays.
+  - [x] Keep Wurth available in both mode lists if present in catalog data.
+- [x] Support active mode switching.
+  - [x] Default to Automobile in server-rendered output.
+  - [x] If mode context exists, switch the visible brand list between Automobile and Industrial.
+  - [x] Preserve SEO-friendly default content without requiring client JavaScript.
+- [x] Validate.
+  - [x] Confirm `/brands` shows Automobile brands by default.
+  - [x] Confirm Industrial mode shows industrial brands.
+  - [x] Confirm metadata exists for `/brands`.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -102,3 +102,17 @@ Industrial examples:
 ## Review Notes
 - Reviewed against Epic 4.3 acceptance criteria, architecture mapping, and JSON-only storage constraints.
 - Ready for development after Story 1.3 brand data and Story 2.1 mode context are available.
+
+## Dev Agent Record
+### Completion Notes
+- Added a static `/brands` page that defaults to automobile brands on SSR and swaps to industrial brands through the existing mode context.
+- Added a lightweight `BrandCard` component using the catalog-backed brand names and the existing brand card visual treatment.
+- Verified the implementation with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/brands/page.tsx`
+- `src/components/brands/BrandCard.tsx`
+- `src/components/brands/BrandsListing.tsx`
+
+### Change Log
+- Implemented Story 4.3 brands page with JSON-backed mode-aware brand grids and page metadata.

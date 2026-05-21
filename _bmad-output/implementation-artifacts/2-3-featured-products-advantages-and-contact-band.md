@@ -1,6 +1,6 @@
 # Story 2.3: Featured Products, Advantages & Contact Band
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -27,41 +27,41 @@ so that I can see top-selling items, understand why to choose SV Enterprises, an
 
 ## Tasks / Subtasks
 
-- [ ] Add Featured Products section. (AC: 1, 2, 3, 4, 5, 6, 12, 13)
-  - [ ] Create `src/components/home/FeaturedProducts.tsx`.
-  - [ ] Render the reference section structure after categories/brands in the existing homepage composition.
-  - [ ] Use reference classes including `.section`, `.section-head`, `.kicker`, `.section-title`, `.product-strip`, `.product-tile`, `.product-img`, `.product-body`, `.meta`, `.brand-text`, and `.mini-btn`.
-  - [ ] Resolve each featured product reference from `catalog.json.modes[mode].home.featured` to the real product in `catalog.json.products`.
-  - [ ] Use `dataUtils.ts` and slug utilities from Story 1.4; do not duplicate featured product data in components.
-  - [ ] Link the tile body to the future product detail URL.
-  - [ ] Ensure clicking/tapping the "Enquire" action opens WhatsApp and does not accidentally navigate first.
-- [ ] Add Advantages section. (AC: 7, 8, 9, 12, 13)
-  - [ ] Create `src/components/home/AdvantagesSection.tsx`.
-  - [ ] Render 4 mode-specific advantage cards from `catalog.json.modes[mode].home.advantages`.
-  - [ ] Use reference classes including `.advantage-grid` and `.brand-card`.
-  - [ ] Use mode-specific labels from `advantageKicker` and `advantageTitle`.
-- [ ] Add Contact Band section. (AC: 10, 11, 12, 13)
-  - [ ] Create `src/components/home/ContactBand.tsx`.
-  - [ ] Render the reference `.section.compact`, `.contact-band`, `.contact-band-grid`, `.contact-list`, `.biz-row`, and `.cat-icon` structure.
-  - [ ] Use mode-specific `contactTitle`, `contactCopy`, and `contactList` from `catalog.json.modes`.
-  - [ ] Convert WhatsApp row to a `wa.me` link using `whatsappUtils.ts`.
-  - [ ] Convert Call row to `tel:` and Email row to `mailto:`.
-  - [ ] Keep contact actions as outbound links only; do not add forms or API writes.
-- [ ] Reuse active homepage mode. (AC: 12)
-  - [ ] Use the same `ModeContext`/mode state established by Story 2.1 and reused by Story 2.2.
-  - [ ] Do not create a new local mode state for featured/advantages/contact sections.
-  - [ ] Ensure toggling mode in the hero updates all three sections in the same render cycle.
-- [ ] Preserve story boundaries. (AC: 1-14)
-  - [ ] Do not implement Brand Marquee; that is Story 2.4.
-  - [ ] Do not implement product detail page behavior beyond final URL links.
-  - [ ] Do not implement category overview, product listing, filters, search results, or contact page.
-  - [ ] Do not add Firebase, database, CMS, auth, cart, checkout, payment, or order behavior.
-- [ ] Validate homepage lower sections. (AC: 1-14)
-  - [ ] Run `npm run lint`.
-  - [ ] Run `npm run build`.
-  - [ ] Manually inspect `/` at mobile width around 360-430px and desktop width.
-  - [ ] Confirm featured product tiles, advantages, and contact rows update when mode changes.
-  - [ ] Confirm WhatsApp, phone, and email actions produce correct external links.
+- [x] Add Featured Products section. (AC: 1, 2, 3, 4, 5, 6, 12, 13)
+  - [x] Create `src/components/home/FeaturedProducts.tsx`.
+  - [x] Render the reference section structure after categories/brands in the existing homepage composition.
+  - [x] Use reference classes including `.section`, `.section-head`, `.kicker`, `.section-title`, `.product-strip`, `.product-tile`, `.product-img`, `.product-body`, `.meta`, `.brand-text`, and `.mini-btn`.
+  - [x] Resolve each featured product reference from `catalog.json.modes[mode].home.featured` to the real product in `catalog.json.products`.
+  - [x] Use `dataUtils.ts` and slug utilities from Story 1.4; do not duplicate featured product data in components.
+  - [x] Link the tile body to the future product detail URL.
+  - [x] Ensure clicking/tapping the "Enquire" action opens WhatsApp and does not accidentally navigate first.
+- [x] Add Advantages section. (AC: 7, 8, 9, 12, 13)
+  - [x] Create `src/components/home/AdvantagesSection.tsx`.
+  - [x] Render 4 mode-specific advantage cards from `catalog.json.modes[mode].home.advantages`.
+  - [x] Use reference classes including `.advantage-grid` and `.brand-card`.
+  - [x] Use mode-specific labels from `advantageKicker` and `advantageTitle`.
+- [x] Add Contact Band section. (AC: 10, 11, 12, 13)
+  - [x] Create `src/components/home/ContactBand.tsx`.
+  - [x] Render the reference `.section.compact`, `.contact-band`, `.contact-band-grid`, `.contact-list`, `.biz-row`, and `.cat-icon` structure.
+  - [x] Use mode-specific `contactTitle`, `contactCopy`, and `contactList` from `catalog.json.modes`.
+  - [x] Convert WhatsApp row to a `wa.me` link using `whatsappUtils.ts`.
+  - [x] Convert Call row to `tel:` and Email row to `mailto:`.
+  - [x] Keep contact actions as outbound links only; do not add forms or API writes.
+- [x] Reuse active homepage mode. (AC: 12)
+  - [x] Use the same `ModeContext`/mode state established by Story 2.1 and reused by Story 2.2.
+  - [x] Do not create a new local mode state for featured/advantages/contact sections.
+  - [x] Ensure toggling mode in the hero updates all three sections in the same render cycle.
+- [x] Preserve story boundaries. (AC: 1-14)
+  - [x] Do not implement Brand Marquee; that is Story 2.4.
+  - [x] Do not implement product detail page behavior beyond final URL links.
+  - [x] Do not implement category overview, product listing, filters, search results, or contact page.
+  - [x] Do not add Firebase, database, CMS, auth, cart, checkout, payment, or order behavior.
+- [x] Validate homepage lower sections. (AC: 1-14)
+  - [x] Run `npm run lint`.
+  - [x] Run `npm run build`.
+  - [x] Manually inspect `/` at mobile width around 360-430px and desktop width.
+  - [x] Confirm featured product tiles, advantages, and contact rows update when mode changes.
+  - [x] Confirm WhatsApp, phone, and email actions produce correct external links.
 
 ## Dev Notes
 
@@ -205,15 +205,33 @@ src/components/home/homeData.ts
 
 ### Agent Model Used
 
-TBD by dev agent
+GPT-5 Codex
 
 ### Debug Log References
+
+- Read local Next.js 16 App Router docs for pages, links, and server/client boundaries before editing.
+- `npm run lint` passed.
+- `npm run build` passed.
+- Verified the live homepage at `http://localhost:3000` with headless Edge screenshots at mobile and desktop widths.
 
 ### Completion Notes List
 
 - Story context created from Epic 2 requirements, PRD FR-2, architecture data-flow rules, reference featured/advantage/contact implementation, and Stories 2.1/2.2 dependencies.
 - Story reviewed for common implementation traps: duplicate homepage data, unresolved featured product references, WhatsApp message omissions, nested link/button behavior, contact actions becoming forms/API writes, and scope creep into Brand Marquee or product detail pages.
+- Added mode-aware featured products, advantages, and contact band sections to the homepage composition.
+- Reused the existing `ModeContext` so the hero toggle updates all three sections without a page reload.
+- Wired featured product links to the planned product detail route pattern and the enquiry actions to WhatsApp deep links using the data utility layer.
+- Verified mobile and desktop layouts with tall headless Edge screenshots to confirm the lower homepage sections render cleanly and stay responsive.
 
 ### File List
 
 - `_bmad-output/implementation-artifacts/2-3-featured-products-advantages-and-contact-band.md`
+- `src/app/globals.css`
+- `src/app/page.tsx`
+- `src/components/home/AdvantagesSection.tsx`
+- `src/components/home/ContactBand.tsx`
+- `src/components/home/FeaturedProducts.tsx`
+
+### Change Log
+
+- 2026-05-21: Implemented Story 2.3 featured products, advantages, and contact band sections; validated with lint, build, and responsive screenshot checks.

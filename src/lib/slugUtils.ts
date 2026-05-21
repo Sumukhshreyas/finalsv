@@ -5,7 +5,10 @@ export interface SlugSource {
   slugOverride?: string;
 }
 
-export function slugify(value: string): string {
+export function slugify(value: string | undefined | null): string {
+  if (!value) {
+    return "";
+  }
   return value
     .toLowerCase()
     .replace(/&/g, " and ")

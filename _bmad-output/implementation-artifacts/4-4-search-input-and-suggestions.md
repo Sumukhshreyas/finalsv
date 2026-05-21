@@ -1,7 +1,7 @@
 # Story 4.4: Search Input and Suggestions
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to search for products using a text input with popular suggestions, so that I can quickly find a specific part by OEM number, name, or brand.
@@ -19,32 +19,32 @@ As a site visitor, I want to search for products using a text input with popular
 10. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the search route.
-  - [ ] Add `src/app/search/page.tsx`.
-  - [ ] Render the search page shell and default Automobile suggestions.
-  - [ ] Add page-specific metadata.
-- [ ] Create search input components.
-  - [ ] Add `src/components/search/SearchInput.tsx`.
-  - [ ] Add `src/components/search/SearchSuggestions.tsx`.
-  - [ ] Use a Client Component for input value, suggestion clicks, and client-side search triggering.
-- [ ] Wire JSON-backed search data.
-  - [ ] Use `searchProducts(query, mode?)` from `src/lib/dataUtils.ts` if available.
-  - [ ] Search only active-mode products by default.
-  - [ ] Match product name, OEM/spec number, brand, and category.
-  - [ ] Sanitize displayed query text.
-- [ ] Implement suggestion behavior.
-  - [ ] Read popular suggestions from mode-specific JSON data when available.
-  - [ ] Clicking a chip sets the input value and triggers the same search path as typing.
-  - [ ] Do not use reference hard-coded demo results as the source of truth.
-- [ ] Prepare integration with Story 4.5.
-  - [ ] Expose search results state to `SearchResults` once Story 4.5 is implemented.
-  - [ ] Keep input/suggestions usable even when no results component exists yet.
-- [ ] Validate.
-  - [ ] Confirm `/search` renders input and suggestions.
-  - [ ] Confirm suggestions populate the input and trigger search.
-  - [ ] Confirm two-character threshold.
-  - [ ] Confirm matching works by name, OEM/spec, brand, and category.
-  - [ ] Run lint and production build.
+- [x] Create the search route.
+  - [x] Add `src/app/search/page.tsx`.
+  - [x] Render the search page shell and default Automobile suggestions.
+  - [x] Add page-specific metadata.
+- [x] Create search input components.
+  - [x] Add `src/components/search/SearchInput.tsx`.
+  - [x] Add `src/components/search/SearchSuggestions.tsx`.
+  - [x] Use a Client Component for input value, suggestion clicks, and client-side search triggering.
+- [x] Wire JSON-backed search data.
+  - [x] Use `searchProducts(query, mode?)` from `src/lib/dataUtils.ts` if available.
+  - [x] Search only active-mode products by default.
+  - [x] Match product name, OEM/spec number, brand, and category.
+  - [x] Sanitize displayed query text.
+- [x] Implement suggestion behavior.
+  - [x] Read popular suggestions from mode-specific JSON data when available.
+  - [x] Clicking a chip sets the input value and triggers the same search path as typing.
+  - [x] Do not use reference hard-coded demo results as the source of truth.
+- [x] Prepare integration with Story 4.5.
+  - [x] Expose search results state to `SearchResults` once Story 4.5 is implemented.
+  - [x] Keep input/suggestions usable even when no results component exists yet.
+- [x] Validate.
+  - [x] Confirm `/search` renders input and suggestions.
+  - [x] Confirm suggestions populate the input and trigger search.
+  - [x] Confirm two-character threshold.
+  - [x] Confirm matching works by name, OEM/spec, brand, and category.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -84,3 +84,18 @@ As a site visitor, I want to search for products using a text input with popular
 ## Review Notes
 - Reviewed against Epic 4.4 acceptance criteria, architecture client-component guidance, and JSON-only storage constraints.
 - Ready for development after Story 1.4 search utility exists.
+
+## Dev Agent Record
+### Completion Notes
+- Added a static `/search` page shell with a client-side search input and mode-specific suggestion chips sourced from the JSON catalog.
+- Wired search behavior to the shared `searchProducts()` utility with an active-mode default and a 2-character minimum threshold.
+- Verified the implementation with `npm run lint` and `npm run build`.
+
+### File List
+- `src/app/search/page.tsx`
+- `src/components/search/SearchInput.tsx`
+- `src/components/search/SearchPageShell.tsx`
+- `src/components/search/SearchSuggestions.tsx`
+
+### Change Log
+- Implemented Story 4.4 search input and suggestion behavior with JSON-backed mode-specific data and live client-side matching.

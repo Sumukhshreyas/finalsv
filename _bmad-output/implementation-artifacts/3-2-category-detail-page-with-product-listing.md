@@ -1,7 +1,7 @@
 # Story 3.2: Category Detail Page with Product Listing
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to view all products within a selected category as grid cards, so that I can compare relevant parts and start an enquiry.
@@ -23,39 +23,39 @@ As a site visitor, I want to view all products within a selected category as gri
 14. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Create the dynamic category detail route.
-  - [ ] Add `src/app/[mode]/[categorySlug]/page.tsx`.
-  - [ ] Implement `generateStaticParams()` from catalog utilities.
-  - [ ] Implement category-specific metadata with `generateMetadata()`.
-  - [ ] Call `notFound()` for invalid mode/category combinations.
-- [ ] Load category and product data from JSON utilities.
-  - [ ] Use `getCategoryBySlug(mode, categorySlug)`.
-  - [ ] Use `getCategoryProducts(mode, categorySlug)`.
-  - [ ] Use `getCategories(mode)` for same-mode category chips.
-  - [ ] Avoid local duplicated arrays or route maps in the page.
-- [ ] Build or reuse listing components.
-  - [ ] Add or reuse `src/components/catalog/ProductCard.tsx`.
-  - [ ] Add or reuse `src/components/catalog/CategoryChipRow.tsx`.
-  - [ ] Add or reuse shared breadcrumb behavior from Story 1.5 if available.
-- [ ] Implement category header and breadcrumb.
-  - [ ] Render category title and description from JSON data.
-  - [ ] Render `Home > Categories > {Category Name}`.
-  - [ ] Keep links keyboard-accessible and semantically valid.
-- [ ] Implement product cards.
-  - [ ] Show product image when available.
-  - [ ] Show initials fallback when no product image exists.
-  - [ ] Show product name, OEM/spec number, short description, brand pill, and `Enquire` CTA.
-  - [ ] Ensure the product card can link to the later product detail route without breaking the enquiry CTA.
-- [ ] Implement same-mode category switching.
-  - [ ] Render all categories for the current mode as chips.
-  - [ ] Mark the active category chip.
-  - [ ] Link each chip to its canonical category URL.
-- [ ] Validate.
-  - [ ] Confirm `/automobile/brake-parts/` renders Brake Parts content and product count.
-  - [ ] Confirm `/industrial/hydraulic-hoses/` resolves Hydraulic Parts content.
-  - [ ] Confirm invalid slugs return 404.
-  - [ ] Confirm static params cover all category routes.
-  - [ ] Run lint and production build.
+- [x] Create the dynamic category detail route.
+  - [x] Add `src/app/[mode]/[categorySlug]/page.tsx`.
+  - [x] Implement `generateStaticParams()` from catalog utilities.
+  - [x] Implement category-specific metadata with `generateMetadata()`.
+  - [x] Call `notFound()` for invalid mode/category combinations.
+- [x] Load category and product data from JSON utilities.
+  - [x] Use `getCategoryBySlug(mode, categorySlug)`.
+  - [x] Use `getCategoryProducts(mode, categorySlug)`.
+  - [x] Use `getCategories(mode)` for same-mode category chips.
+  - [x] Avoid local duplicated arrays or route maps in the page.
+- [x] Build or reuse listing components.
+  - [x] Add or reuse `src/components/catalog/ProductCard.tsx`.
+  - [x] Add or reuse `src/components/catalog/CategoryChipRow.tsx`.
+  - [x] Add or reuse shared breadcrumb behavior from Story 1.5 if available.
+- [x] Implement category header and breadcrumb.
+  - [x] Render category title and description from JSON data.
+  - [x] Render `Home > Categories > {Category Name}`.
+  - [x] Keep links keyboard-accessible and semantically valid.
+- [x] Implement product cards.
+  - [x] Show product image when available.
+  - [x] Show initials fallback when no product image exists.
+  - [x] Show product name, OEM/spec number, short description, brand pill, and `Enquire` CTA.
+  - [x] Ensure the product card can link to the later product detail route without breaking the enquiry CTA.
+- [x] Implement same-mode category switching.
+  - [x] Render all categories for the current mode as chips.
+  - [x] Mark the active category chip.
+  - [x] Link each chip to its canonical category URL.
+- [x] Validate.
+  - [x] Confirm `/automobile/brake-parts/` renders Brake Parts content and product count.
+  - [x] Confirm `/industrial/hydraulic-hoses/` resolves Hydraulic Parts content.
+  - [x] Confirm invalid slugs return 404.
+  - [x] Confirm static params cover all category routes.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -117,3 +117,36 @@ Use the catalog fields defined by Story 1.3. Product cards should map available 
 ## Review Notes
 - Reviewed against Epic 3.2 acceptance criteria, architecture route guidance, PRD URL rules, and the JSON-only storage decision.
 - Ready for development after Story 1.3 catalog data and Story 1.4 utility functions are available.
+
+## Dev Agent Record
+
+### Debug Log
+- Implemented the `[mode]/[categorySlug]` App Router page as a server component with `generateStaticParams`, `generateMetadata`, and `notFound()` handling.
+- Added reusable catalog listing components for category chips and product cards.
+- Verified the rendered HTML for `/automobile/brake-parts/` and `/industrial/hydraulic-hoses/` includes the expected breadcrumb, hero copy, product counts, chip row, and product cards.
+- Restored build-generated `public/robots.txt`, `public/sitemap.xml`, and `public/sitemap-0.xml` back to the repository baseline after validation.
+
+### Completion Notes
+- Canonical category routing is preserved, including Hydraulic Parts at `/industrial/hydraulic-hoses/`.
+- Product listing content is server-rendered/static-generated and driven by the JSON catalog source of truth.
+- The implementation passed lint and production build checks.
+
+### File List
+- `src/app/[mode]/[categorySlug]/page.tsx`
+- `src/components/catalog/ProductCard.tsx`
+- `src/components/catalog/CategoryChipRow.tsx`
+- `src/components/catalog/cardUtils.ts`
+- `src/components/catalog/CategoryCard.tsx`
+- `src/lib/dataUtils.ts`
+- `src/app/globals.css`
+- `public/robots.txt`
+- `public/sitemap.xml`
+- `public/sitemap-0.xml`
+- `_bmad-output/implementation-artifacts/3-2-category-detail-page-with-product-listing.md`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+
+### Change Log
+- Added the dynamic category detail route with static generation and SEO metadata.
+- Added reusable product and category chip listing components.
+- Added catalog image/fallback helpers for card rendering.
+- Updated the story record and sprint status to `review`.

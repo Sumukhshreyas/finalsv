@@ -1,7 +1,7 @@
 # Story 4.5: Search Results Display
 
 ## Status
-ready-for-dev
+review
 
 ## Story
 As a site visitor, I want to see search results as product cards with filter chips, so that I can review matching products and refine my search.
@@ -19,34 +19,34 @@ As a site visitor, I want to see search results as product cards with filter chi
 10. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
-- [ ] Add search results rendering.
-  - [ ] Create `src/components/search/SearchResults.tsx`.
-  - [ ] Integrate it with the `/search` page and the input state from Story 4.4.
-  - [ ] Render horizontal product result cards.
-- [ ] Build JSON-backed result cards.
-  - [ ] Use product image or fallback initials/icon.
-  - [ ] Show product name, OEM/spec/meta, brand, category, and availability/status.
-  - [ ] Link each card to `/${mode}/${categorySlug}/${productSlug}/`.
-  - [ ] Preserve canonical Hydraulic Parts slug behavior for industrial results.
-- [ ] Implement category refinement chips.
-  - [ ] Derive available category chips from current search result categories.
-  - [ ] Include an `All` chip.
-  - [ ] Active chip filters the visible results without re-running against unrelated modes.
-  - [ ] Keep chip state consistent when the query changes.
-- [ ] Implement see-all count.
-  - [ ] Show total matching result count.
-  - [ ] Link/control should reveal all matching results if initial display is limited.
-  - [ ] Do not navigate to a fake route unless a real route exists.
-- [ ] Implement empty state.
-  - [ ] Show a clear no-results message.
-  - [ ] Reuse popular suggestions from Story 4.4 as alternatives.
-  - [ ] Avoid showing stale previous results after a no-result query.
-- [ ] Validate.
-  - [ ] Confirm matching query renders result cards.
-  - [ ] Confirm result card links navigate to canonical product detail routes.
-  - [ ] Confirm category filter chips refine results.
-  - [ ] Confirm no-results query shows empty state and suggestions.
-  - [ ] Run lint and production build.
+- [x] Add search results rendering.
+  - [x] Create `src/components/search/SearchResults.tsx`.
+  - [x] Integrate it with the `/search` page and the input state from Story 4.4.
+  - [x] Render horizontal product result cards.
+- [x] Build JSON-backed result cards.
+  - [x] Use product image or fallback initials/icon.
+  - [x] Show product name, OEM/spec/meta, brand, category, and availability/status.
+  - [x] Link each card to `/${mode}/${categorySlug}/${productSlug}/`.
+  - [x] Preserve canonical Hydraulic Parts slug behavior for industrial results.
+- [x] Implement category refinement chips.
+  - [x] Derive available category chips from current search result categories.
+  - [x] Include an `All` chip.
+  - [x] Active chip filters the visible results without re-running against unrelated modes.
+  - [x] Keep chip state consistent when the query changes.
+- [x] Implement see-all count.
+  - [x] Show total matching result count.
+  - [x] Link/control should reveal all matching results if initial display is limited.
+  - [x] Do not navigate to a fake route unless a real route exists.
+- [x] Implement empty state.
+  - [x] Show a clear no-results message.
+  - [x] Reuse popular suggestions from Story 4.4 as alternatives.
+  - [x] Avoid showing stale previous results after a no-result query.
+- [x] Validate.
+  - [x] Confirm matching query renders result cards.
+  - [x] Confirm result card links navigate to canonical product detail routes.
+  - [x] Confirm category filter chips refine results.
+  - [x] Confirm no-results query shows empty state and suggestions.
+  - [x] Run lint and production build.
 
 ## Dev Notes
 
@@ -94,3 +94,16 @@ Use catalog fields to render:
 ## Review Notes
 - Reviewed against Epic 4.5 acceptance criteria, architecture search component mapping, and JSON-only storage constraints.
 - Ready for development after Story 4.4 search input state and Story 1.4 search utility exist.
+
+## Dev Agent Record
+### Completion Notes
+- Added a client-side `SearchResults` component and integrated it into the `/search` page shell.
+- Rendered JSON-backed horizontal result cards with product image/fallback, OEM metadata, brand, category, availability, category chips, and a see-all toggle.
+- Implemented empty-state messaging with reusable suggestions and verified the route with `npm run lint` and `npm run build`.
+
+### File List
+- `src/components/search/SearchPageShell.tsx`
+- `src/components/search/SearchResults.tsx`
+
+### Change Log
+- Implemented Story 4.5 search results display with JSON-backed cards, category refinement, see-all control, and empty-state handling.
