@@ -4,8 +4,17 @@ import { notFound } from "next/navigation";
 import type { Mode } from "@/data/types";
 import { SeoJsonLd } from "@/components/shared/SeoJsonLd";
 import { ProductDetail } from "@/components/product/ProductDetail";
-import { getCatalogue, getCategoryBySlug, getProductBySlug, getStaticProductParams } from "@/lib/dataUtils";
-import { buildBreadcrumbListJsonLd, buildProductJsonLd, buildProductMetadata } from "@/lib/seoHelpers";
+import {
+  getCatalogue,
+  getCategoryBySlug,
+  getProductBySlug,
+  getStaticProductParams,
+} from "@/lib/dataUtils";
+import {
+  buildBreadcrumbListJsonLd,
+  buildProductJsonLd,
+  buildProductMetadata,
+} from "@/lib/seoHelpers";
 import { isMode } from "@/lib/modeUtils";
 
 type ProductRouteParams = {
@@ -83,12 +92,20 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             { name: "Home", path: "/" },
             { name: "Categories", path: "/categories/" },
             { name: category.title, path: `/${mode}/${category.slug}/` },
-            { name: product.name, path: `/${mode}/${category.slug}/${product.slug}/` },
+            {
+              name: product.name,
+              path: `/${mode}/${category.slug}/${product.slug}/`,
+            },
           ])}
         />
         <SeoJsonLd data={buildProductJsonLd(product, mode)} />
 
-        <ProductDetail category={category} content={detail} mode={mode} product={product} />
+        <ProductDetail
+          category={category}
+          content={detail}
+          mode={mode}
+          product={product}
+        />
       </div>
     </section>
   );

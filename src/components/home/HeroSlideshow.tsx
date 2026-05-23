@@ -38,13 +38,22 @@ export function HeroSlideshow() {
   }, []);
 
   return (
-    <div className="hero-visual-card" aria-label="Vehicle spare parts slideshow">
+    <div
+      className="hero-visual-card"
+      aria-label="Vehicle spare parts slideshow"
+    >
       {SLIDES.map((slide, index) => (
         <div
           className={`hero-slide${index === activeSlide ? " active" : ""}`}
           key={slide.src}
         >
-          <Image src={slide.src} alt={slide.alt} width={640} height={420} priority />
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            width={640}
+            height={420}
+            priority
+          />
         </div>
       ))}
     </div>

@@ -7,7 +7,8 @@ import {
   getProductUrl,
 } from "@/lib/dataUtils";
 
-export const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://new-sv-auto-test.web.app";
+export const DEFAULT_SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://new-sv-auto-test.web.app";
 export const BUSINESS_NAME = "SV Enterprises";
 export const BUSINESS_PHONE = "+91 80 2345 6789";
 
@@ -34,10 +35,7 @@ export type JsonLdValue =
 
 export type JsonLdObject = { [key: string]: JsonLdValue };
 
-export function absoluteUrl(
-  path = "/",
-  siteUrl = DEFAULT_SITE_URL,
-): string {
+export function absoluteUrl(path = "/", siteUrl = DEFAULT_SITE_URL): string {
   const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
@@ -102,10 +100,7 @@ export function buildCategoryMetadata(
   });
 }
 
-export function buildProductMetadata(
-  mode: Mode,
-  product: Product,
-): Metadata {
+export function buildProductMetadata(mode: Mode, product: Product): Metadata {
   return buildMetadata({
     title: `${product.name} ${product.oemNumber} | ${product.category} Bangalore | ${BUSINESS_NAME}`,
     description: `Enquire for ${product.name} (${product.oemNumber || "standard specification"}) from ${BUSINESS_NAME}, Bangalore wholesale dealer for ${product.category.toLowerCase()}.`,

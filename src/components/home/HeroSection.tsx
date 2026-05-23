@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { Catalogue, Mode, ModeContent } from "@/data/types";
 import { useMode } from "@/context/ModeContext";
-import { getBrands } from "@/lib/dataUtils";
-import { HeroSlideshow } from "@/components/home/HeroSlideshow";
 import { ModeToggle } from "@/components/home/ModeToggle";
 import { BrandMarquee } from "@/components/home/BrandMarquee";
 
@@ -14,7 +13,11 @@ interface HeroSectionProps {
   children?: ReactNode;
 }
 
-function splitTitle(title: string): { before: string; accent: string; after: string } {
+function splitTitle(title: string): {
+  before: string;
+  accent: string;
+  after: string;
+} {
   const match = title.match(/^(.*)<span>(.*)<\/span>(.*)$/);
 
   if (!match) {
@@ -40,14 +43,13 @@ function renderTitle(content: ModeContent) {
   );
 }
 
-function HeroPoint({ point }: { point: string }) {
+function HeroPoint({ point, index }: { point: string; index: number }) {
   return (
     <div className="hero-point">
-      <span className="hero-point-badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-          <path d="m5 12 4 4 10-10" />
-        </svg>
-      </span>
+      <svg viewBox="0 0 24 24" className="hero-point-icon" fill="none">
+        <circle cx="12" cy="12" r="11" fill="var(--orange)" />
+        <path d="M8 12.5L11 15.5L16 9" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
       <span>{point}</span>
     </div>
   );
@@ -77,21 +79,38 @@ export function HeroSection({ modes, children }: HeroSectionProps) {
   const { mode, setMode } = useMode();
   const currentMode: Mode = mode;
   const content = modes[currentMode];
-  const brands = getBrands(currentMode);
+
+  const sliderImages = currentMode === "industrial"
+    ? ["/assets/industry-image1.png", "/assets/industry-image2.png"]
+    : ["/assets/backhoe-diagram.png", "/assets/diagram2.png"];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="page active" id="page-home">
+      <ModeToggle mode={currentMode} onModeChange={setMode} />
       <div className="hero">
         <div className="container hero-grid">
           <div className="hero-content">
-            <div>
+            <div className="hero-text-block">
               <h1 className="hero-title">{renderTitle(content)}</h1>
+              
               <p className="hero-copy">{content.home.copy}</p>
-              <div className="hero-points" aria-label="Business highlights">
-                {content.home.points.map((point) => (
-                  <HeroPoint point={point} key={point} />
-                ))}
-              </div>
+
+              {content.home.points && content.home.points.length > 0 && (
+                <div className="hero-points-list" aria-label="Business highlights">
+                  {content.home.points.map((point, index) => (
+                    <HeroPoint point={point} index={index} key={point} />
+                  ))}
+                </div>
+              )}
+              
               <div className="hero-actions" aria-label="Hero actions">
                 <Link className="hero-cta primary" href="/search">
                   <SearchIcon />
@@ -102,13 +121,36 @@ export function HeroSection({ modes, children }: HeroSectionProps) {
                   <span>Browse by Category</span>
                 </Link>
               </div>
+              
+              <div className="hero-machine-image-wrapper">
+                <img 
+                  src={sliderImages[currentImageIndex]} 
+                  alt="Machine Parts Diagram" 
+                  className="hero-machine-image fade-transition"
+                />
+                
+                <div className="hero-trust-cards">
+                  <div className="trust-card">
+                    <span className="trust-card-value">5K+</span>
+                    <span className="trust-card-label">PRODUCTS</span>
+                  </div>
+                  <div className="trust-card-divider"></div>
+                  <div className="trust-card">
+                    <span className="trust-card-value">50+</span>
+                    <span className="trust-card-label">BRANDS</span>
+                  </div>
+                  <div className="trust-card-divider"></div>
+                  <div className="trust-card">
+                    <span className="trust-card-value">15Y+</span>
+                    <span className="trust-card-label">EXPERIENCE</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <HeroSlideshow />
-            <BrandMarquee brands={brands} label="Our Brands" />
-            <ModeToggle mode={currentMode} onModeChange={setMode} />
           </div>
         </div>
       </div>
+      <BrandMarquee />
       {children}
     </section>
   );

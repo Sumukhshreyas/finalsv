@@ -1,12 +1,15 @@
 # Story 4.4: Search Input and Suggestions
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to search for products using a text input with popular suggestions, so that I can quickly find a specific part by OEM number, name, or brand.
 
 ## Acceptance Criteria
+
 1. `/search` exists as a Next.js App Router page.
 2. The page displays a search input field with a mode-specific placeholder.
 3. Popular search suggestion chips are displayed below the input.
@@ -19,6 +22,7 @@ As a site visitor, I want to search for products using a text input with popular
 10. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Create the search route.
   - [x] Add `src/app/search/page.tsx`.
   - [x] Render the search page shell and default Automobile suggestions.
@@ -49,11 +53,13 @@ As a site visitor, I want to search for products using a text input with popular
 ## Dev Notes
 
 ### Source of Truth
+
 - Product and suggestion data must come from `src/data/catalog.json` through `src/lib/dataUtils.ts`.
 - Do not add Firebase, Firestore, database SDKs, API routes, or remote search services.
 - Search is client-side in v1.
 
 ### Architecture Requirements
+
 - Route file: `src/app/search/page.tsx`
 - Component files:
   - `src/components/search/SearchInput.tsx`
@@ -64,16 +70,19 @@ As a site visitor, I want to search for products using a text input with popular
 - Sanitize user-controlled search strings before display.
 
 ### Reference Implementation Pointers
+
 - `reference/index.html` includes the search page near `page-search`.
 - Relevant classes include `.search-bar`, `.suggestion-chip`, and `.search-filter-row`.
 - Reference function `renderSearchPage()` demonstrates mode-specific placeholder and suggestion content.
 
 ### Scope Boundaries
+
 - This story owns input and suggestions.
 - Story 4.5 owns rendering result cards, category filter chips, see-all count, and empty state.
 - This story does not add server search, database search, analytics tracking, or search persistence.
 
 ## Testing
+
 - Browser test `/search` at desktop and mobile widths.
 - Verify keyboard entry and suggestion chip click behavior.
 - Verify active mode changes placeholder and suggestion list if mode context is available.
@@ -82,20 +91,25 @@ As a site visitor, I want to search for products using a text input with popular
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 4.4 acceptance criteria, architecture client-component guidance, and JSON-only storage constraints.
 - Ready for development after Story 1.4 search utility exists.
 
 ## Dev Agent Record
+
 ### Completion Notes
+
 - Added a static `/search` page shell with a client-side search input and mode-specific suggestion chips sourced from the JSON catalog.
 - Wired search behavior to the shared `searchProducts()` utility with an active-mode default and a 2-character minimum threshold.
 - Verified the implementation with `npm run lint` and `npm run build`.
 
 ### File List
+
 - `src/app/search/page.tsx`
 - `src/components/search/SearchInput.tsx`
 - `src/components/search/SearchPageShell.tsx`
 - `src/components/search/SearchSuggestions.tsx`
 
 ### Change Log
+
 - Implemented Story 4.4 search input and suggestion behavior with JSON-backed mode-specific data and live client-side matching.

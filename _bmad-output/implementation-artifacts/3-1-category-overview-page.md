@@ -1,12 +1,15 @@
 # Story 3.1: Category Overview Page
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to see all product categories for the active business mode on a dedicated page, so that I can choose the category I want to browse.
 
 ## Acceptance Criteria
+
 1. `/categories` exists as a Next.js App Router page and renders category content from the JSON catalog source of truth.
 2. Automobile mode shows these 8 categories: Engine Parts, Brake Parts, Suspension, Electrical, Filters, Transmission, Cooling, Body Parts.
 3. Industrial mode shows these 6 categories: Bearings, Hydraulic Parts, Motors, Gearboxes, Pneumatic Parts, Seals and Couplings.
@@ -21,6 +24,7 @@ As a site visitor, I want to see all product categories for the active business 
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Create the category overview route.
   - [x] Add `src/app/categories/page.tsx`.
   - [x] Keep the route server-rendered by default so Automobile category content is present in HTML source.
@@ -50,23 +54,28 @@ As a site visitor, I want to see all product categories for the active business 
 ## Dev Notes
 
 ### Source of Truth
+
 - All category data must come from local JSON files, primarily `src/data/catalog.json`.
 - Do not add Firebase, Firestore, database SDKs, or API-backed persistence.
 - Story 1.3 owns the catalog schema and seed data.
 - Story 1.4 owns catalog utility functions and slug/mode helpers.
 
 ### Expected Existing Utilities
+
 - `getCategories(mode)` should return categories for the active mode.
 - Slug helpers should produce canonical slugs and apply the Hydraulic Parts override.
 - If these utilities are missing when development starts, implement the smallest compatible utility surface in the Story 1.4-owned files rather than hard-coding route data inside this page.
 
 ### Route and Rendering
+
 - Route: `src/app/categories/page.tsx`
 - This route has no mode segment, so it should render Automobile as the default server output.
 - Client-side mode switching may be layered on top using the existing mode context, but the default content must remain visible without waiting for client JavaScript.
 
 ### Required Category Sets
+
 Automobile:
+
 - Engine Parts
 - Brake Parts
 - Suspension
@@ -77,6 +86,7 @@ Automobile:
 - Body Parts
 
 Industrial:
+
 - Bearings
 - Hydraulic Parts
 - Motors
@@ -85,16 +95,19 @@ Industrial:
 - Seals and Couplings
 
 ### Reference Implementation Pointers
+
 - `reference/index.html` contains the source visual and behavior reference.
 - Category overview breadcrumb and page structure appear near the `category-breadcrumb` and `showCategoriesPage` sections.
 - Existing extracted CSS should already be available in `src/app/globals.css` from Story 1.2.
 
 ### Scope Boundaries
+
 - This story does not implement category detail product grids; that is Story 3.2.
 - This story does not implement filtering, sorting, or grid/list view controls; those are later Epic 3 stories.
 - This story does not implement product detail pages, enquiry forms, cart, checkout, user login, or payments.
 
 ## Testing
+
 - Verify `/categories` in browser at desktop and mobile widths.
 - Inspect server-rendered HTML or page source for default Automobile category text.
 - Verify all category links use canonical mode/category slugs.

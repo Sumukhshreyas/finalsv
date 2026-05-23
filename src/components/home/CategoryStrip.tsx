@@ -6,7 +6,11 @@ import { useMode } from "@/context/ModeContext";
 import { getCatalogue, getCategories } from "@/lib/dataUtils";
 import { CategoryCard } from "@/components/catalog/CategoryCard";
 
-function splitTitle(title: string): { before: string; accent: string; after: string } {
+function splitTitle(title: string): {
+  before: string;
+  accent: string;
+  after: string;
+} {
   const match = title.match(/^(.*)<span>(.*)<\/span>(.*)$/);
 
   if (!match) {
@@ -51,7 +55,10 @@ export function CategoryStrip() {
             View all
           </Link>
         </div>
-        <div className="card-grid category-strip" aria-label={`${mode} categories`}>
+        <div
+          className="card-grid category-strip"
+          aria-label={`${mode} categories`}
+        >
           {categories.map((category) => (
             <CategoryCard category={category} mode={mode} key={category.id} />
           ))}

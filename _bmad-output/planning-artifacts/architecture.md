@@ -1,17 +1,17 @@
 ---
 stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
 inputDocuments:
-  - '_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/prd.md'
-  - '_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/.decision-log.md'
-  - '_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/validation-report.md'
-  - 'reference/index.html'
-workflowType: 'architecture'
-project_name: 'New SV automobile'
-user_name: 'Balaji'
-date: '2026-05-20'
+  - "_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/prd.md"
+  - "_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/.decision-log.md"
+  - "_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/validation-report.md"
+  - "reference/index.html"
+workflowType: "architecture"
+project_name: "New SV automobile"
+user_name: "Balaji"
+date: "2026-05-20"
 lastStep: 8
-status: 'complete'
-completedAt: '2026-05-20'
+status: "complete"
+completedAt: "2026-05-20"
 ---
 
 # Architecture Decision Document
@@ -41,27 +41,27 @@ This architecture is for the New SV Automobile catalogue website. The project is
 
 ### Primary Constraints
 
-| Constraint | Decision |
-|---|---|
-| UI reference | `reference/index.html` is the source of truth for layout, classes, breakpoints, typography, and animation behavior. |
-| Framework | Next.js App Router with TypeScript. |
-| Hosting | Vercel frontend deployment. |
-| Data storage | Version-controlled JSON files in `src/data/`. |
-| Database services | No Firebase, Firestore, Firebase Storage, Prisma, or external database. |
-| Routing | `/[mode]/[categorySlug]/` and `/[mode]/[categorySlug]/[productSlug]/`. |
+| Constraint        | Decision                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
+| UI reference      | `reference/index.html` is the source of truth for layout, classes, breakpoints, typography, and animation behavior. |
+| Framework         | Next.js App Router with TypeScript.                                                                                 |
+| Hosting           | Vercel frontend deployment.                                                                                         |
+| Data storage      | Version-controlled JSON files in `src/data/`.                                                                       |
+| Database services | No Firebase, Firestore, Firebase Storage, Prisma, or external database.                                             |
+| Routing           | `/[mode]/[categorySlug]/` and `/[mode]/[categorySlug]/[productSlug]/`.                                              |
 
 ## Technology Stack
 
-| Area | Technology | Rationale |
-|---|---|---|
-| Framework | Next.js v16 App Router | Static generation, metadata APIs, Vercel-native deployment. |
-| Language | TypeScript | Strong contracts for JSON data and component props. |
-| Styling | Vanilla CSS in `src/app/globals.css` | Preserves the reference HTML styling exactly. |
-| Data | JSON file imports | Simple manual editing, zero backend cost, easy deployment. |
-| Data typing | `src/data/types.ts` | Validates shape used by pages and helpers. |
-| Hosting | Vercel | Fast CDN and simple production/preview deploys. |
-| Sitemap | `next-sitemap` | Generates `sitemap.xml` and `robots.txt`. |
-| Analytics | Vercel Analytics | Lightweight Web Vitals monitoring. |
+| Area        | Technology                           | Rationale                                                   |
+| ----------- | ------------------------------------ | ----------------------------------------------------------- |
+| Framework   | Next.js v16 App Router               | Static generation, metadata APIs, Vercel-native deployment. |
+| Language    | TypeScript                           | Strong contracts for JSON data and component props.         |
+| Styling     | Vanilla CSS in `src/app/globals.css` | Preserves the reference HTML styling exactly.               |
+| Data        | JSON file imports                    | Simple manual editing, zero backend cost, easy deployment.  |
+| Data typing | `src/data/types.ts`                  | Validates shape used by pages and helpers.                  |
+| Hosting     | Vercel                               | Fast CDN and simple production/preview deploys.             |
+| Sitemap     | `next-sitemap`                       | Generates `sitemap.xml` and `robots.txt`.                   |
+| Analytics   | Vercel Analytics                     | Lightweight Web Vitals monitoring.                          |
 
 ### Starter Command
 
@@ -141,7 +141,7 @@ export interface Product {
   compatibleApplications?: string[];
   technicalSpecs?: Record<string, string>;
   availableSizes?: string[];
-  stockStatus: 'in-stock' | 'ready-stock' | 'available';
+  stockStatus: "in-stock" | "ready-stock" | "available";
   popularityRank: number;
   imageUrl?: string;
   imageFallbackInitials: string;
@@ -332,19 +332,19 @@ src/lib/
 
 ## Requirements Mapping
 
-| PRD Feature | Pages | Components | Data Source |
-|---|---|---|---|
-| FR-1/FR-2 Mode Switch | `page.tsx` | `ModeToggle`, `HeroSection` | `catalog.json.modes` |
-| FR-3 Category Overview | `categories/page.tsx` | `CategoryCard` | `catalog.json.categories` |
-| FR-4/FR-5/FR-6 Product Listing | `[mode]/[categorySlug]/page.tsx` | `ProductCard`, `FilterPanel`, `ViewToggle` | `catalog.json.products` |
-| FR-7/FR-8 Product Detail | `[mode]/[categorySlug]/[productSlug]/page.tsx` | `ProductDetail`, `EnquiryActions`, `TrustRow` | `catalog.json.products` |
-| FR-9/FR-10 Vehicle/Application | `vehicle/page.tsx`, `vehicle/[type]/page.tsx` | `VehicleCard`, `VehicleDetail` | `catalog.json.vehicles`, `catalog.json.applications` |
-| FR-11 Brands | `brands/page.tsx` | `BrandCard` | `catalog.json.brands` |
-| FR-12/FR-13 Search | `search/page.tsx` | `SearchInput`, `SearchResults` | `dataUtils.ts` |
-| FR-14 Contact | `contact/page.tsx` | `ContactCard` | `catalog.json.modes` |
-| FR-15 Floating WhatsApp | `layout.tsx` | `FloatingWhatsApp` | `whatsappUtils.ts` |
-| FR-16 Navigation | `layout.tsx` | `Header`, `MobileDrawer` | `catalog.json.modes`, `catalog.json.categories` |
-| FR-17/FR-18/FR-19 SEO | All pages | `SeoJsonLd` | `seoHelpers.ts`, `catalog.json` |
+| PRD Feature                    | Pages                                          | Components                                    | Data Source                                          |
+| ------------------------------ | ---------------------------------------------- | --------------------------------------------- | ---------------------------------------------------- |
+| FR-1/FR-2 Mode Switch          | `page.tsx`                                     | `ModeToggle`, `HeroSection`                   | `catalog.json.modes`                                 |
+| FR-3 Category Overview         | `categories/page.tsx`                          | `CategoryCard`                                | `catalog.json.categories`                            |
+| FR-4/FR-5/FR-6 Product Listing | `[mode]/[categorySlug]/page.tsx`               | `ProductCard`, `FilterPanel`, `ViewToggle`    | `catalog.json.products`                              |
+| FR-7/FR-8 Product Detail       | `[mode]/[categorySlug]/[productSlug]/page.tsx` | `ProductDetail`, `EnquiryActions`, `TrustRow` | `catalog.json.products`                              |
+| FR-9/FR-10 Vehicle/Application | `vehicle/page.tsx`, `vehicle/[type]/page.tsx`  | `VehicleCard`, `VehicleDetail`                | `catalog.json.vehicles`, `catalog.json.applications` |
+| FR-11 Brands                   | `brands/page.tsx`                              | `BrandCard`                                   | `catalog.json.brands`                                |
+| FR-12/FR-13 Search             | `search/page.tsx`                              | `SearchInput`, `SearchResults`                | `dataUtils.ts`                                       |
+| FR-14 Contact                  | `contact/page.tsx`                             | `ContactCard`                                 | `catalog.json.modes`                                 |
+| FR-15 Floating WhatsApp        | `layout.tsx`                                   | `FloatingWhatsApp`                            | `whatsappUtils.ts`                                   |
+| FR-16 Navigation               | `layout.tsx`                                   | `Header`, `MobileDrawer`                      | `catalog.json.modes`, `catalog.json.categories`      |
+| FR-17/FR-18/FR-19 SEO          | All pages                                      | `SeoJsonLd`                                   | `seoHelpers.ts`, `catalog.json`                      |
 
 ## Validation Results
 

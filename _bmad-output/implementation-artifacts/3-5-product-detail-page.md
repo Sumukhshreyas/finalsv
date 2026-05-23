@@ -1,12 +1,15 @@
 # Story 3.5: Product Detail Page
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to view complete details of a specific product on a dedicated page, so that I can verify it is the right part before making an enquiry.
 
 ## Acceptance Criteria
+
 1. Product detail routes are implemented at `/${mode}/${categorySlug}/${productSlug}/` using `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`.
 2. `/automobile/brake-parts/brake-disc-rotor/` loads a product detail page for Brake Disc Rotor.
 3. The product image is displayed prominently with gallery dots; gallery dots are visual only in v1 and may represent a single image.
@@ -30,6 +33,7 @@ As a site visitor, I want to view complete details of a specific product on a de
 21. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Create the dynamic product detail route.
   - [x] Add `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`.
   - [x] Implement `generateStaticParams()` from JSON-backed route helpers.
@@ -66,11 +70,13 @@ As a site visitor, I want to view complete details of a specific product on a de
 ## Dev Notes
 
 ### Source of Truth
+
 - All product detail fields must come from `src/data/catalog.json` through `src/lib/dataUtils.ts`.
 - Do not add Firebase, Firestore, database SDKs, API persistence, or local duplicated data.
 - Use interfaces from `src/data/types.ts`.
 
 ### Architecture Requirements
+
 - Product route file: `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
 - Valid mode segments are `automobile` and `industrial`.
 - Routed pages derive mode from URL segments.
@@ -79,6 +85,7 @@ As a site visitor, I want to view complete details of a specific product on a de
 - Static params must come from `getStaticProductParams()` or equivalent JSON-backed helper.
 
 ### Expected Utility Surface
+
 - `getProductBySlug(mode, categorySlug, productSlug)`
 - `getCategoryBySlug(mode, categorySlug)`
 - `getStaticProductParams()`
@@ -86,17 +93,20 @@ As a site visitor, I want to view complete details of a specific product on a de
 - Slug helpers for canonical category and product URLs
 
 ### Reference Implementation Pointers
+
 - `reference/index.html` contains the product detail layout near the `product-page` and `detail-grid` sections.
 - Relevant reference classes include `.detail-grid`, `.detail-visual`, `.detail-card`, `.detail-title`, `.detail-meta`, `.compat-grid`, `.spec-grid`, and related detail section classes.
 - Existing CSS from Story 1.2 should already be present in `src/app/globals.css`.
 
 ### Scope Boundaries
+
 - This story may reserve layout space for enquiry actions, but Story 3.6 owns the final WhatsApp/call CTA section and trust row behavior.
 - This story does not add cart, checkout, buy-now, user accounts, product saving persistence, or order tracking.
 - This story does not implement multi-image gallery behavior beyond visual dots in v1.
 - This story does not implement filters, sorting, or view toggle changes.
 
 ## Testing
+
 - Browser test one automobile and one industrial product detail route.
 - Inspect server-rendered HTML or page source for product name, OEM/spec number, and description.
 - Verify invalid mode/category/product combinations return 404.
@@ -106,12 +116,14 @@ As a site visitor, I want to view complete details of a specific product on a de
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 3.5 acceptance criteria, architecture dynamic route requirements, PRD URL depth rules, and JSON-only storage constraints.
 - Ready for development after Stories 1.3, 1.4, and 3.2 provide catalog data, slug helpers, and product URLs.
 
 ## Dev Agent Record
 
 ### Debug Log
+
 - Read the Story 3.5 brief and confirmed the route did not exist yet.
 - Inspected the JSON catalog and existing detail CSS before coding so the page could use the established classes and data fields.
 - Added a server-rendered dynamic product route with JSON-backed static params and per-product metadata.
@@ -120,6 +132,7 @@ As a site visitor, I want to view complete details of a specific product on a de
 - Restored build-generated sitemap files back to the repository baseline after validation.
 
 ### Completion Notes
+
 - Story 3.5 is implemented and ready for review.
 - The product detail page is server-rendered and statically generated from the JSON catalog.
 - Automobile and industrial product pages both render the required detail sections.
@@ -127,6 +140,7 @@ As a site visitor, I want to view complete details of a specific product on a de
 - Invalid mode/category/product combinations still call `notFound()`.
 
 ### File List
+
 - `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
 - `src/components/product/ProductDetail.tsx`
 - `src/components/product/ProductGallery.tsx`
@@ -137,6 +151,7 @@ As a site visitor, I want to view complete details of a specific product on a de
 - `_bmad-output/implementation-artifacts/sprint-status.yaml`
 
 ### Change Log
+
 - Added the dynamic product detail route and static generation helpers.
 - Added reusable detail components for the gallery, compatibility list, and technical specs.
 - Added fallback styling for image-less detail rendering.

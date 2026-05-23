@@ -46,15 +46,15 @@ development_status:
   epic-1: in-progress
   1-1-nextjs-project-initialization-and-configuration: done
   1-2-css-design-system-extraction: done
-  1-3-json-catalogue-and-typescript-data-types: review  # code review completed
+  1-3-json-catalogue-and-typescript-data-types: done # code review completed
   1-4-utility-libraries: done
-  1-5-root-layout-with-header-footer-and-floatingwhatsapp: review  # code review completed; findings open
-  1-6-vercel-deployment-and-ci: done  # code review completed, no findings
+  1-5-root-layout-with-header-footer-and-floatingwhatsapp: done # code review completed; findings open
+  1-6-vercel-deployment-and-ci: done # code review completed, no findings
   epic-1-retrospective: optional
 
   # Epic 2: Homepage with Mode Switch
   epic-2: in-progress
-  2-1-mode-toggle-and-hero-section: review
+  2-1-mode-toggle-and-hero-section: done
   2-2-categories-strip-and-top-brands: review
   2-3-featured-products-advantages-and-contact-band: review
   2-4-brand-marquee-animation: review

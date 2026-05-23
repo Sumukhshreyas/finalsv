@@ -4,7 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Category, Mode } from "@/data/types";
 import { getCategoryUrl } from "@/lib/dataUtils";
-import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
+import {
+  getAssetPath,
+  getFallbackInitials,
+} from "@/components/catalog/cardUtils";
 
 interface CategoryCardProps {
   category: Category;
@@ -19,7 +22,7 @@ export function CategoryCard({
 }: CategoryCardProps) {
   const imagePath = getAssetPath(category.imageUrl);
   const isOverview = variant === "overview";
-  const className = isOverview ? "category-overview-card" : "category-card";
+  const className = isOverview ? "category-overview-card" : "category-card category-card-clean";
 
   return (
     <Link className={className} href={getCategoryUrl(category, mode)}>
@@ -41,14 +44,11 @@ export function CategoryCard({
         </span>
       </div>
       <h3>{category.title}</h3>
-      <p>{category.description}</p>
-      {isOverview ? (
+      {isOverview && (
         <div className="category-overview-meta">
           <span className="category-overview-count">{category.count}</span>
           <span className="category-overview-link">View products</span>
         </div>
-      ) : (
-        <div className="count">{category.count}</div>
       )}
     </Link>
   );

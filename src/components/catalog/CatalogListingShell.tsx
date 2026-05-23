@@ -8,7 +8,10 @@ import { ProductCard } from "@/components/catalog/ProductCard";
 import { FilterChips } from "@/components/catalog/FilterChips";
 import { FilterPanel } from "@/components/catalog/FilterPanel";
 import { SortDropdown } from "@/components/catalog/SortDropdown";
-import { ViewToggle, type CatalogViewMode } from "@/components/catalog/ViewToggle";
+import {
+  ViewToggle,
+  type CatalogViewMode,
+} from "@/components/catalog/ViewToggle";
 
 interface CatalogListingShellProps {
   brandLabel: string;
@@ -133,7 +136,10 @@ export function CatalogListingShell({
 
   return (
     <div className="catalog-listing-shell">
-      <div className="catalog-toolbar" aria-label={`${categoryTitle} listing controls`}>
+      <div
+        className="catalog-toolbar"
+        aria-label={`${categoryTitle} listing controls`}
+      >
         <button
           aria-expanded={isFilterOpen}
           aria-haspopup="dialog"
@@ -141,7 +147,12 @@ export function CatalogListingShell({
           type="button"
           onClick={openFilterPanel}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M4 6h16" />
             <path d="M7 12h10" />
             <path d="M10 18h4" />
@@ -165,7 +176,8 @@ export function CatalogListingShell({
 
       <div className="catalog-subbar">
         <div className="catalog-count">
-          {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"} found
+          {filteredProducts.length}{" "}
+          {filteredProducts.length === 1 ? "product" : "products"} found
         </div>
         <ViewToggle onChange={setViewMode} value={viewMode} />
       </div>
@@ -176,14 +188,26 @@ export function CatalogListingShell({
           aria-label={`${categoryTitle} products`}
         >
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} mode={mode} product={product} variant={viewMode} />
+            <ProductCard
+              key={product.id}
+              mode={mode}
+              product={product}
+              variant={viewMode}
+            />
           ))}
         </div>
       ) : (
         <div className="catalog-empty" role="status">
           <h3>No products match these filters</h3>
-          <p>Clear one or more filters to see the available parts in this category.</p>
-          <button className="btn btn-secondary" type="button" onClick={resetFilters}>
+          <p>
+            Clear one or more filters to see the available parts in this
+            category.
+          </p>
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={resetFilters}
+          >
             Reset filters
           </button>
         </div>

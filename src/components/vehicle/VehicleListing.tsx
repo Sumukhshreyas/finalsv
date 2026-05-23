@@ -29,7 +29,10 @@ export function VehicleListing() {
           <ModeToggle mode={mode} onModeChange={setMode} />
         </div>
 
-        <div className="vehicle-type-list" aria-label={`${mode} vehicle and application types`}>
+        <div
+          className="vehicle-type-list"
+          aria-label={`${mode} vehicle and application types`}
+        >
           {entities.map((entity) => (
             <VehicleCard entity={entity} key={entity.id} />
           ))}

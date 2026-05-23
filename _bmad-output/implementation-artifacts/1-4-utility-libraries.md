@@ -103,11 +103,11 @@ Implement PRD slug rules:
 `dataUtils.ts` should expose, at minimum:
 
 ```typescript
-getProductBySlug(mode, categorySlug, productSlug)
-getCategoryProducts(mode, categorySlug)
-getProductsByMode(mode)
-filterProducts(products, filters)
-sortProducts(products, sort)
+getProductBySlug(mode, categorySlug, productSlug);
+getCategoryProducts(mode, categorySlug);
+getProductsByMode(mode);
+filterProducts(products, filters);
+sortProducts(products, sort);
 ```
 
 Architecture also recommends:

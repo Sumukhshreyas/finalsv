@@ -5,7 +5,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Mode, Product } from "@/data/types";
 import { getProductUrl, searchProducts } from "@/lib/dataUtils";
-import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
+import {
+  getAssetPath,
+  getFallbackInitials,
+} from "@/components/catalog/cardUtils";
 import { SearchSuggestions } from "@/components/search/SearchSuggestions";
 
 interface SearchResultsProps {
@@ -35,7 +38,9 @@ function formatAvailability(status: Product["stockStatus"]): string {
 }
 
 function getResultDescription(product: Product): string {
-  return [`OEM: ${product.oemNumber}`, product.brand, product.category].join(" - ");
+  return [`OEM: ${product.oemNumber}`, product.brand, product.category].join(
+    " - ",
+  );
 }
 
 function SearchResultCard({ mode, product }: { mode: Mode; product: Product }) {
@@ -106,25 +111,39 @@ export function SearchResults({
       return results;
     }
 
-    return results.filter((product) => product.categorySlug === activeCategorySlug);
+    return results.filter(
+      (product) => product.categorySlug === activeCategorySlug,
+    );
   }, [activeCategorySlug, results]);
 
-  const visibleResults = expanded ? filteredResults : filteredResults.slice(0, 6);
+  const visibleResults = expanded
+    ? filteredResults
+    : filteredResults.slice(0, 6);
   const isSearchReady = query.trim().length >= 2;
   const showEmptyState = !isSearchReady || filteredResults.length === 0;
   const totalMatches = filteredResults.length;
-  const seeAllText = expanded ? `Show fewer (${totalMatches})` : `See all (${totalMatches})`;
+  const seeAllText = expanded
+    ? `Show fewer (${totalMatches})`
+    : `See all (${totalMatches})`;
 
   if (showEmptyState) {
     return (
       <section aria-label={resultsTitle}>
         <div className="search-results-head">
           <h2>{resultsTitle}</h2>
-          <span>{isSearchReady ? `${totalMatches} results` : "Type at least 2 characters"}</span>
+          <span>
+            {isSearchReady
+              ? `${totalMatches} results`
+              : "Type at least 2 characters"}
+          </span>
         </div>
 
         <div className="brand-card" aria-live="polite">
-          <strong>{isSearchReady ? emptyLabel : "Search suggestions and results appear here."}</strong>
+          <strong>
+            {isSearchReady
+              ? emptyLabel
+              : "Search suggestions and results appear here."}
+          </strong>
           <p>
             {isSearchReady
               ? `No products found for "${query.trim()}".`
@@ -132,7 +151,11 @@ export function SearchResults({
           </p>
         </div>
 
-        <SearchSuggestions items={suggestions} label="Try these searches" onSelect={onQueryChange} />
+        <SearchSuggestions
+          items={suggestions}
+          label="Try these searches"
+          onSelect={onQueryChange}
+        />
       </section>
     );
   }

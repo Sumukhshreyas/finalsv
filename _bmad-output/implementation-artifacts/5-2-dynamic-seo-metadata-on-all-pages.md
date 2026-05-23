@@ -1,12 +1,15 @@
 # Story 5.2: Dynamic SEO Metadata on All Pages
 
 ## Status
+
 review
 
 ## Story
+
 As a search engine crawler, I want every page to have unique, keyword-rich metadata, so that SV Enterprises pages rank well for target search terms.
 
 ## Acceptance Criteria
+
 1. Every crawlable page has a page-specific `<title>` tag.
 2. Every crawlable page has a page-specific `<meta name="description">` with keyword-rich content.
 3. Every crawlable page has a `<meta name="keywords">` tag with relevant terms.
@@ -20,6 +23,7 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
 11. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Audit all crawlable routes.
   - [x] Homepage `/`
   - [x] `/categories`
@@ -52,32 +56,38 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
 ## Dev Notes
 
 ### Source of Truth
+
 - Metadata must be built from `src/data/catalog.json` through `src/lib/dataUtils.ts`, `slugUtils.ts`, `modeUtils.ts`, and `seoHelpers.ts`.
 - Do not create separate SEO data maps that duplicate product/category/brand/contact data.
 - Do not add Firebase, Firestore, database SDKs, or API-backed metadata lookup.
 
 ### Architecture Requirements
+
 - Architecture requires `generateMetadata` on every crawlable page.
 - SEO helpers should build title, description, canonical URL, Open Graph fields, and keywords.
 - All SEO metadata is generated server-side from JSON.
 - URL-derived mode is required on routed category/product pages.
 
 ### Expected Utility Surface
+
 - `buildPageMetadata(...)` or equivalent helper from `seoHelpers.ts`.
 - Route helpers from `dataUtils.ts` for categories, products, vehicles/applications, brands, and search/contact pages.
 - Slug helpers for canonical path generation.
 
 ### Critical Page Examples
+
 - Product title example: `Brake Disc Rotor 51712M68K00 | Brake Parts Bangalore | SV Enterprises`
 - Category title should include category, mode context, Bangalore, and SV Enterprises.
 - Contact title should include SV Enterprises contact and Bangalore.
 
 ### Scope Boundaries
+
 - This story only handles metadata tags.
 - Story 5.3 owns JSON-LD structured data.
 - Story 5.4 owns sitemap, robots, and custom 404 page.
 
 ## Testing
+
 - Inspect production build HTML or use framework output checks for representative static pages.
 - Confirm unique metadata for at least:
   - `/`
@@ -94,16 +104,20 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 5.2 acceptance criteria, architecture SEO requirements, and JSON-only storage constraints.
 - Ready for development after route helpers from earlier epics exist.
 
 ## Dev Agent Record
+
 ### Completion Notes
+
 - Added page-specific metadata to the homepage, categories page, contact page, brands page, search page, vehicle listing pages, and the dynamic category/product routes.
 - Standardized metadata generation through the existing SEO helper path so titles, descriptions, keywords, canonicals, and Open Graph fields are produced consistently from catalog data.
 - Verified the implementation with `npm run lint` and `npm run build`.
 
 ### File List
+
 - `src/app/page.tsx`
 - `src/app/categories/page.tsx`
 - `src/app/contact/page.tsx`
@@ -115,4 +129,5 @@ As a search engine crawler, I want every page to have unique, keyword-rich metad
 - `src/app/[mode]/[categorySlug]/[productSlug]/page.tsx`
 
 ### Change Log
+
 - Implemented Story 5.2 metadata coverage across all crawlable routes with JSON-backed canonical SEO output.

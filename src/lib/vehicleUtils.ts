@@ -54,9 +54,7 @@ function matchVehicleLink(part: string): VehiclePartLink | null {
     return CATEGORY_LINKS.automobile.transmission;
   }
 
-  if (
-    /(air filter|fuel filter|oil filter|filter assembly)/.test(normalized)
-  ) {
+  if (/(air filter|fuel filter|oil filter|filter assembly)/.test(normalized)) {
     return CATEGORY_LINKS.automobile.filters;
   }
 
@@ -101,7 +99,8 @@ function matchIndustrialLink(part: string): VehiclePartLink | null {
   if (
     /(hydraulic|hose|pump|seal kit|seal|valve|pressure gauge|fittings|breather)/.test(
       normalized,
-    ) || /return line filter/.test(normalized)
+    ) ||
+    /return line filter/.test(normalized)
   ) {
     return CATEGORY_LINKS.industrial.hydraulicParts;
   }
@@ -114,7 +113,11 @@ function matchIndustrialLink(part: string): VehiclePartLink | null {
     return CATEGORY_LINKS.industrial.pneumaticParts;
   }
 
-  if (/(jaw coupling|chain coupling|flexible coupling|coupling|packing|shaft sleeve)/.test(normalized)) {
+  if (
+    /(jaw coupling|chain coupling|flexible coupling|coupling|packing|shaft sleeve)/.test(
+      normalized,
+    )
+  ) {
     return CATEGORY_LINKS.industrial.sealsAndCouplings;
   }
 

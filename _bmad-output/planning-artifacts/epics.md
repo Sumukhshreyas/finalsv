@@ -1,11 +1,11 @@
 ---
 stepsCompleted: [1, 2, 3, 4]
-status: 'complete'
-completedAt: '2026-05-20'
+status: "complete"
+completedAt: "2026-05-20"
 inputDocuments:
-  - '_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/prd.md'
-  - '_bmad-output/planning-artifacts/architecture.md'
-  - 'reference/index.html'
+  - "_bmad-output/planning-artifacts/prds/prd-new-sv-automobile-2026-05-20/prd.md"
+  - "_bmad-output/planning-artifacts/architecture.md"
+  - "reference/index.html"
 ---
 
 # New SV automobile - Epic Breakdown
@@ -92,15 +92,15 @@ No separate UX design document. The reference HTML (`reference/index.html`) serv
 
 ### FR Coverage Map
 
-FR-1:  Epic 2 - Mode Toggle Switch
-FR-2:  Epic 2 - Homepage Sections
-FR-3:  Epic 3 - Category Overview Grid
-FR-4:  Epic 3 - Category Product Grid
-FR-5:  Epic 3 - Filter and Sort
-FR-6:  Epic 3 - View Mode Toggle
-FR-7:  Epic 3 - Product Information Display
-FR-8:  Epic 3 - Enquiry Actions
-FR-9:  Epic 4 - Vehicle/Application Type Listing
+FR-1: Epic 2 - Mode Toggle Switch
+FR-2: Epic 2 - Homepage Sections
+FR-3: Epic 3 - Category Overview Grid
+FR-4: Epic 3 - Category Product Grid
+FR-5: Epic 3 - Filter and Sort
+FR-6: Epic 3 - View Mode Toggle
+FR-7: Epic 3 - Product Information Display
+FR-8: Epic 3 - Enquiry Actions
+FR-9: Epic 4 - Vehicle/Application Type Listing
 FR-10: Epic 4 - Vehicle/Application Detail View
 FR-11: Epic 4 - Brand Grid
 FR-12: Epic 4 - Search Input and Suggestions
@@ -115,24 +115,29 @@ FR-19: Epic 5 - SEO-Friendly URL Structure
 ## Epic List
 
 ### Epic 1: Project Foundation & Design System
+
 Users can view the base website shell with navigation, fonts, and styling that exactly matches the reference design. A working Next.js app deployed on Vercel with the complete CSS design system, TypeScript data models, JSON catalogue data, root layout (Header, Footer, FloatingWhatsApp), and all utility libraries.
 **FRs covered:** FR-15, FR-16
 **ARs covered:** AR-1, AR-2, AR-3, AR-4, AR-5, AR-6, AR-7, AR-8, AR-9, AR-10, AR-11
 
 ### Epic 2: Homepage with Mode Switch
+
 Users can land on the homepage, toggle between Automobile and Industrial modes, and see the full homepage experience â€” hero slideshow, categories strip, featured products, brand marquee, advantages, and contact band â€” all content dynamically switching per mode.
 **FRs covered:** FR-1, FR-2
 **ARs covered:** AR-3
 
 ### Epic 3: Product Catalogue (Categories, Listings, Product Detail)
+
 Users can browse categories, view product listings with filter/sort/view toggle, and drill down to full product detail pages with WhatsApp enquiry and call CTAs â€” the core business conversion flow.
 **FRs covered:** FR-3, FR-4, FR-5, FR-6, FR-7, FR-8
 
 ### Epic 4: Discovery & Exploration (Vehicle/Application, Brands, Search)
+
 Users can explore products through alternative discovery paths â€” browsing by vehicle type or industrial application, viewing all brands, or searching by OEM number, product name, or brand.
 **FRs covered:** FR-9, FR-10, FR-11, FR-12, FR-13
 
 ### Epic 5: SEO & Launch Readiness
+
 Every page ranks on Google with proper metadata, structured data, and clean URLs. The website is ready for Google Ads campaigns with contact page, sitemap, and robots.txt.
 **FRs covered:** FR-14, FR-17, FR-18, FR-19
 **ARs covered:** AR-8

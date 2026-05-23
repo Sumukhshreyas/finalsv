@@ -16,14 +16,31 @@ export function ModeToggle({ mode, onModeChange }: ModeToggleProps) {
         onClick={() => onModeChange("automobile")}
         aria-pressed={mode === "automobile"}
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <path d="M5 16V9l2-3h10l2 3v7" />
           <path d="M7 16h10" />
           <path d="M6 13h12" />
-          <circle cx="7.5" cy="17.5" r="1.5" fill="currentColor" stroke="none" />
-          <circle cx="16.5" cy="17.5" r="1.5" fill="currentColor" stroke="none" />
+          <circle
+            cx="7.5"
+            cy="17.5"
+            r="1.5"
+            fill="currentColor"
+            stroke="none"
+          />
+          <circle
+            cx="16.5"
+            cy="17.5"
+            r="1.5"
+            fill="currentColor"
+            stroke="none"
+          />
         </svg>
-        <span>Automobile Products</span>
+        <span>Auto Spare parts</span>
       </button>
       <button
         className={`hero-mode-btn${mode === "industrial" ? " active" : ""}`}
@@ -31,17 +48,18 @@ export function ModeToggle({ mode, onModeChange }: ModeToggleProps) {
         onClick={() => onModeChange("industrial")}
         aria-pressed={mode === "industrial"}
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M3 21h18" />
-          <path d="M5 21V8l7-4v17" />
-          <path d="M12 21v-8l7-3v11" />
-          <path d="M8 10h1" />
-          <path d="M8 13h1" />
-          <path d="M8 16h1" />
-          <path d="M15 14h1" />
-          <path d="M15 17h1" />
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M12 12H5a2 2 0 0 0-2 2v5h18v-2l-3-6h-6z" />
+          <circle cx="7" cy="19" r="2" />
+          <circle cx="17" cy="19" r="2" />
+          <path d="M8 12V6h4v6" />
         </svg>
-        <span>Industrial Products</span>
+        <span>Industrial Spare parts</span>
       </button>
     </div>
   );

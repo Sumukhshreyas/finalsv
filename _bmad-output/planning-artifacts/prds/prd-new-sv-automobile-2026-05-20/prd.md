@@ -84,6 +84,7 @@ This website will be a **mobile-first, SEO-optimised product showcase** that hel
 User can switch between Automobile and Industrial modes via a two-button toggle on the homepage hero section.
 
 **Consequences (testable):**
+
 - Toggling to "Automobile Products" displays automobile-specific hero title, copy, highlight points, categories, featured products, brands, advantages, and contact details.
 - Toggling to "Industrial Products" displays industrial-specific content across all homepage sections.
 - The visual styling adapts per mode (orange accent for automobile, blue-grey accent for industrial) as defined in the reference HTML.
@@ -94,6 +95,7 @@ User can switch between Automobile and Industrial modes via a two-button toggle 
 The homepage displays the following sections in order, all content driven by the active mode:
 
 **Consequences (testable):**
+
 - **Hero Section:** Title, subtitle copy, three highlight points (e.g., "5000+ Parts In Stock"), two CTA buttons ("Search Parts", "Browse by Category"), hero image slideshow with auto-rotation, brand marquee strip.
 - **Categories Section:** Horizontally scrollable category cards with image, title, description, and parts count. "View all" link navigates to the full categories overview page.
 - **Top Brands Section:** Grid of brand cards for the active mode.
@@ -114,6 +116,7 @@ The homepage displays the following sections in order, all content driven by the
 User can view all available categories for the active mode on a dedicated page.
 
 **Consequences (testable):**
+
 - Automobile mode shows: Engine Parts, Brake Parts, Suspension, Electrical, Filters, Transmission, Cooling, Body Parts.
 - Industrial mode shows: Bearings, Hydraulic Parts, Motors, Gearboxes, Pneumatic Parts, Seals and Couplings.
 - Each card links to the corresponding category detail page.
@@ -132,6 +135,7 @@ User can view all available categories for the active mode on a dedicated page.
 User can view all products listed under a specific category.
 
 **Consequences (testable):**
+
 - Each product card shows: product image (or fallback initials), product name, OEM/spec number, short description, brand pill, and "Enquire" CTA.
 - Breadcrumb navigation displays: Home > Categories > {Category Name}.
 - Product count is displayed (e.g., "6 products found").
@@ -142,6 +146,7 @@ User can view all products listed under a specific category.
 User can filter products by category, brand, vehicle/application, and other dimensions, and sort by Popular, Name, or OEM Number.
 
 **Consequences (testable):**
+
 - Filter panel opens as a modal overlay with dropdown fields relevant to the active mode.
 - Selected filters are displayed as removable chips.
 - Sort dropdown changes the product order in the grid.
@@ -152,6 +157,7 @@ User can filter products by category, brand, vehicle/application, and other dime
 User can switch between grid view and list view for the product listing.
 
 **Consequences (testable):**
+
 - Grid view shows product cards in a 2-column grid (mobile) or wider on desktop.
 - List view shows product rows.
 - Active view mode is visually indicated.
@@ -169,6 +175,7 @@ User can switch between grid view and list view for the product listing.
 User can view complete product details on a dedicated page.
 
 **Consequences (testable):**
+
 - Product image displayed prominently with gallery dots (indicating multiple images capability).
 - Product name displayed as the page `<h1>`.
 - Stock status pill (e.g., "In Stock", "Ready stock").
@@ -186,6 +193,7 @@ User can view complete product details on a dedicated page.
 User can initiate contact directly from the product detail page.
 
 **Consequences (testable):**
+
 - Primary CTA: "WhatsApp Enquiry" (or "WhatsApp for Pricing" in industrial mode) opens WhatsApp with pre-filled product details.
 - Secondary CTA: "Call Now" (or "Call Supply Desk") initiates a phone call.
 - Tertiary action: "Download PDF" opens a single-page printable product summary for sharing or offline reference.
@@ -203,6 +211,7 @@ User can initiate contact directly from the product detail page.
 User can browse vehicle segments or industrial applications to find relevant parts.
 
 **Consequences (testable):**
+
 - Each card shows an icon, title, and short description.
 - Automobile mode lists: Tractors, Bus and Trailers, Construction, Three Wheeler, Two Wheeler, Forklift.
 - Industrial mode lists: Conveyors, Compressors, Hydraulic Power Packs, Packaging Machines, Industrial Pumps, Electrical Panels.
@@ -212,6 +221,7 @@ User can browse vehicle segments or industrial applications to find relevant par
 User can see common parts for a specific vehicle type or application.
 
 **Consequences (testable):**
+
 - Detail view shows: back button, kicker label, title, description, parts list (numbered), and a hero vehicle/application image.
 - Each part in the list is tappable and navigates to the relevant category page.
 
@@ -228,6 +238,7 @@ User can see common parts for a specific vehicle type or application.
 User can browse all available brands.
 
 **Consequences (testable):**
+
 - Automobile mode lists: Annabond, Ceekay, Delphi, Elofic, Gabriel, Gates, Hella, Hi-Q+, NGK, OSRAM, Varroc, Wurth (and more).
 - Industrial mode lists: SKF, NSK, FAG, Fenner, Bonfiglioli, Hindustan, Bosch Rexroth, Janatics, Parker, ABB, Siemens, Wurth (and more).
 - Brands displayed in a responsive grid of brand cards.
@@ -245,6 +256,7 @@ User can browse all available brands.
 User can search for products using free-text input.
 
 **Consequences (testable):**
+
 - Search input with relevant placeholder text per mode.
 - Popular search suggestion chips displayed below the input.
 - Tapping a suggestion chip populates the search input.
@@ -254,6 +266,7 @@ User can search for products using free-text input.
 User can view search results as a list of product cards.
 
 **Consequences (testable):**
+
 - Results displayed as horizontal product cards with image/icon, product name, meta information, brand, category, price indication, and availability status.
 - Filter chips (e.g., "All", "Brake", "Engine", "Suspension") for quick result refinement.
 - "See all" link with total count.
@@ -271,6 +284,7 @@ User can view search results as a list of product cards.
 User can access all business contact details from a dedicated page.
 
 **Consequences (testable):**
+
 - Business card section showing: business name, subtitle, phone, WhatsApp, email, and address.
 - Working hours card.
 - Map card with link to Google Maps.
@@ -289,6 +303,7 @@ User can access all business contact details from a dedicated page.
 A floating WhatsApp button is always visible and accessible.
 
 **Consequences (testable):**
+
 - Green circular button fixed at bottom-right.
 - Tapping opens WhatsApp (or the contact page as fallback).
 - Button does not obstruct content on mobile.
@@ -306,6 +321,7 @@ A floating WhatsApp button is always visible and accessible.
 User can navigate to all main sections from any page.
 
 **Consequences (testable):**
+
 - Desktop: pill-style nav bar with Home, Products, Search by Vehicle, Brands, Contact + "Search Parts" and "Get Quote" buttons.
 - Mobile (â‰¤1100px): hamburger menu opens a slide-out drawer with all nav links and a CTA button.
 - Active page is visually highlighted in navigation.
@@ -324,6 +340,7 @@ User can navigate to all main sections from any page.
 Each page dynamically updates its SEO metadata.
 
 **Consequences (testable):**
+
 - `<title>` tag is page-specific (e.g., "Brake Disc Rotor 51712M68K00 | Brake Parts Bangalore | SV Enterprises").
 - `<meta name="description">` is page-specific and keyword-rich.
 - `<meta name="keywords">` includes relevant terms.
@@ -335,6 +352,7 @@ Each page dynamically updates its SEO metadata.
 Each page includes structured data for search engine rich results.
 
 **Consequences (testable):**
+
 - `LocalBusiness` schema on every page with name, URL, telephone, address.
 - `BreadcrumbList` schema on category and product pages.
 - `Product` schema on product detail pages with name, brand, SKU, description, category, URL.
@@ -345,6 +363,7 @@ Each page includes structured data for search engine rich results.
 All pages use clean, readable, SEO-friendly URLs.
 
 **Consequences (testable):**
+
 - Category pages follow the pattern: `/{mode}/{category-slug}/`
   - Examples: `/automobile/brake-parts/`, `/industrial/hydraulic-hoses/`, `/automobile/engine-parts/`
 - Product detail pages follow the pattern: `/{mode}/{category-slug}/{product-slug}/`
@@ -399,14 +418,17 @@ All pages use clean, readable, SEO-friendly URLs.
 ## 7. Success Metrics
 
 **Primary**
+
 - **SM-1**: Organic search impressions for target keywords (e.g., "automobile spare parts Bangalore", "brake disc Bangalore") reach 1,000/month within 3 months of launch. Validates FR-17, FR-18, FR-19.
 - **SM-2**: Website generates â‰¥20 WhatsApp/call enquiries per month from product detail pages within 2 months of launch. Validates FR-8.
 
 **Secondary**
+
 - **SM-3**: Google Ads click-through to product/category landing pages achieves â‰¥3% CTR. Validates FR-19, FR-17.
 - **SM-4**: Mobile page load time (Largest Contentful Paint) under 2.5 seconds on 4G. Validates mobile-first design.
 
 **Counter-metrics (do not optimize)**
+
 - **SM-C1**: Bounce rate â€” do not optimize for artificially low bounce. A user who lands on a product page, reads the details, and calls via WhatsApp has completed a successful journey even if it's a single-page session.
 
 ---
@@ -448,23 +470,24 @@ All pages use clean, readable, SEO-friendly URLs.
 
 ### 9.1 Page Structure
 
-| Page | URL Pattern | SEO Page? |
-|---|---|---|
-| Homepage | `/` | Yes |
-| Categories Overview | `/categories` | Yes |
-| Category Detail (Auto) | `/automobile/{category-slug}/` | Yes â€” target category keywords |
-| Category Detail (Industrial) | `/industrial/{category-slug}/` | Yes â€” target category keywords |
-| Product Detail (Auto) | `/automobile/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
-| Product Detail (Industrial) | `/industrial/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
-| Search by Vehicle | `/vehicle` | No |
-| Vehicle Detail | `/vehicle/{type}` | No |
-| Brands | `/brands` | Yes |
-| Contact | `/contact` | Yes |
-| Search | `/search` | No |
+| Page                         | URL Pattern                                   | SEO Page?                         |
+| ---------------------------- | --------------------------------------------- | --------------------------------- |
+| Homepage                     | `/`                                           | Yes                               |
+| Categories Overview          | `/categories`                                 | Yes                               |
+| Category Detail (Auto)       | `/automobile/{category-slug}/`                | Yes â€” target category keywords  |
+| Category Detail (Industrial) | `/industrial/{category-slug}/`                | Yes â€” target category keywords  |
+| Product Detail (Auto)        | `/automobile/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
+| Product Detail (Industrial)  | `/industrial/{category-slug}/{product-slug}/` | Yes â€” target long-tail keywords |
+| Search by Vehicle            | `/vehicle`                                    | No                                |
+| Vehicle Detail               | `/vehicle/{type}`                             | No                                |
+| Brands                       | `/brands`                                     | Yes                               |
+| Contact                      | `/contact`                                    | Yes                               |
+| Search                       | `/search`                                     | No                                |
 
 ### 9.2 URL Examples
 
 **Automobile:**
+
 - `/automobile/brake-parts/`
 - `/automobile/brake-parts/brake-disc-rotor/`
 - `/automobile/engine-parts/`
@@ -473,6 +496,7 @@ All pages use clean, readable, SEO-friendly URLs.
 - `/automobile/suspension/shock-absorber/`
 
 **Industrial:**
+
 - `/industrial/bearings/`
 - `/industrial/bearings/deep-groove-bearing/` (or `/industrial/bearings/skf-6205/` via slug override)
 - `/industrial/hydraulic-hoses/`
@@ -493,21 +517,21 @@ All pages use clean, readable, SEO-friendly URLs.
 
 Every product displayed on the website must include the following data fields:
 
-| Field | Required | Display Location |
-|---|---|---|
-| Product Name | âœ… | Card title, detail `<h1>`, SEO title |
-| Product Image | âœ… (fallback: initials) | Card visual, detail hero |
-| Category | âœ… | Breadcrumb, meta |
-| OEM Number / Product Number | âœ… | Card subtitle, detail chip |
-| Short Description | âœ… | Card body |
-| Full Description | Optional | Detail page section |
-| Brand / Manufacturer | âœ… | Card pill, detail chip |
-| Compatible Vehicles (Auto) | Optional | Detail "Compatible With" section |
-| Compatible Applications (Industrial) | Optional | Detail "Suitable For" section |
-| Technical Specs | Optional | Detail "Technical Specs" section |
-| Available Sizes | Optional | Detail specs or meta |
-| Stock Status | Optional | Detail pill ("In Stock", "Ready stock") |
-| Popularity Rank | âœ… | Sort order |
+| Field                                | Required                 | Display Location                        |
+| ------------------------------------ | ------------------------ | --------------------------------------- |
+| Product Name                         | âœ…                      | Card title, detail `<h1>`, SEO title    |
+| Product Image                        | âœ… (fallback: initials) | Card visual, detail hero                |
+| Category                             | âœ…                      | Breadcrumb, meta                        |
+| OEM Number / Product Number          | âœ…                      | Card subtitle, detail chip              |
+| Short Description                    | âœ…                      | Card body                               |
+| Full Description                     | Optional                 | Detail page section                     |
+| Brand / Manufacturer                 | âœ…                      | Card pill, detail chip                  |
+| Compatible Vehicles (Auto)           | Optional                 | Detail "Compatible With" section        |
+| Compatible Applications (Industrial) | Optional                 | Detail "Suitable For" section           |
+| Technical Specs                      | Optional                 | Detail "Technical Specs" section        |
+| Available Sizes                      | Optional                 | Detail specs or meta                    |
+| Stock Status                         | Optional                 | Detail pill ("In Stock", "Ready stock") |
+| Popularity Rank                      | âœ…                      | Sort order                              |
 
 ---
 

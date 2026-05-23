@@ -36,10 +36,7 @@ export function buildProductWhatsAppMessage(
   });
 }
 
-export function buildWhatsAppUrl(
-  phoneNumber: string,
-  message: string,
-): string {
+export function buildWhatsAppUrl(phoneNumber: string, message: string): string {
   const phone = normalizeWhatsAppPhone(phoneNumber);
   const encodedMessage = encodeURIComponent(message);
 

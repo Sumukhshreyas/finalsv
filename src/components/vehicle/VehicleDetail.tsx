@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { VehicleEntity } from "@/data/types";
-import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
-import { getVehicleEntityCaption, getVehicleEntityKicker, getVehiclePartLink } from "@/lib/vehicleUtils";
+import {
+  getAssetPath,
+  getFallbackInitials,
+} from "@/components/catalog/cardUtils";
+import {
+  getVehicleEntityCaption,
+  getVehicleEntityKicker,
+  getVehiclePartLink,
+} from "@/lib/vehicleUtils";
 
 interface VehicleDetailProps {
   entity: VehicleEntity;
@@ -36,7 +43,9 @@ export function VehicleDetail({ entity }: VehicleDetailProps) {
                 <span>
                   <strong>{part}</strong>
                   <small>
-                    {link ? `Open ${link.label}` : `Common part for ${entity.title}`}
+                    {link
+                      ? `Open ${link.label}`
+                      : `Common part for ${entity.title}`}
                   </small>
                 </span>
               </>

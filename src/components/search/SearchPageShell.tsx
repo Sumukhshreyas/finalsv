@@ -29,7 +29,7 @@ export function SearchPageShell() {
 
   return (
     <section className="section compact">
-      <div className="container page-shell search-page-wrap">
+      <div className="container search-page-wrap">
         <nav className="category-breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>
           <span aria-hidden="true">&gt;</span>

@@ -12,7 +12,11 @@ import {
   getCategoryProducts,
   getStaticCategoryParams,
 } from "@/lib/dataUtils";
-import { buildBreadcrumbListJsonLd, buildCategoryMetadata, buildItemListJsonLd } from "@/lib/seoHelpers";
+import {
+  buildBreadcrumbListJsonLd,
+  buildCategoryMetadata,
+  buildItemListJsonLd,
+} from "@/lib/seoHelpers";
 import { isMode } from "@/lib/modeUtils";
 
 type CategoryRouteParams = {
@@ -63,8 +67,11 @@ export async function generateMetadata({
   return buildCategoryMetadata(mode, category);
 }
 
-export default async function CategoryDetailPage({ params }: CategoryPageProps) {
-  const { mode, category, categories, products } = await resolveCategoryPage(params);
+export default async function CategoryDetailPage({
+  params,
+}: CategoryPageProps) {
+  const { mode, category, categories, products } =
+    await resolveCategoryPage(params);
   const catalogue = getCatalogue();
   const filterPanel = catalogue.modes[mode].filterPanel;
   const brandField = filterPanel.fields[1];

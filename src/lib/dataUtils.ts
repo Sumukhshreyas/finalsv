@@ -9,7 +9,12 @@ import type {
   VehicleType,
 } from "@/data/types";
 import { DEFAULT_MODE, getValidMode } from "@/lib/modeUtils";
-import { findBySlug, getProductSlug, slugsMatch, slugify } from "@/lib/slugUtils";
+import {
+  findBySlug,
+  getProductSlug,
+  slugsMatch,
+  slugify,
+} from "@/lib/slugUtils";
 
 export type ProductSort =
   | "popularity"
@@ -165,14 +170,14 @@ export function sortProducts(
       );
     case "popularity":
     default:
-      return sortedProducts.sort(
-        (a, b) => a.popularityRank - b.popularityRank,
-      );
+      return sortedProducts.sort((a, b) => a.popularityRank - b.popularityRank);
   }
 }
 
 export function searchProducts(query: string, mode?: Mode): Product[] {
-  const products = mode ? getProductsByMode(mode) : getModes().flatMap(getProductsByMode);
+  const products = mode
+    ? getProductsByMode(mode)
+    : getModes().flatMap(getProductsByMode);
 
   return filterProducts(products, { query });
 }

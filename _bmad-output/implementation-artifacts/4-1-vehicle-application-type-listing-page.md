@@ -1,12 +1,15 @@
 # Story 4.1: Vehicle/Application Type Listing Page
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to browse vehicle segments or industrial applications on a dedicated page, so that I can find parts relevant to my specific vehicle or machinery type.
 
 ## Acceptance Criteria
+
 1. `/vehicle` exists as a Next.js App Router page and renders listing content from the JSON catalog source of truth.
 2. In Automobile mode, the page displays 6 vehicle type cards: Tractors, Bus and Trailers, Construction, Three Wheeler, Two Wheeler, Forklift.
 3. Each vehicle card shows an icon or badge, title, and short description.
@@ -21,6 +24,7 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 12. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Create the vehicle/application listing route.
   - [x] Add `src/app/vehicle/page.tsx`.
   - [x] Render Automobile vehicles by default for server output.
@@ -49,11 +53,13 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 ## Dev Notes
 
 ### Source of Truth
+
 - `catalog.json.vehicles` defines the 6 Automobile vehicle types.
 - `catalog.json.applications` defines the 6 Industrial application types.
 - Do not add `vehicles.ts`, `applications.ts`, Firebase, Firestore, database SDKs, or API-backed persistence.
 
 ### Architecture Requirements
+
 - Route file: `src/app/vehicle/page.tsx`
 - Component location: `src/components/vehicle/VehicleCard.tsx`
 - Server Components should load default listing data.
@@ -61,6 +67,7 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 - Use interfaces from `src/data/types.ts`.
 
 ### Required Automobile Items
+
 - Tractors
 - Bus and Trailers
 - Construction
@@ -69,6 +76,7 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 - Forklift
 
 ### Required Industrial Items
+
 - Conveyors
 - Compressors
 - Hydraulic Power Packs
@@ -77,16 +85,19 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 - Electrical Panels
 
 ### Reference Implementation Pointers
+
 - `reference/index.html` contains the listing page at `page-vehicle`.
 - Relevant reference classes include `.vehicle-type-list`, `.vehicle-type-card`, and `.vehicle-type-icon`.
 - Reference function `renderExplorePage()` shows how mode-specific items populate the listing.
 
 ### Scope Boundaries
+
 - This story does not implement `/vehicle/[type]` detail content; that is Story 4.2.
 - This story does not implement brands or search pages.
 - This story does not implement category/product detail pages beyond linking to existing routes.
 
 ## Testing
+
 - Browser test `/vehicle` at desktop and mobile widths.
 - Inspect server-rendered HTML or page source for Automobile vehicle names.
 - Verify mode switch updates the listing if mode context is available.
@@ -95,16 +106,20 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 4.1 acceptance criteria, architecture component mapping, and JSON-only storage constraints.
 - Ready for development after Story 1.3 catalog data and Story 1.4 utility functions are available.
 
 ## Dev Agent Record
+
 ### Completion Notes
+
 - Added a server-rendered `/vehicle` entrypoint with page metadata and a client-side mode toggle that swaps between Automobile vehicle cards and Industrial application cards from the JSON catalog.
 - Implemented reusable vehicle/application cards backed by `src/lib/dataUtils.ts` and preserved the reference `vehicle-type-*` class structure.
 - Verified the route with `npm run lint` and `npm run build`.
 
 ### File List
+
 - `src/app/vehicle/page.tsx`
 - `src/components/vehicle/VehicleCard.tsx`
 - `src/components/vehicle/VehicleListing.tsx`
@@ -114,4 +129,5 @@ As a site visitor, I want to browse vehicle segments or industrial applications 
 - `src/app/globals.css`
 
 ### Change Log
+
 - Implemented Story 4.1 vehicle/application listing page, mode-aware rendering, and JSON-backed vehicle/application lookups.

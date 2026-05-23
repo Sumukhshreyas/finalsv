@@ -38,7 +38,10 @@ export default function RootLayout({
   const catalogue = getCatalogue();
 
   return (
-    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
+    <html
+      lang="en"
+      className={`${barlow.variable} ${barlowCondensed.variable}`}
+    >
       <body>
         <ModeProvider>
           <div className="app">

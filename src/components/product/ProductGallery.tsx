@@ -1,6 +1,9 @@
 import Image from "next/image";
 import type { Product } from "@/data/types";
-import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
+import {
+  getAssetPath,
+  getFallbackInitials,
+} from "@/components/catalog/cardUtils";
 
 interface ProductGalleryProps {
   product: Product;

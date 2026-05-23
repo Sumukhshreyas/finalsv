@@ -1,6 +1,6 @@
 # Story 2.1: Mode Toggle & Hero Section
 
-Status: review
+Status: done
 
 ## Story
 

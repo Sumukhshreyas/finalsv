@@ -1,8 +1,17 @@
 import Link from "next/link";
-import type { Category, DetailContent, Mode, Product, TrustItem } from "@/data/types";
+import type {
+  Category,
+  DetailContent,
+  Mode,
+  Product,
+  TrustItem,
+} from "@/data/types";
 import { getCatalogue, getCategoryUrl, getProductUrl } from "@/lib/dataUtils";
 import { BUSINESS_PHONE } from "@/lib/seoHelpers";
-import { buildProductWhatsAppUrl, normalizeWhatsAppPhone } from "@/lib/whatsappUtils";
+import {
+  buildProductWhatsAppUrl,
+  normalizeWhatsAppPhone,
+} from "@/lib/whatsappUtils";
 import { EnquiryActions } from "@/components/product/EnquiryActions";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { CompatibilityList } from "@/components/product/CompatibilityList";
@@ -30,7 +39,13 @@ function formatStockStatus(status: Product["stockStatus"]) {
 
 function HeartIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
     </svg>
   );
@@ -38,7 +53,13 @@ function HeartIcon() {
 
 function BackIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="m15 18-6-6 6-6" />
     </svg>
   );
@@ -46,7 +67,13 @@ function BackIcon() {
 
 function MetaPointIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M12 21s6-4.35 6-10.2A6 6 0 1 0 6 10.8C6 16.65 12 21 12 21Z" />
       <circle cx="12" cy="10.5" r="2.2" />
     </svg>
@@ -66,8 +93,8 @@ function getWhatsAppPhone(mode: Mode) {
   const catalogue = getCatalogue();
   const modeContent = catalogue.modes[mode];
   return (
-    modeContent.home.contactList.find((item) => item.label === "WhatsApp")?.value ||
-    BUSINESS_PHONE
+    modeContent.home.contactList.find((item) => item.label === "WhatsApp")
+      ?.value || BUSINESS_PHONE
   );
 }
 
@@ -95,7 +122,12 @@ function getTrustItems(mode: Mode, content: DetailContent): TrustItem[] {
   return content.trust;
 }
 
-export function ProductDetail({ category, content, mode, product }: ProductDetailProps) {
+export function ProductDetail({
+  category,
+  content,
+  mode,
+  product,
+}: ProductDetailProps) {
   const compatibleItems =
     mode === "automobile"
       ? product.compatibleVehicles || []
@@ -109,9 +141,17 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
 
   const specRows =
     product.technicalSpecs && Object.keys(product.technicalSpecs).length > 0
-      ? Object.entries(product.technicalSpecs).map(([label, value]) => ({ label, value }))
+      ? Object.entries(product.technicalSpecs).map(([label, value]) => ({
+          label,
+          value,
+        }))
       : product.availableSizes && product.availableSizes.length > 0
-        ? [{ label: "Available Size", value: product.availableSizes.join(", ") }]
+        ? [
+            {
+              label: "Available Size",
+              value: product.availableSizes.join(", "),
+            },
+          ]
         : [{ label: "Reference", value: product.oemNumber }];
 
   return (
@@ -122,7 +162,11 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
             <BackIcon />
             Back to {category.title}
           </Link>
-          <button aria-label="Save product" className="detail-favorite" type="button">
+          <button
+            aria-label="Save product"
+            className="detail-favorite"
+            type="button"
+          >
             <HeartIcon />
           </button>
           <ProductGallery product={product} />
@@ -132,7 +176,9 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
           <div className="detail-topbar">
             <div>
               <h1>{product.name}</h1>
-              <span className="stock-pill">{formatStockStatus(product.stockStatus)}</span>
+              <span className="stock-pill">
+                {formatStockStatus(product.stockStatus)}
+              </span>
             </div>
           </div>
 
@@ -174,7 +220,9 @@ export function ProductDetail({ category, content, mode, product }: ProductDetai
 
           <section className="detail-section">
             <h2>{content.descriptionTitle}</h2>
-            <p className="desc">{product.fullDescription || product.shortDescription}</p>
+            <p className="desc">
+              {product.fullDescription || product.shortDescription}
+            </p>
           </section>
         </div>
       </div>

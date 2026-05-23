@@ -139,7 +139,11 @@ export function FilterPanel({
           </label>
 
           <div className="filter-actions">
-            <button className="btn btn-secondary" type="button" onClick={onReset}>
+            <button
+              className="btn btn-secondary"
+              type="button"
+              onClick={onReset}
+            >
               Reset
             </button>
             <button className="btn btn-primary" type="submit">

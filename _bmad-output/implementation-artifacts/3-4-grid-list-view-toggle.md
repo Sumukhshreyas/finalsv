@@ -1,12 +1,15 @@
 # Story 3.4: Grid/List View Toggle
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to switch between grid and list view for the product listing, so that I can choose my preferred way to browse products.
 
 ## Acceptance Criteria
+
 1. On category detail pages, two view toggle buttons are visible: grid icon and list icon.
 2. Grid view is active by default.
 3. On mobile, grid view shows product cards in a 2-column layout.
@@ -20,6 +23,7 @@ As a site visitor, I want to switch between grid and list view for the product l
 11. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Add the view toggle component.
   - [x] Create `src/components/catalog/ViewToggle.tsx`.
   - [x] Use icon buttons for grid and list states.
@@ -50,16 +54,19 @@ As a site visitor, I want to switch between grid and list view for the product l
 ## Dev Notes
 
 ### Source of Truth
+
 - Product data remains JSON-backed through `src/data/catalog.json` and `src/lib/dataUtils.ts`.
 - Do not duplicate product arrays or create separate list-view data.
 - Do not add Firebase, Firestore, database SDKs, or API-backed persistence.
 
 ### Architecture Requirements
+
 - `ViewToggle` is a Client Component because it owns interactive UI state.
 - The category page should still render a default grid listing from server data before hydration.
 - If Story 3.3 introduced a client listing shell, integrate the view mode into that same shell rather than creating competing state containers.
 
 ### Component Guidance
+
 - Preferred files:
   - `src/components/catalog/ViewToggle.tsx`
   - Existing listing shell from Story 3.3, if present
@@ -67,16 +74,19 @@ As a site visitor, I want to switch between grid and list view for the product l
 - Avoid separate `GridProductCard` and `ListProductCard` components unless sharing the content renderer would be more complex than the duplication removed.
 
 ### Reference Implementation Pointers
+
 - The reference product listing uses `.category-grid` and product card classes for the grid layout.
 - Search/list-like product rows in `reference/index.html` use horizontal row patterns such as `.demo-product-card`; use as visual guidance without importing search-specific behavior.
 
 ### Scope Boundaries
+
 - This story does not add new filters or sort options.
 - This story does not implement product detail page content.
 - This story does not implement product-detail trust row or WhatsApp/call CTA section.
 - This story does not persist view preference to a database or server.
 
 ## Testing
+
 - Browser test at desktop and mobile widths.
 - Verify toggle buttons with keyboard and screen reader labels.
 - Verify filtered/sorted products remain unchanged while switching views.
@@ -85,12 +95,14 @@ As a site visitor, I want to switch between grid and list view for the product l
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 3.4 acceptance criteria, architecture client-component guidance, and JSON-only storage constraints.
 - Ready for development after Stories 3.2 and 3.3 establish the listing shell.
 
 ## Dev Agent Record
 
 ### Debug Log
+
 - Loaded the story spec and inspected the existing category listing shell from Story 3.3.
 - Confirmed the Next.js app router docs locally before editing the route and client component boundary.
 - Added a dedicated client `ViewToggle` and threaded `viewMode` state through the listing shell without touching the server route or static params logic.
@@ -99,6 +111,7 @@ As a site visitor, I want to switch between grid and list view for the product l
 - Verified lint, production build, and live route markup for the new toggle controls.
 
 ### Completion Notes
+
 - Story 3.4 is implemented and ready for review.
 - Grid remains the default view on category pages.
 - Filters and sort state continue to work while switching between grid and list views.
@@ -106,6 +119,7 @@ As a site visitor, I want to switch between grid and list view for the product l
 - No persistence, checkout, login, or external database behavior was introduced.
 
 ### File List
+
 - `src/components/catalog/ViewToggle.tsx`
 - `src/components/catalog/ProductCard.tsx`
 - `src/components/catalog/CatalogListingShell.tsx`
@@ -113,6 +127,7 @@ As a site visitor, I want to switch between grid and list view for the product l
 - `_bmad-output/implementation-artifacts/3-4-grid-list-view-toggle.md`
 
 ### Change Log
+
 - Added grid/list view toggles to category detail listing controls.
 - Added list-row product card rendering while keeping the existing product content and enquiry affordance.
 - Added responsive styling for the new view mode and preserved the existing mobile grid layout.

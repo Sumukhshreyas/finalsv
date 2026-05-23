@@ -13,7 +13,10 @@ export function CategoriesOverview() {
   const content = catalogue.modes[mode].categoriesOverview;
 
   return (
-    <section className="section compact" aria-labelledby="categories-overview-title">
+    <section
+      className="section compact"
+      aria-labelledby="categories-overview-title"
+    >
       <div className="container page-shell">
         <div className="category-overview-shell">
           <nav className="category-breadcrumb" aria-label="Breadcrumb">
@@ -28,7 +31,10 @@ export function CategoriesOverview() {
             <ModeToggle mode={mode} onModeChange={setMode} />
           </div>
 
-          <div className="category-overview-grid" aria-label={`${mode} categories`}>
+          <div
+            className="category-overview-grid"
+            aria-label={`${mode} categories`}
+          >
             {categories.map((category) => (
               <CategoryCard
                 category={category}

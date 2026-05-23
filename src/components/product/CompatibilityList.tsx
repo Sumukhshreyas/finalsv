@@ -6,13 +6,23 @@ interface CompatibilityListProps {
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M20 6 9 17l-5-5" />
     </svg>
   );
 }
 
-export function CompatibilityList({ emptyCopy, items, title }: CompatibilityListProps) {
+export function CompatibilityList({
+  emptyCopy,
+  items,
+  title,
+}: CompatibilityListProps) {
   return (
     <section className="detail-section">
       <h2>{title}</h2>

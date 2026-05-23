@@ -9,8 +9,8 @@ export default function NotFound() {
             <span className="kicker">404</span>
             <h1>Page not found</h1>
             <p>
-              The page you requested is unavailable. Use the links below to return
-              to the catalogue.
+              The page you requested is unavailable. Use the links below to
+              return to the catalogue.
             </p>
 
             <div className="contact-list">

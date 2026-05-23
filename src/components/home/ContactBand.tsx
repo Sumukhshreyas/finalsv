@@ -5,7 +5,11 @@ import { useMode } from "@/context/ModeContext";
 import { getCatalogue } from "@/lib/dataUtils";
 import { buildWhatsAppUrl, normalizeWhatsAppPhone } from "@/lib/whatsappUtils";
 
-function buildGeneralWhatsAppUrl(mode: Mode, phone: string, contactCopy: string) {
+function buildGeneralWhatsAppUrl(
+  mode: Mode,
+  phone: string,
+  contactCopy: string,
+) {
   return buildWhatsAppUrl(
     phone,
     `Hello SV Enterprises, I want to enquire about ${mode} products on the homepage.\n${contactCopy}`,

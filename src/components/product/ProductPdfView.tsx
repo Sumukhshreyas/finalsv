@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import Image from "next/image";
 import type { Category, Mode, Product } from "@/data/types";
 import { useMode } from "@/context/ModeContext";
-import { getAssetPath, getFallbackInitials } from "@/components/catalog/cardUtils";
+import {
+  getAssetPath,
+  getFallbackInitials,
+} from "@/components/catalog/cardUtils";
 import { getCatalogue, getCategoryUrl } from "@/lib/dataUtils";
 import { BUSINESS_PHONE } from "@/lib/seoHelpers";
 import { normalizeWhatsAppPhone } from "@/lib/whatsappUtils";
@@ -15,7 +18,11 @@ interface ProductPdfViewProps {
   product: Product;
 }
 
-export function ProductPdfView({ category, mode, product }: ProductPdfViewProps) {
+export function ProductPdfView({
+  category,
+  mode,
+  product,
+}: ProductPdfViewProps) {
   const { setMode } = useMode();
   const catalogue = getCatalogue();
   const modeContent = catalogue.modes[mode];
@@ -24,8 +31,8 @@ export function ProductPdfView({ category, mode, product }: ProductPdfViewProps)
     modeContent.home.contactList.find((item) => item.label === "Call")?.value ||
     BUSINESS_PHONE;
   const whatsappPhone =
-    modeContent.home.contactList.find((item) => item.label === "WhatsApp")?.value ||
-    BUSINESS_PHONE;
+    modeContent.home.contactList.find((item) => item.label === "WhatsApp")
+      ?.value || BUSINESS_PHONE;
   const compatibilityItems =
     mode === "automobile"
       ? product.compatibleVehicles || []
@@ -53,7 +60,10 @@ export function ProductPdfView({ category, mode, product }: ProductPdfViewProps)
   }, [mode, setMode]);
 
   return (
-    <section className="section compact product-pdf-page" aria-labelledby="product-pdf-title">
+    <section
+      className="section compact product-pdf-page"
+      aria-labelledby="product-pdf-title"
+    >
       <div className="container page-shell">
         <article className="product-pdf-sheet">
           <header className="product-pdf-header">
@@ -84,7 +94,8 @@ export function ProductPdfView({ category, mode, product }: ProductPdfViewProps)
                 />
               ) : (
                 <span className="product-pdf-fallback">
-                  {product.imageFallbackInitials || getFallbackInitials(product.name)}
+                  {product.imageFallbackInitials ||
+                    getFallbackInitials(product.name)}
                 </span>
               )}
 
@@ -93,7 +104,10 @@ export function ProductPdfView({ category, mode, product }: ProductPdfViewProps)
                 <strong>{modeContent.contactPage.title}</strong>
                 <p>{modeContent.contactPage.address}</p>
                 <p>
-                  Call: <a href={`tel:${normalizeWhatsAppPhone(callPhone)}`}>{callPhone}</a>
+                  Call:{" "}
+                  <a href={`tel:${normalizeWhatsAppPhone(callPhone)}`}>
+                    {callPhone}
+                  </a>
                 </p>
                 <p>
                   WhatsApp:{" "}
@@ -148,14 +162,23 @@ export function ProductPdfView({ category, mode, product }: ProductPdfViewProps)
                 <h2>Technical Details</h2>
                 <ul>
                   {product.technicalSpecs
-                    ? Object.entries(product.technicalSpecs).map(([label, value]) => (
-                        <li key={label}>
-                          <strong>{label}:</strong> {value}
-                        </li>
-                      ))
-                    : product.availableSizes && product.availableSizes.length > 0
-                      ? product.availableSizes.map((size) => <li key={size}>{size}</li>)
-                      : [<li key="reference">Reference: {product.oemNumber}</li>]}
+                    ? Object.entries(product.technicalSpecs).map(
+                        ([label, value]) => (
+                          <li key={label}>
+                            <strong>{label}:</strong> {value}
+                          </li>
+                        ),
+                      )
+                    : product.availableSizes &&
+                        product.availableSizes.length > 0
+                      ? product.availableSizes.map((size) => (
+                          <li key={size}>{size}</li>
+                        ))
+                      : [
+                          <li key="reference">
+                            Reference: {product.oemNumber}
+                          </li>,
+                        ]}
                 </ul>
               </section>
 

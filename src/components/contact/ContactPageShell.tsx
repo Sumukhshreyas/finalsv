@@ -43,8 +43,8 @@ export function ContactPageShell() {
   const modeContent = catalogue.modes[mode];
   const content = modeContent.contactPage;
   const whatsappPhone =
-    modeContent.home.contactList.find((item) => item.label === "WhatsApp")?.value ||
-    "+91 98765 43210";
+    modeContent.home.contactList.find((item) => item.label === "WhatsApp")
+      ?.value || "+91 98765 43210";
   const mapHref = getMapHref(content.address);
 
   return (
@@ -66,7 +66,10 @@ export function ContactPageShell() {
               <ModeToggle mode={mode} onModeChange={setMode} />
             </div>
 
-            <div className="contact-list" aria-label={`${mode} contact options`}>
+            <div
+              className="contact-list"
+              aria-label={`${mode} contact options`}
+            >
               {modeContent.home.contactList.map((item) => (
                 <a
                   className="biz-row contact-row"
@@ -113,7 +116,12 @@ export function ContactPageShell() {
               <div>
                 <span className="kicker">{content.mapTitle}</span>
                 <p>{content.mapCopy}</p>
-                <a className="mini-btn" href={mapHref} target="_blank" rel="noopener noreferrer">
+                <a
+                  className="mini-btn"
+                  href={mapHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Open in Google Maps
                 </a>
               </div>

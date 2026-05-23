@@ -1,6 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Mode } from "@/data/types";
-import { getCatalogue, getCategoryBySlug, getProductBySlug } from "@/lib/dataUtils";
+import {
+  getCatalogue,
+  getCategoryBySlug,
+  getProductBySlug,
+} from "@/lib/dataUtils";
 import { isMode } from "@/lib/modeUtils";
 
 export type ProductRouteParams = {

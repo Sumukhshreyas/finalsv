@@ -4,7 +4,6 @@ import { AdvantagesSection } from "@/components/home/AdvantagesSection";
 import { ContactBand } from "@/components/home/ContactBand";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
-import { TopBrands } from "@/components/home/TopBrands";
 import { getCatalogue } from "@/lib/dataUtils";
 import { buildHomeMetadata } from "@/lib/seoHelpers";
 
@@ -20,7 +19,6 @@ export default function Home() {
   return (
     <HeroSection modes={catalogue.modes}>
       <CategoryStrip />
-      <TopBrands />
       <FeaturedProducts />
       <AdvantagesSection />
       <ContactBand />

@@ -1,7 +1,8 @@
 You are an Acceptance Auditor. Review this diff against the spec and context docs. Check for: violations of acceptance criteria, deviations from spec intent, missing implementation of specified behavior, contradictions between spec constraints and actual code. Output findings as a Markdown list. Each finding: one-line title, which AC/constraint it violates, and evidence from the diff.
 
 SPEC:
-```markdown
+
+````markdown
 # Story 1.4: Utility Libraries
 
 Status: review
@@ -72,6 +73,7 @@ src/data/catalog.json
   -> src/app/**/page.tsx
   -> src/components/**/*.tsx
 ```
+````
 
 No component should write to catalogue data. All catalogue reads should go through `dataUtils.ts`.
 
@@ -102,11 +104,11 @@ Implement PRD slug rules:
 `dataUtils.ts` should expose, at minimum:
 
 ```typescript
-getProductBySlug(mode, categorySlug, productSlug)
-getCategoryProducts(mode, categorySlug)
-getProductsByMode(mode)
-filterProducts(products, filters)
-sortProducts(products, sort)
+getProductBySlug(mode, categorySlug, productSlug);
+getCategoryProducts(mode, categorySlug);
+getProductsByMode(mode);
+filterProducts(products, filters);
+sortProducts(products, sort);
 ```
 
 Architecture also recommends:
@@ -218,7 +220,7 @@ GPT-5 Codex
 
 - 2026-05-20: Implemented utility layer for slugs, modes, WhatsApp links, JSON-backed catalogue queries, and SEO helpers.
 
-```
+````
 
 DIFF:
 ```diff
@@ -801,4 +803,4 @@ index 0000000..2968655
 +  );
 +}
 
-```
+````

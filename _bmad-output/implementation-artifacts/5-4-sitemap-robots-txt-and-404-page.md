@@ -1,12 +1,15 @@
 # Story 5.4: Sitemap, Robots.txt and 404 Page
 
 ## Status
+
 review
 
 ## Story
+
 As a search engine crawler, I want a sitemap.xml, robots.txt, and proper 404 handling, so that all pages are discoverable and crawl budget is used efficiently.
 
 ## Acceptance Criteria
+
 1. After production build, `next-sitemap` generates `/sitemap.xml`.
 2. After production build, `next-sitemap` generates `/robots.txt` with appropriate crawl directives.
 3. Sitemap includes all statically generated pages.
@@ -23,6 +26,7 @@ As a search engine crawler, I want a sitemap.xml, robots.txt, and proper 404 han
 14. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Finalize sitemap generation.
   - [x] Verify `next-sitemap` is installed and configured.
   - [x] Verify `postbuild` runs `next-sitemap`.
@@ -56,23 +60,27 @@ As a search engine crawler, I want a sitemap.xml, robots.txt, and proper 404 han
 ## Dev Notes
 
 ### Source of Truth
+
 - Sitemap dynamic paths must come from JSON-backed route helpers in `src/lib/dataUtils.ts` and `src/lib/slugUtils.ts`.
 - Do not hand-write static lists of category/product URLs.
 - Do not hand-write `public/sitemap.xml` or `public/robots.txt`; let `next-sitemap` generate them.
 - Do not add Firebase, Firestore, database SDKs, API routes, or external crawl services.
 
 ### Architecture Requirements
+
 - `next-sitemap.config.js` handles sitemap and robots output.
 - `NEXT_PUBLIC_SITE_URL` should define the production canonical domain.
 - Invalid slugs in dynamic routes should already call `notFound()`.
 - Custom 404 page file: `src/app/not-found.tsx`.
 
 ### Dependency Notes
+
 - Story 1.1 installed and configured `next-sitemap`.
 - Story 1.6 requires `postbuild` to run `next-sitemap`.
 - This story finalizes catalogue route coverage once category/product/vehicle routes exist.
 
 ### URL Rules
+
 - Category route: `/${mode}/${categorySlug}/`
 - Product route: `/${mode}/${categorySlug}/${productSlug}/`
 - Vehicle/application route: `/vehicle/${typeSlug}`
@@ -80,11 +88,13 @@ As a search engine crawler, I want a sitemap.xml, robots.txt, and proper 404 han
 - Hydraulic Parts canonical path: `/industrial/hydraulic-hoses/`
 
 ### Scope Boundaries
+
 - This story does not implement metadata tags; that is Story 5.2.
 - This story does not implement JSON-LD; that is Story 5.3.
 - This story does not deploy to production; it makes build output ready for deployment.
 
 ## Testing
+
 - Run:
   - `npm run lint`
   - `npm run build`
@@ -95,18 +105,23 @@ As a search engine crawler, I want a sitemap.xml, robots.txt, and proper 404 han
 - Verify invalid route behavior in browser or production server.
 
 ## Review Notes
+
 - Reviewed against Epic 5.4 acceptance criteria, architecture sitemap/404 requirements, and JSON-only storage constraints.
 - Ready for development after prior route stories and JSON-backed route helpers are implemented.
 
 ## Dev Agent Record
+
 ### Completion Notes
+
 - Updated `next-sitemap.config.js` to use the project site URL fallback and emit JSON-backed catalog routes during the postbuild step.
 - Added a custom App Router `not-found` page that inherits the shared layout shell and provides direct navigation back into the catalogue.
 - Verified the generated `robots.txt` and `sitemap.xml` output after a production build and confirmed lint/build both pass.
 
 ### File List
+
 - `next-sitemap.config.js`
 - `src/app/not-found.tsx`
 
 ### Change Log
+
 - Implemented Story 5.4 sitemap, robots, and 404 handling with catalog-backed route generation and custom not-found navigation.

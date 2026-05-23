@@ -1,12 +1,15 @@
 # Story 3.2: Category Detail Page with Product Listing
 
 ## Status
+
 review
 
 ## Story
+
 As a site visitor, I want to view all products within a selected category as grid cards, so that I can compare relevant parts and start an enquiry.
 
 ## Acceptance Criteria
+
 1. Category detail routes are implemented at `/${mode}/${categorySlug}/` using the App Router path `src/app/[mode]/[categorySlug]/page.tsx`.
 2. `/automobile/brake-parts/` loads with a hero/banner area showing the category title `Brake Parts` and its category description.
 3. The page displays a product count such as `6 products found`, based on JSON catalog data.
@@ -23,6 +26,7 @@ As a site visitor, I want to view all products within a selected category as gri
 14. The implementation passes the project lint and production build commands.
 
 ## Tasks / Subtasks
+
 - [x] Create the dynamic category detail route.
   - [x] Add `src/app/[mode]/[categorySlug]/page.tsx`.
   - [x] Implement `generateStaticParams()` from catalog utilities.
@@ -60,12 +64,14 @@ As a site visitor, I want to view all products within a selected category as gri
 ## Dev Notes
 
 ### Source of Truth
+
 - All category and product data must come from local JSON files, primarily `src/data/catalog.json`.
 - Do not add Firebase, Firestore, database SDKs, or API-backed persistence.
 - Story 1.3 owns catalog data shape and seed data.
 - Story 1.4 owns data access, mode, slug, WhatsApp, and SEO utility helpers.
 
 ### Expected Existing Utilities
+
 - `getCategoryBySlug(mode, categorySlug)` should resolve canonical category slugs.
 - `getCategoryProducts(mode, categorySlug)` should return products for the selected category.
 - `getCategories(mode)` should return same-mode categories for the chip row.
@@ -74,6 +80,7 @@ As a site visitor, I want to view all products within a selected category as gri
 - `whatsappUtils` should be used for enquiry URLs if already implemented.
 
 ### Route Rules
+
 - Route file: `src/app/[mode]/[categorySlug]/page.tsx`
 - Valid mode segments are expected to be `automobile` and `industrial`.
 - URL depth must remain at most three segments after the domain.
@@ -83,7 +90,9 @@ As a site visitor, I want to view all products within a selected category as gri
 - Hydraulic Parts must use `/industrial/hydraulic-hoses/` as the canonical route.
 
 ### Product Card Data Mapping
+
 Use the catalog fields defined by Story 1.3. Product cards should map available fields to:
+
 - Product name
 - OEM/spec number
 - Short description
@@ -93,11 +102,13 @@ Use the catalog fields defined by Story 1.3. Product cards should map available 
 - Enquiry CTA URL or action
 
 ### Reference Implementation Pointers
+
 - `reference/index.html` contains the source visual and behavior reference.
 - Category detail behavior appears near the `showCategoryPage`, `category-breadcrumb`, and category product grid sections.
 - Existing extracted CSS should already be available in `src/app/globals.css` from Story 1.2.
 
 ### Scope Boundaries
+
 - This story does not implement product filters or sorting; those are Story 3.3.
 - This story does not implement grid/list view toggle behavior; that is Story 3.4.
 - This story does not implement product detail page content; that is Story 3.5.
@@ -105,6 +116,7 @@ Use the catalog fields defined by Story 1.3. Product cards should map available 
 - This story does not add cart, checkout, user login, payments, Firebase, Firestore, or any external database.
 
 ## Testing
+
 - Verify valid category routes in browser at desktop and mobile widths.
 - Inspect server-rendered HTML or page source for category title and product names.
 - Verify `/automobile/brake-parts/` shows Brake Parts and a data-driven product count.
@@ -115,23 +127,27 @@ Use the catalog fields defined by Story 1.3. Product cards should map available 
   - `npm run build`
 
 ## Review Notes
+
 - Reviewed against Epic 3.2 acceptance criteria, architecture route guidance, PRD URL rules, and the JSON-only storage decision.
 - Ready for development after Story 1.3 catalog data and Story 1.4 utility functions are available.
 
 ## Dev Agent Record
 
 ### Debug Log
+
 - Implemented the `[mode]/[categorySlug]` App Router page as a server component with `generateStaticParams`, `generateMetadata`, and `notFound()` handling.
 - Added reusable catalog listing components for category chips and product cards.
 - Verified the rendered HTML for `/automobile/brake-parts/` and `/industrial/hydraulic-hoses/` includes the expected breadcrumb, hero copy, product counts, chip row, and product cards.
 - Restored build-generated `public/robots.txt`, `public/sitemap.xml`, and `public/sitemap-0.xml` back to the repository baseline after validation.
 
 ### Completion Notes
+
 - Canonical category routing is preserved, including Hydraulic Parts at `/industrial/hydraulic-hoses/`.
 - Product listing content is server-rendered/static-generated and driven by the JSON catalog source of truth.
 - The implementation passed lint and production build checks.
 
 ### File List
+
 - `src/app/[mode]/[categorySlug]/page.tsx`
 - `src/components/catalog/ProductCard.tsx`
 - `src/components/catalog/CategoryChipRow.tsx`
@@ -146,6 +162,7 @@ Use the catalog fields defined by Story 1.3. Product cards should map available 
 - `_bmad-output/implementation-artifacts/sprint-status.yaml`
 
 ### Change Log
+
 - Added the dynamic category detail route with static generation and SEO metadata.
 - Added reusable product and category chip listing components.
 - Added catalog image/fallback helpers for card rendering.
