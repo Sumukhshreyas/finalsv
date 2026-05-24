@@ -102,18 +102,18 @@ function getTrustItems(mode: Mode, content: DetailContent): TrustItem[] {
   if (mode === "automobile") {
     return [
       {
-        title: "Genuine Parts",
-        subtitle: "OEM grade",
+        title: "Genuine OEM\nParts",
+        subtitle: "",
         icon: "shield",
       },
       {
         title: "Fast Dispatch",
-        subtitle: "Across Bangalore",
+        subtitle: "",
         icon: "truck",
       },
       {
-        title: "GST Billing",
-        subtitle: "Tax invoice",
+        title: "GST Invoice",
+        subtitle: "",
         icon: "doc",
       },
     ];
@@ -158,10 +158,6 @@ export function ProductDetail({
     <div className="detail-grid">
       <div className="detail-sheet">
         <div className="detail-hero">
-          <Link className="detail-back" href={getCategoryUrl(category, mode)}>
-            <BackIcon />
-            Back to {category.title}
-          </Link>
           <button
             aria-label="Save product"
             className="detail-favorite"
@@ -174,37 +170,38 @@ export function ProductDetail({
 
         <div className="detail-body">
           <div className="detail-topbar">
-            <div>
-              <h1>{product.name}</h1>
-              <span className="stock-pill">
-                {formatStockStatus(product.stockStatus)}
-              </span>
-            </div>
+            <h1>{product.name}</h1>
+            <span className="stock-pill">
+              {formatStockStatus(product.stockStatus)}
+            </span>
           </div>
 
-          <div className="oem-chip">OEM: {product.oemNumber}</div>
+          <div className="detail-oem-row" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '12px' }}>
+            <div className="oem-chip" style={{ marginTop: 0 }}>OEM: {product.oemNumber}</div>
+            <span className="brand-chip" style={{ minHeight: '30px', fontSize: '13px', borderRadius: '999px', padding: '0 10px', textTransform: 'uppercase' }}>{product.brand}</span>
+          </div>
 
           <div className="detail-meta-row">
-            <span className="brand-chip">{product.brand}</span>
-            {content.metaPoints.map((point) => (
-              <span className="meta-point" key={point}>
-                <MetaPointIcon />
-                <span>{point}</span>
-              </span>
-            ))}
+            {content.metaPoints.map((point) => {
+              // Quick logic to match icons from screenshot
+              const p = point.toLowerCase();
+              let Icon = MetaPointIcon;
+              if (p.includes('wholesale')) {
+                Icon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>;
+              } else if (p.includes('fast')) {
+                Icon = () => <svg viewBox="0 0 24 24" fill="none" stroke="#f05a1a" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>;
+              } else if (p.includes('dealer') || p.includes('bangalore')) {
+                Icon = () => <svg viewBox="0 0 24 24" fill="none" stroke="#f05a1a" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>;
+              }
+              
+              return (
+                <span className="meta-point" key={point}>
+                  <Icon />
+                  <span>{point}</span>
+                </span>
+              );
+            })}
           </div>
-
-          <EnquiryActions
-            callHref={callHref}
-            pdfHref={pdfHref}
-            pdfLabel="Download PDF"
-            noteLabel={content.noteLabel}
-            primaryHref={enquiryHref}
-            primaryLabel={content.primaryLabel}
-            secondaryLabel={content.secondaryLabel}
-          />
-
-          <TrustRow items={trustItems} />
 
           <CompatibilityList
             emptyCopy={
@@ -224,6 +221,18 @@ export function ProductDetail({
               {product.fullDescription || product.shortDescription}
             </p>
           </section>
+
+          <TrustRow items={trustItems} />
+
+          <EnquiryActions
+            callHref={callHref}
+            pdfHref={pdfHref}
+            pdfLabel="Download PDF"
+            noteLabel={content.noteLabel}
+            primaryHref={enquiryHref}
+            primaryLabel={content.primaryLabel}
+            secondaryLabel={content.secondaryLabel}
+          />
         </div>
       </div>
     </div>

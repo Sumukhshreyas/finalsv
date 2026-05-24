@@ -1,24 +1,30 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { CustomDropdown } from "./CustomDropdown";
 
 interface FilterPanelProps {
-  brandLabel: string;
   brandOptions: string[];
-  brandPlaceholder: string;
   brandValue: string;
-  compatibilityLabel: string;
-  compatibilityOptions: string[];
-  compatibilityPlaceholder: string;
-  compatibilityValue: string;
   copy: string;
   onApply: () => void;
   onBrandChange: (value: string) => void;
   onClose: () => void;
-  onCompatibilityChange: (value: string) => void;
   onReset: () => void;
+  onToolTypeChange: (value: string) => void;
+  onVehicleManufacturerChange: (value: string) => void;
+  onVehicleModelChange: (value: string) => void;
+  onVehicleTypeChange: (value: string) => void;
   open: boolean;
   title: string;
+  toolTypeOptions: string[];
+  toolTypeValue: string;
+  vehicleManufacturerOptions: string[];
+  vehicleManufacturerValue: string;
+  vehicleModelOptions: string[];
+  vehicleModelValue: string;
+  vehicleTypeOptions: string[];
+  vehicleTypeValue: string;
 }
 
 function renderTitle(title: string) {
@@ -38,22 +44,27 @@ function renderTitle(title: string) {
 }
 
 export function FilterPanel({
-  brandLabel,
   brandOptions,
-  brandPlaceholder,
   brandValue,
-  compatibilityLabel,
-  compatibilityOptions,
-  compatibilityPlaceholder,
-  compatibilityValue,
   copy,
   onApply,
   onBrandChange,
   onClose,
-  onCompatibilityChange,
   onReset,
+  onToolTypeChange,
+  onVehicleManufacturerChange,
+  onVehicleModelChange,
+  onVehicleTypeChange,
   open,
   title,
+  toolTypeOptions,
+  toolTypeValue,
+  vehicleManufacturerOptions,
+  vehicleManufacturerValue,
+  vehicleModelOptions,
+  vehicleModelValue,
+  vehicleTypeOptions,
+  vehicleTypeValue,
 }: FilterPanelProps) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -109,33 +120,53 @@ export function FilterPanel({
           }}
         >
           <label className="filter-field">
-            <span>{brandLabel}</span>
-            <select
-              value={brandValue}
-              onChange={(event) => onBrandChange(event.target.value)}
-            >
-              <option value="">{brandPlaceholder}</option>
-              {brandOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+            <span>VEHICLE MANUFACTURER</span>
+            <CustomDropdown
+              options={vehicleManufacturerOptions}
+              value={vehicleManufacturerValue}
+              onChange={onVehicleManufacturerChange}
+              placeholder="Select Vehicle Manufacturer"
+            />
           </label>
 
           <label className="filter-field">
-            <span>{compatibilityLabel}</span>
-            <select
-              value={compatibilityValue}
-              onChange={(event) => onCompatibilityChange(event.target.value)}
-            >
-              <option value="">{compatibilityPlaceholder}</option>
-              {compatibilityOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+            <span>VEHICLE MODEL</span>
+            <CustomDropdown
+              options={vehicleModelOptions}
+              value={vehicleModelValue}
+              onChange={onVehicleModelChange}
+              placeholder="Select Vehicle Model"
+            />
+          </label>
+
+          <label className="filter-field">
+            <span>TOOL TYPE</span>
+            <CustomDropdown
+              options={toolTypeOptions}
+              value={toolTypeValue}
+              onChange={onToolTypeChange}
+              placeholder="Select Tool Type"
+            />
+          </label>
+
+          <label className="filter-field">
+            <span>VEHICLE TYPE</span>
+            <CustomDropdown
+              options={vehicleTypeOptions}
+              value={vehicleTypeValue}
+              onChange={onVehicleTypeChange}
+              placeholder="Select Vehicle Type"
+            />
+          </label>
+
+          <label className="filter-field">
+            <span>BRAND</span>
+            <CustomDropdown
+              options={brandOptions}
+              value={brandValue}
+              onChange={onBrandChange}
+              placeholder="Select Brand"
+            />
           </label>
 
           <div className="filter-actions">

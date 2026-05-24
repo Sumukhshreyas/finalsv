@@ -15,8 +15,11 @@ export function TechSpecs({ rows, title }: TechSpecsProps) {
       <div className="spec-grid" role="list" aria-label={title}>
         {rows.map((row) => (
           <div className="spec-item" key={row.label} role="listitem">
-            <span>{row.label}</span>
-            <strong>{row.value}</strong>
+            <span className="spec-bullet">&bull;</span>
+            <span className="spec-text">
+              <span className="spec-label">{row.label}:</span>{" "}
+              <span className="spec-value">{row.value}</span>
+            </span>
           </div>
         ))}
       </div>

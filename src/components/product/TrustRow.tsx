@@ -67,19 +67,21 @@ function TrustIcon({ icon }: { icon: TrustItem["icon"] }) {
 
 export function TrustRow({ items }: TrustRowProps) {
   return (
-    <section className="detail-trust-row" aria-label="Product trust indicators">
-      {items.map((item) => (
-        <div
-          className="detail-trust-item"
-          key={`${item.title}-${item.subtitle}`}
-        >
-          <TrustIcon icon={item.icon} />
-          <div className="detail-trust-copy">
-            <strong>{item.title}</strong>
-            <span>{item.subtitle}</span>
+    <section className="detail-section detail-trust-section" aria-label="Why buy from us">
+      <h2 className="trust-title">WHY BUY FROM US</h2>
+      <div className="detail-trust-grid">
+        {items.map((item) => (
+          <div
+            className="detail-trust-item"
+            key={`${item.title}`}
+          >
+            <TrustIcon icon={item.icon} />
+            <div className="detail-trust-copy">
+              <strong>{item.title}</strong>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }

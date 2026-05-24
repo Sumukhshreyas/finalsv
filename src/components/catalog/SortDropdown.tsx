@@ -14,9 +14,9 @@ interface SortDropdownProps {
 }
 
 const DEFAULT_OPTIONS: SortOption[] = [
-  { label: "Popular", value: "popularity" },
-  { label: "Name A-Z", value: "name-ascending" },
-  { label: "OEM Number", value: "oem-ascending" },
+  { label: "Sort by: Popular", value: "popularity" },
+  { label: "Sort by: Name A-Z", value: "name-ascending" },
+  { label: "Sort by: OEM Number", value: "oem-ascending" },
 ];
 
 export function SortDropdown({

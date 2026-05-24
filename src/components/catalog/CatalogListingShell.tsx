@@ -5,7 +5,6 @@ import type { Mode, Product } from "@/data/types";
 import type { ProductSort } from "@/lib/dataUtils";
 import { filterProducts, sortProducts } from "@/lib/dataUtils";
 import { ProductCard } from "@/components/catalog/ProductCard";
-import { FilterChips } from "@/components/catalog/FilterChips";
 import { FilterPanel } from "@/components/catalog/FilterPanel";
 import { SortDropdown } from "@/components/catalog/SortDropdown";
 import {
@@ -41,10 +40,24 @@ export function CatalogListingShell({
   products,
 }: CatalogListingShellProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Dummy options
+  const vehicleManufacturerOptions = ["Toyota", "Honda", "Ford", "Chevrolet", "Nissan", "Volkswagen", "Hyundai", "Kia", "BMW", "Mercedes-Benz"];
+  const vehicleModelOptions = ["Corolla", "Civic", "F-150", "Silverado", "Altima", "Jetta", "Elantra", "Optima", "3 Series", "C-Class"];
+  const toolTypeOptions = ["Wrench", "Screwdriver", "Pliers", "Hammer", "Drill", "Saw", "Socket Set", "Allen Key", "Mallet", "Tape Measure"];
+  const vehicleTypeOptions = ["Sedan", "SUV", "Truck", "Hatchback", "Coupe", "Convertible", "Minivan", "Wagon", "Van", "Pickup"];
+
   const [draftBrand, setDraftBrand] = useState("");
-  const [draftCompatibility, setDraftCompatibility] = useState("");
+  const [draftVehicleManufacturer, setDraftVehicleManufacturer] = useState("");
+  const [draftVehicleModel, setDraftVehicleModel] = useState("");
+  const [draftToolType, setDraftToolType] = useState("");
+  const [draftVehicleType, setDraftVehicleType] = useState("");
+
   const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedCompatibility, setSelectedCompatibility] = useState("");
+  const [selectedVehicleManufacturer, setSelectedVehicleManufacturer] = useState("");
+  const [selectedVehicleModel, setSelectedVehicleModel] = useState("");
+  const [selectedToolType, setSelectedToolType] = useState("");
+  const [selectedVehicleType, setSelectedVehicleType] = useState("");
   const [sort, setSort] = useState<ProductSort>("popularity");
   const [viewMode, setViewMode] = useState<CatalogViewMode>("grid");
 
@@ -53,27 +66,16 @@ export function CatalogListingShell({
     [products],
   );
 
-  const compatibilityOptions = useMemo(() => {
-    const values = products.flatMap((product) =>
-      mode === "automobile"
-        ? product.compatibleVehicles || []
-        : product.compatibleApplications || [],
-    );
-
-    return uniqueSorted(values);
-  }, [mode, products]);
-
   const filteredProducts = useMemo(() => {
     const filtered = filterProducts(products, {
       brand: selectedBrand || undefined,
-      compatibleWith: selectedCompatibility || undefined,
     });
 
     return sortProducts(filtered, sort);
-  }, [products, selectedBrand, selectedCompatibility, sort]);
+  }, [products, selectedBrand, sort]);
 
   const activeFilterCount =
-    (selectedBrand ? 1 : 0) + (selectedCompatibility ? 1 : 0);
+    (selectedBrand ? 1 : 0) + (selectedVehicleManufacturer ? 1 : 0) + (selectedVehicleModel ? 1 : 0) + (selectedToolType ? 1 : 0) + (selectedVehicleType ? 1 : 0);
 
   useEffect(() => {
     if (!isFilterOpen) {
@@ -106,21 +108,33 @@ export function CatalogListingShell({
 
   const openFilterPanel = () => {
     setDraftBrand(selectedBrand);
-    setDraftCompatibility(selectedCompatibility);
+    setDraftVehicleManufacturer(selectedVehicleManufacturer);
+    setDraftVehicleModel(selectedVehicleModel);
+    setDraftToolType(selectedToolType);
+    setDraftVehicleType(selectedVehicleType);
     setIsFilterOpen(true);
   };
 
   const applyFilters = () => {
     setSelectedBrand(draftBrand);
-    setSelectedCompatibility(draftCompatibility);
+    setSelectedVehicleManufacturer(draftVehicleManufacturer);
+    setSelectedVehicleModel(draftVehicleModel);
+    setSelectedToolType(draftToolType);
+    setSelectedVehicleType(draftVehicleType);
     setIsFilterOpen(false);
   };
 
   const resetFilters = () => {
     setDraftBrand("");
-    setDraftCompatibility("");
+    setDraftVehicleManufacturer("");
+    setDraftVehicleModel("");
+    setDraftToolType("");
+    setDraftVehicleType("");
     setSelectedBrand("");
-    setSelectedCompatibility("");
+    setSelectedVehicleManufacturer("");
+    setSelectedVehicleModel("");
+    setSelectedToolType("");
+    setSelectedVehicleType("");
     setIsFilterOpen(false);
   };
 
@@ -129,9 +143,24 @@ export function CatalogListingShell({
     setDraftBrand("");
   };
 
-  const clearCompatibility = () => {
-    setSelectedCompatibility("");
-    setDraftCompatibility("");
+  const clearVehicleManufacturer = () => {
+    setSelectedVehicleManufacturer("");
+    setDraftVehicleManufacturer("");
+  };
+
+  const clearVehicleModel = () => {
+    setSelectedVehicleModel("");
+    setDraftVehicleModel("");
+  };
+
+  const clearToolType = () => {
+    setSelectedToolType("");
+    setDraftToolType("");
+  };
+
+  const clearVehicleType = () => {
+    setSelectedVehicleType("");
+    setDraftVehicleType("");
   };
 
   return (
@@ -152,33 +181,26 @@ export function CatalogListingShell({
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <path d="M4 6h16" />
-            <path d="M7 12h10" />
-            <path d="M10 18h4" />
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
           </svg>
           <span>Filter</span>
           {activeFilterCount > 0 ? (
             <span className="catalog-filter-badge">{activeFilterCount}</span>
           ) : null}
         </button>
+
         <SortDropdown onChange={setSort} value={sort} />
       </div>
-
-      <FilterChips
-        brandValue={selectedBrand}
-        compatibilityLabel={compatibilityLabel}
-        compatibilityValue={selectedCompatibility}
-        onClearAll={resetFilters}
-        onRemoveBrand={clearBrand}
-        onRemoveCompatibility={clearCompatibility}
-      />
 
       <div className="catalog-subbar">
         <div className="catalog-count">
           {filteredProducts.length}{" "}
-          {filteredProducts.length === 1 ? "product" : "products"} found
+          {filteredProducts.length === 1 ? "Product" : "Products"} Found
         </div>
+
         <ViewToggle onChange={setViewMode} value={viewMode} />
       </div>
 
@@ -214,22 +236,27 @@ export function CatalogListingShell({
       )}
 
       <FilterPanel
-        brandLabel={brandLabel}
         brandOptions={brandOptions}
-        brandPlaceholder={brandPlaceholder}
         brandValue={draftBrand}
-        compatibilityLabel={compatibilityLabel}
-        compatibilityOptions={compatibilityOptions}
-        compatibilityPlaceholder={compatibilityPlaceholder}
-        compatibilityValue={draftCompatibility}
         copy={filterPanelCopy}
         onApply={applyFilters}
         onBrandChange={setDraftBrand}
         onClose={() => setIsFilterOpen(false)}
-        onCompatibilityChange={setDraftCompatibility}
         onReset={resetFilters}
+        onToolTypeChange={setDraftToolType}
+        onVehicleManufacturerChange={setDraftVehicleManufacturer}
+        onVehicleModelChange={setDraftVehicleModel}
+        onVehicleTypeChange={setDraftVehicleType}
         open={isFilterOpen}
         title={filterPanelTitle}
+        toolTypeOptions={toolTypeOptions}
+        toolTypeValue={draftToolType}
+        vehicleManufacturerOptions={vehicleManufacturerOptions}
+        vehicleManufacturerValue={draftVehicleManufacturer}
+        vehicleModelOptions={vehicleModelOptions}
+        vehicleModelValue={draftVehicleModel}
+        vehicleTypeOptions={vehicleTypeOptions}
+        vehicleTypeValue={draftVehicleType}
       />
     </div>
   );

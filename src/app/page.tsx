@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { CategoryStrip } from "@/components/home/CategoryStrip";
 import { AdvantagesSection } from "@/components/home/AdvantagesSection";
-import { ContactBand } from "@/components/home/ContactBand";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { getCatalogue } from "@/lib/dataUtils";
@@ -21,7 +20,6 @@ export default function Home() {
       <CategoryStrip />
       <FeaturedProducts />
       <AdvantagesSection />
-      <ContactBand />
     </HeroSection>
   );
 }

@@ -223,8 +223,8 @@
         "descriptionTitle": "Product Description",
         "primaryLabel": "WhatsApp Enquiry",
         "secondaryLabel": "Call Now",
-        "noteLabel": "Bulk Orders<br>Welcome",
-        "metaPoints": ["Wholesale Prices", "Fast Enquiry", "Bangalore Dealer"],
+        "noteLabel": "Bulk<br>Orders",
+        "metaPoints": ["Wholesale Prices", "Fast Enquiry"],
         "trust": [
           {
             "title": "5000+ Parts",

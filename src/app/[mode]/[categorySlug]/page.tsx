@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Mode } from "@/data/types";
 import { CatalogListingShell } from "@/components/catalog/CatalogListingShell";
-import { CategoryChipRow } from "@/components/catalog/CategoryChipRow";
 import { SeoJsonLd } from "@/components/shared/SeoJsonLd";
 import { getCatalogue } from "@/lib/dataUtils";
 import {
@@ -81,35 +80,25 @@ export default async function CategoryDetailPage({
     <section className="section compact">
       <div className="container page-shell">
         <div className="category-catalog">
-          <nav className="category-breadcrumb" aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span aria-hidden="true">&gt;</span>
-            <Link href="/categories">Categories</Link>
-            <span aria-hidden="true">&gt;</span>
-            <span>{category.title}</span>
-          </nav>
+          <div className="category-header-clean">
+            <nav className="category-breadcrumb" aria-label="Breadcrumb">
+              <Link href="/">Home</Link><span aria-hidden="true">&gt;</span><Link href="/categories">Categories</Link><span aria-hidden="true">&gt;</span><span>{category.title}</span>
+            </nav>
 
-          <SeoJsonLd
-            data={buildBreadcrumbListJsonLd([
-              { name: "Home", path: "/" },
-              { name: "Categories", path: "/categories/" },
-              { name: category.title, path: `/${mode}/${category.slug}/` },
-            ])}
-          />
-          <SeoJsonLd data={buildItemListJsonLd(mode, category, products)} />
+            <SeoJsonLd
+              data={buildBreadcrumbListJsonLd([
+                { name: "Home", path: "/" },
+                { name: "Categories", path: "/categories/" },
+                { name: category.title, path: `/${mode}/${category.slug}/` },
+              ])}
+            />
+            <SeoJsonLd data={buildItemListJsonLd(mode, category, products)} />
 
-          <div className="catalog-hero">
-            <div className="catalog-title">
+            <div className="catalog-title-clean">
               <h1>{category.title}</h1>
               <p>{category.catalogueCopy}</p>
             </div>
           </div>
-
-          <CategoryChipRow
-            activeCategorySlug={category.slug}
-            categories={categories}
-            mode={mode}
-          />
 
           <CatalogListingShell
             brandLabel={brandField.label}

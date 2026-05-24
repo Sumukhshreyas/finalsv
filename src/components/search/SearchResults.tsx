@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Mode, Product } from "@/data/types";
-import { getProductUrl, searchProducts } from "@/lib/dataUtils";
+import { getProductUrl } from "@/lib/dataUtils";
 import {
   getAssetPath,
   getFallbackInitials,
@@ -18,6 +18,8 @@ interface SearchResultsProps {
   emptyLabel: string;
   suggestions: string[];
   onQueryChange: (value: string) => void;
+  results: Product[];
+  selectedBrand: string;
 }
 
 interface SearchResultCategory {
@@ -91,30 +93,30 @@ export function SearchResults({
   resultsTitle,
   suggestions,
   onQueryChange,
+  results,
+  selectedBrand,
 }: SearchResultsProps) {
   const [activeCategorySlug, setActiveCategorySlug] = useState("all");
   const [expanded, setExpanded] = useState(false);
 
-  const results = useMemo(() => {
-    const cleanedQuery = query.trim();
-
-    if (cleanedQuery.length < 2) {
-      return [];
-    }
-
-    return searchProducts(cleanedQuery, mode);
-  }, [mode, query]);
-
   const categories = useMemo(() => getUniqueCategories(results), [results]);
   const filteredResults = useMemo(() => {
-    if (activeCategorySlug === "all") {
-      return results;
+    let filtered = results;
+    
+    if (activeCategorySlug !== "all") {
+      filtered = filtered.filter(
+        (product) => product.categorySlug === activeCategorySlug,
+      );
     }
 
-    return results.filter(
-      (product) => product.categorySlug === activeCategorySlug,
-    );
-  }, [activeCategorySlug, results]);
+    if (selectedBrand) {
+      filtered = filtered.filter(
+        (product) => product.brand === selectedBrand,
+      );
+    }
+
+    return filtered;
+  }, [activeCategorySlug, results, selectedBrand]);
 
   const visibleResults = expanded
     ? filteredResults
@@ -129,13 +131,9 @@ export function SearchResults({
   if (showEmptyState) {
     return (
       <section aria-label={resultsTitle}>
-        <div className="search-results-head">
-          <h2>{resultsTitle}</h2>
-          <span>
-            {isSearchReady
-              ? `${totalMatches} results`
-              : "Type at least 2 characters"}
-          </span>
+        <div className="recent-head" style={{ marginTop: '24px' }}>
+          <h2>SUGGESTED PARTS</h2>
+          <button className="clear-link" type="button">View all</button>
         </div>
 
         <div className="brand-card" aria-live="polite">
@@ -150,12 +148,6 @@ export function SearchResults({
               : "Enter at least two characters to search across product name, OEM/spec number, brand, and category."}
           </p>
         </div>
-
-        <SearchSuggestions
-          items={suggestions}
-          label="Try these searches"
-          onSelect={onQueryChange}
-        />
       </section>
     );
   }

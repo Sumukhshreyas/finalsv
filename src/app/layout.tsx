@@ -3,6 +3,7 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
+import { GlobalStoreLocation } from "@/components/layout/GlobalStoreLocation";
 import { Header } from "@/components/layout/Header";
 import { SeoJsonLd } from "@/components/shared/SeoJsonLd";
 import { ModeProvider } from "@/context/ModeContext";
@@ -48,6 +49,7 @@ export default function RootLayout({
             <Header modes={catalogue.modes} />
             <SeoJsonLd data={buildLocalBusinessJsonLd()} />
             {children}
+            <GlobalStoreLocation />
             <Footer modeContent={catalogue.modes.automobile} />
             <FloatingWhatsApp />
           </div>
